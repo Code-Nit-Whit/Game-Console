@@ -1,0 +1,2 @@
+﻿Black:DarkGray:White
+White:Gray:Black
