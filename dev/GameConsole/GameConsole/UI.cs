@@ -61,7 +61,7 @@ namespace GameConsole
         //USER INTERACTIVITY- Getting user input
         public static void Continue()
         {
-            UI.AskQuestion("Press enter to continue... ");
+            AskQuestion("Press enter to continue... ");
             Console.ReadLine();
         }
         //A way of taking user input without any validation
@@ -69,6 +69,13 @@ namespace GameConsole
         {
             Console.WriteLine("---------------------");
             Console.Write(question);
+        }
+        //Coming Soon!!!
+        public static void ComingSoon()
+        {
+            DisplayTitle("Coming Soon!!");
+            DisplaySuccess("This page is currently under sonstruction. Thank you for your patience.");
+            Continue();
         }
 
 

@@ -103,37 +103,7 @@ namespace GameConsole
 
         }
 
-        private bool HandleUserResponse(int userResponse)
-        {
-            bool keepGoing = true;
-
-            switch (userResponse)
-            {
-                case 1: //Create New User
-                    SaveNewUser();
-                    break;
-
-                case 2: //Change Username
-                    UI.ComingSoon();
-                    //ChangeUsername();
-                    break;
-
-                case 3: //Change Password
-                    UI.ComingSoon();
-                    //ChangePassword();
-                    break;
-
-                case 4: //Change Theme
-                    ChangeTheme();
-                    break;
-
-                case 0: //Back
-                    keepGoing = false;
-                    break;
-            }
-
-            return keepGoing;
-        }
+        
 
         private void SaveNewUser()
         {
