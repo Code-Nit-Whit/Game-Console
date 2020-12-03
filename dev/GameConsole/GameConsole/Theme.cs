@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 
-
-
 namespace GameConsole
 {
     public class Theme

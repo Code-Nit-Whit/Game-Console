@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/Classes_Assignments and Materials/Application Development/Wk1/GameConsole/GameConsole/GameConsole.csproj",
+      "projectUniqueName": "/Users/codiewhitaker/Desktop/GitStuff/Game-Console/dev/GameConsole/GameConsole/GameConsole.csproj",
       "projectName": "GameConsole",
-      "projectPath": "/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/Classes_Assignments and Materials/Application Development/Wk1/GameConsole/GameConsole/GameConsole.csproj",
+      "projectPath": "/Users/codiewhitaker/Desktop/GitStuff/Game-Console/dev/GameConsole/GameConsole/GameConsole.csproj",
       "packagesPath": "/Users/codiewhitaker/.nuget/packages/",
-      "outputPath": "/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/Classes_Assignments and Materials/Application Development/Wk1/GameConsole/GameConsole/obj/",
+      "outputPath": "/Users/codiewhitaker/Desktop/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/codiewhitaker/.config/NuGet/NuGet.Config"
@@ -30,6 +30,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -41,6 +42,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -56,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

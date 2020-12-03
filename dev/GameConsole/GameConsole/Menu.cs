@@ -1,97 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// Name: Whitaker, Codie
-// Date: September 11th, 2020
-// Course: APD
-// Synopsis: CE05: Milestone 2
-
-
 namespace GameConsole
 {
     public class Menu
     {
-
         //Fields
-        private string _menuName;
-        private List<string>  _menuOptions;
+        private string _title;
 
-        //Properties
-        //public List<string> MenuOptions { get; set; }
-        
-        //Constructor
-        public Menu(string name, List<string> options)
+        private List<string> _menuItems;
+
+        public Menu()
         {
-            _menuName = name;
-
-            _menuOptions = options;
         }
 
-
-        public static void DisplayMenu(List<Menu> menus)
+        //Used to update private member fields _title and _menuItems
+        public void Init(string[] menuData)
         {
-            //Loop to output menu
-            int iteratorAdder = 0;
-            foreach (Menu menu in menus)
+            //Set title field
+            _title = menuData[0];
+            //Add menu options to lsit
+            _menuItems = new List<string>();
+            for (int i = 1; i < menuData.Length; i++)
             {
-                //Use a variable to control the iterator value between menu's
-                //This should allow for dynamic numbering of multiple menus
-                
-                for (int i = 0; i < menu._menuOptions.Count; i++)
-                {
-                    if (menu._menuOptions[i] == "Exit Game" || menu._menuOptions[i] == "Back" || menu._menuOptions[i] == "Cancel")
-                    {
-                        Console.WriteLine($"[0]: {menu._menuOptions[i]} ");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"[{i + iteratorAdder + 1}]: {menu._menuOptions[i]} ");//+1 to get out of indexing numbering, adding the menu option count to a variable, which gets added to the "option number" to help with dynamic numbering
-                    }
-                }
-                Console.WriteLine("");
-                iteratorAdder += menu._menuOptions.Count;
+                _menuItems.Add(menuData[i]);
             }
-
         }
 
-        public static int GetMenuSelection(List<Menu> menus)
+        //Prints menu title and list of menu options to the console
+        public void Display()
         {
-            //Store menu options in dictionary?
-            List<int> menuNumberedOptions = new List<int>();
-            //Loop to instantiate dictionary
-            int iteratorAdder = 0;
-            foreach (Menu menu in menus)
+            //Display menu options- use a for loop
+            for (int i = 0; i < _menuItems.Count; i++)
             {
-                //Use a variable to control the iterator value between menu's
-                //This should allow for dynamic numbering of multiple menus
-
-                for (int i = 0; i < menu._menuOptions.Count; i++)
+                if (_menuItems[i] == "Exit" || _menuItems[i] == "Back")
                 {
-                    if (menu._menuOptions[i] == "Exit" || menu._menuOptions[i] == "Back" || menu._menuOptions[i] == "Cancel")
-                    {
-                        menuNumberedOptions.Add(0);
-                    }
-                    else
-                    {
-                        menuNumberedOptions.Add(i + iteratorAdder + 1);//+1 to get out of indexing numbering, adding the menu option count to a variable, which gets added to the "option number" to help with dynamic numbering
-                    }
+                    Console.WriteLine($"\r\n[{0}] {_menuItems[i]}\r\n");
                 }
-                iteratorAdder += menu._menuOptions.Count;
+                else
+                {
+                    Console.WriteLine($"[{i + 1}] {_menuItems[i]}");
+                }
             }
-
-            //Determine range (highest number)
-            //Sort? Enumerable methods? List Methods? Need biggest number. Make a Validation Class Method
-            int maxLimit = Validation.ValidateHighestNumber(menuNumberedOptions);
-
-            //Prompt user for input
-            string question = "Please choose a menu option [1, 2, 3, ...] ";
-            UI.Separator();
-            Console.Write(question);
-            //Validate using range validation
-            int response = Validation.RangeValidation(0, maxLimit, Console.ReadLine(), question);
-
-            return response;
         }
+        public void Display(string name)
+        {
+            //Display Menu title
+            UI.DisplayTitle(name);
+
+            //Display menu options- use a for loop
+            for (int i = 0; i < _menuItems.Count; i++)
+            {
+                if (_menuItems[i] == "Exit" || _menuItems[i] == "Back")
+                {
+                    Console.WriteLine($"\r\n[{0}] {_menuItems[i]}\r\n");
+                }
+                else
+                {
+                    Console.WriteLine($"[{i + 1}] {_menuItems[i]}");
+                }
+            }
+        }
+
 
     }
 }

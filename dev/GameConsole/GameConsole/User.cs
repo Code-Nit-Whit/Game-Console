@@ -3,12 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Threading;
 
-
-// Name: Whitaker, Codie
-// Date: September 11th, 2020
-// Course: APD
-// Synopsis: CE05: Milestone 2
-
 namespace GameConsole
 {
     public class User

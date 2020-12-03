@@ -1,136 +1,219 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
-// Name: Whitaker, Codie
-// Date: September 11th, 2020
-// Course: APD
-// Synopsis: CE05: Milestone 2
-
-
 namespace GameConsole
 {
-    public class UI
+    public static class UI
     {
-        public UI()
+
+        //COLOR & FORMATTING
+        //Fields
+        private static ConsoleColor _text = ConsoleColor.Black;
+        private static ConsoleColor _background = ConsoleColor.White;
+        private static ConsoleColor _title = ConsoleColor.Blue;
+        private static ConsoleColor _success = ConsoleColor.DarkGreen;
+        private static ConsoleColor _error = ConsoleColor.Red;
+        private static ConsoleColor _info = ConsoleColor.DarkGray;
+
+        //Set Colors
+        public static void SetColors()
         {
+            Console.ForegroundColor = _text;
+            Console.BackgroundColor = _background;
         }
 
-
-
-        //header- takes in a string and formats output
-        public static void Header(string textOutput, bool lowerCase = false)
+        //Display a title
+        public static void DisplayTitle(string text)
         {
-            
-                //Convert text to uppercase and have double lines above and below it
-                Console.Clear();
-
-                if (!lowerCase)
-                {
-                    textOutput = textOutput.ToUpper();
-                }
-
-                textOutput = $"\r\n========================================\r\n" +
-                             $"      {textOutput}  " +
-                             $"\r\n========================================\r\n\r\n";
-
-                Console.Write(textOutput);
-
-           
-        }
-
-        //footer- takes in a string and formats output
-        public static void Footer(string textOutput)
-        {
+            SetColors();
             Console.Clear();
-
-            textOutput = $"\r\n========================================\r\n      {textOutput}  \r\n";
-
-            SetSpecialForeground(textOutput);
+            Console.ForegroundColor = _title;
+            Console.WriteLine("==============================");
+            Console.WriteLine($"       {text}   ");
+            Console.WriteLine("==============================\r\n\r\n");
+            SetColors();
         }
 
-        //separator with text- takes in a string and formats output
-        public static void Separator(string textOutput = null)
+        public static void DisplaySuccess(string text)
         {
-            Console.WriteLine("\r\n\r\n------------------------");
-            if (textOutput != null)
-            {
-                Console.WriteLine(textOutput);
-            }
+            Console.ForegroundColor = _success;
+            Console.WriteLine(text);
+            SetColors();
         }
 
-
-        //Instructions- changes foreground color for instructions and then changes it back to the user's theme
-        // once instructions are printed.
-        public static void DisplayInstructions(List<string> instructions)
+        public static void DisplayError(string text)
         {
-            foreach (string instruction in instructions)
-            {
-                SetInstructionsForeground($"{instruction}");
-            }
+            Console.ForegroundColor = _error;
             Console.WriteLine("");
+            Console.WriteLine(text);
+            SetColors();
         }
-
-        //Used to set main colors for user's theme 
-        public static void SetDefaultTheme()
+        public static void DisplayInfo(string str)
         {
-            if (Program.User != null)
-            {
-                Console.ResetColor();
-                Console.ForegroundColor = Program.User.Theme.MainForeground;
-                Console.BackgroundColor = Program.User.Theme.MainBackground;
-            }
-            else 
-            {
-                Console.ResetColor();
-            }
-        }
-
-        public static void SetSpecialForeground(string output)
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(output);
-            SetDefaultTheme();
-        }
-
-        public static void SetErrorForeground(string output)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(output);
-            SetDefaultTheme();
-        }
-
-        public static void SetInstructionsForeground(string output)
-        {
-            Console.ForegroundColor = Program.User.Theme.InstructionsForeground;
-            Console.WriteLine(output);
-            SetDefaultTheme();
+            Console.ForegroundColor = _info;
+            Console.Write(str);
+            SetColors();
         }
 
 
 
 
-
-
-        //For games not completed
-        //Replace the call to this with the code to play the game
-        public static void ComingSoon()
+        //USER INTERACTIVITY- Getting user input
+        public static void Continue()
         {
-            //Coming Soon Message
-            string comingSoon = "Coming Soon!";
-            string toExit = "Press any key to exit...";
-
-            //Thanks
-            UI.Header(comingSoon);
-            Console.WriteLine("\r\nThank you for your patience...\r\n");
-
-
-            //any key to exit
-            UI.Separator();
-            UI.SetErrorForeground(toExit);
+            UI.AskQuestion("Press enter to continue... ");
             Console.ReadLine();
-
+        }
+        //A way of taking user input without any validation
+        public static void AskQuestion(string question)
+        {
+            Console.WriteLine("---------------------");
+            Console.Write(question);
         }
 
+
+
+
+        //Each of these overloads are available to use independently, and are
+        //recursively called in reverse order. Basically you can jump into these overloads
+        //with any number of strings to columnize, or any number of splits that need
+        //to happen with each string.
+        //
+        //
+        //The first overload will take 2 strings and add space to the front of
+        //the shorter one, if they're not equal
+        //
+        //The second overload takes in a list of string outputs, finds the one
+        //with the largest index, and adds whitespace to the front of the rest
+        //until they are all the same length. It recursively utilizes the first
+        //overload to add the whitespace each time
+        //
+        //The third takes an array of strings and an array of splitters. It
+        //cycles through each splitter, spliting each output string with it and
+        //sending a list of the first substring of each split to be columnized
+        //by the second overload (reccursion). It then adds the columnized strings
+        //into a list to return back. It does this with each splitter, concatenating
+        //the result of each recurssion of overload #2 to its respective string in
+        //the return list. Took some work to keep this code from jumbling up strings...
+        //
+        //
+        //Would be cool to give this method dynamic alignment functionality...
+        //like passing in Center, Left, or Right to adjust where the whitespace is added.
+        //but not this week.
+        public static List<string> DisplayColumns(string str1, string str2)
+        {
+            if (str1.Length == str2.Length)
+            {
+                List<string> returnList = new List<string>() { str1, str2 };
+                return returnList;
+            }
+            else
+            {
+                string largestString = str1.Length > str2.Length ? str1 : str2;
+                string smallestString = str1.Length > str2.Length ? str2 : str1;
+                int difference = largestString.Length - smallestString.Length;
+                List<string> returnList = new List<string>();
+                returnList.Add(largestString);
+                for (int i = 1; i <= difference; i++)
+                {
+                    smallestString = " " + smallestString;
+                }
+                returnList.Add(smallestString);
+                return returnList;
+            }
+        }
+        public static List<string> DisplayColumns(List<string> outputs)
+        {
+            List<string> newOutputs = new List<string>();
+            int largestStrIndex = FindLargestString(outputs);
+            if (largestStrIndex != -1)
+            {
+                string largestString = outputs[largestStrIndex];
+                //newOutputs.Add(largestString);
+                outputs.RemoveAt(largestStrIndex);
+                for (int i = 0; i < outputs.Count; i++)
+                {
+                    List<string> toAdd = DisplayColumns(largestString, outputs[i]);
+                    newOutputs.Add(toAdd[1]);
+                }
+                //Try adding the largest array at a specific index here, shifting the rest
+                newOutputs.Insert(largestStrIndex, largestString);
+                return newOutputs;
+            }
+            else
+            {
+                return outputs;
+            }
+        }
+        public static List<string> DisplayColumns(string[] outputs, string[] splitters)
+        {
+            List<string> finishedStrings = new List<string>();
+            for (int i = 0; i < outputs.Length; i++)
+            {
+                finishedStrings.Add("");
+            }
+            string[] workingOutputs = (string[])outputs.Clone();
+            //For each splitter + 1
+            for (int i = 0; i <= splitters.Length; i++)
+            {
+                List<string> toColumize = new List<string>();
+                //If we havent used all the splitters
+                if (i < splitters.Length)
+                {
+                    //Split each string 
+                    for (int j = 0; j < workingOutputs.Length; j++)
+                    {
+                        string[] splitString = workingOutputs[j].Split(splitters[i], 2);
+                        toColumize.Add(splitString[0]);
+                        workingOutputs[j] = splitString[1];
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < workingOutputs.Length; j++)
+                    {
+                        toColumize.Add(workingOutputs[j]);
+                    }
+                }
+                //columnize the first half of each string
+                List<string> columnized = DisplayColumns(toColumize);
+                //Add the columns to the output
+                for (int j = 0; j < columnized.Count; j++)
+                {
+                    if (i < splitters.Length)
+                    {
+                        finishedStrings[j] = finishedStrings[j] + columnized[j] + splitters[i];
+                    }
+                    else
+                    {
+                        finishedStrings[j] = finishedStrings[j] + columnized[j];
+                    }
+                }
+            }
+            return finishedStrings;
+        }
+        private static int FindLargestString(List<string> outputs)
+        {
+            int index = -1;
+            bool same = true;
+
+            //Find the longest string in the array and return the index of it
+            //Used by the second overload of DisplayColumns
+            for (int i = 0; i < outputs.Count; i++)
+            {
+
+                if (i > 0)
+                {
+                    index = outputs[i].Length > outputs[index].Length ? i : index;
+                    same = (outputs[i].Length == outputs[i - 1].Length && !same == false);
+                }
+                else
+                {
+                    index = i;
+                }
+            }
+
+            return same ? -1 : index;
+        }
     }
 }

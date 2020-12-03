@@ -1,144 +1,96 @@
 ﻿using System;
-using System.Threading;
-using System.Collections.Generic;
-
-
-// Name: Whitaker, Codie
-// Date: September 11th, 2020
-// Course: APD
-// Synopsis: CE05: Milestone 2
 
 namespace GameConsole
 {
     public class Validation
     {
-        
-        //Checks that something was entered- use after question has been asked 1 time
-        //Need the original question to restate
-        public static string StringValidation(string response, string question)
+        //Validate string response is not left empty
+        public static string GetValidatedString(string question, string response = null)
         {
-            while(String.IsNullOrWhiteSpace(response))
+            if (response == null)
             {
-                //Error message and restated question
-                UI.SetErrorForeground($"\r\nPlease do not leave this empty. {question}...");
+                UI.AskQuestion(question);
                 response = Console.ReadLine();
+            }
+            while (string.IsNullOrWhiteSpace(response))
+            {
+                UI.DisplayError("\r\nPlease do not leave this empty!");
+                response = GetValidatedString(question);
             }
 
             return response;
         }
 
-        //Checks that response is an interger- use after question has been asked 1 time
-        //Needs the original question to restate
-        public static int IntergerValidation(string response, string question)
+        //Valdate response is an interger
+        public static int GetValidatedInt(string question, string response = null)
         {
+            if (response == null)
+            {
+                UI.AskQuestion(question);
+                response = Console.ReadLine();
+            }
             int number;
             while (!int.TryParse(response, out number))
             {
-                //Error message and restated question
-                UI.SetErrorForeground($"\r\nPlease enter a valid, whole number.");
-                Console.Write(question);
+                UI.DisplayError("\r\nPlease enter a valid whole number!");
+                UI.AskQuestion(question);
                 response = Console.ReadLine();
             }
 
             return number;
         }
 
-        //Checks that number is within range
-        //Takes string respone, calles IntergerValidation() method to convert to int
-        //Takes min and max int range, checks that returned int value is within that range
-        //Returns int that is within range when the user finally selects one
-        public static int RangeValidation(int lowLimit, int highLimit, string response, string question)
+        public static decimal GetValidatedDecimal(string question, string response = null)
         {
-            int responseNumber = IntergerValidation(response, question);
-            while(responseNumber > highLimit || responseNumber < lowLimit)
+            if (response == null)
             {
-                //Error message and restated question
-                UI.SetErrorForeground($"\r\nPlease enter a valid selection. [1, 2, 3, ...] \r\n ");
-                responseNumber = IntergerValidation(Console.ReadLine(), question);
-            }
-
-            return responseNumber;
-        }
-
-
-
-        public static string ValidateWhitelist(string response, List<string> correctAnswers)
-        {
-            while (!correctAnswers.Contains(response))
-            {
-                UI.SetErrorForeground("Invalid response.");
-                Console.Write("Try again... ");
+                UI.AskQuestion(question);
                 response = Console.ReadLine();
             }
-
-            return response;
-        }
-
-        public static int ValidateHighestNumber(List<int> numbers)
-        {
-            numbers.Sort();
-            int highestNumber = numbers[numbers.Count - 1];
-
-            return highestNumber;
-        }
-
-
-
-
-
-
-        //Allow user to run application again
-        //Allows user to choose whether to play again
-        //Returns bool true to Pllay() method is user wants to play again
-        //Calls Thanks() method ["Thanks for playing"] is user selects no
-        public static bool PlayAgain()
-        {
-            string textOutput = "Would you like to start another game? [Y/N]: ";
-            UI.Separator(textOutput);
-
-            string response = ValidateYesNo(Console.ReadLine(), textOutput);
-
-
-            bool keepPlaying = false;
-            switch (response.ToUpper())
+            decimal number;
+            while (!decimal.TryParse(response, out number))
             {
-                case "Y":
-                    keepPlaying = true;
-                    break;
-
-                case "N":
-                    Thanks();
-                    keepPlaying = false;
-                    break;
-            }
-            return keepPlaying;
-        }
-
-
-        //Validate a yes or no response
-        public static string ValidateYesNo(string response, string question)
-        {
-            //Validate Yes or No response
-            while (response.ToUpper() != "Y" && response.ToUpper() != "N")
-            {
-                //Error message and restated question
-                UI.SetErrorForeground("Please respond with a Y or a N. \r\n");
-                Console.Write(question);
-                //Re-Catch Response
+                UI.DisplayError("\r\nPlease enter a valid decimal number!");
+                UI.AskQuestion(question);
                 response = Console.ReadLine();
             }
-
-            return response;
+            return number;
         }
 
-
-        //Thanks the user for playing
-        //Plays for 1.5 seconds before allowing the main while loop to display the menu again. 
-        public static void Thanks()
+        //Validate Range of numbers, send in high and low
+        public static int GetValidatedRange(string question, int[] range, string response = null)
         {
-            string thanks = "Thank you for playing!";
-            UI.Footer(thanks);
-            Thread.Sleep(1500);
+            if (response == null)
+            {
+                UI.AskQuestion(question);
+                response = Console.ReadLine();
+            }
+            int number = GetValidatedInt(question, response);
+            while (number < range[0] || number > range[1])
+            {
+                UI.DisplayError($"Please choose a number between {range[0]} and {range[1]}! ");
+                number = GetValidatedInt(question);
+            }
+
+            return number;
         }
+
+        //Validate a condition
+        public static string GetValidatedConditional(string question, string[] conditionals, string response = null)
+        {
+            if (response == null)
+            {
+                UI.AskQuestion(question);
+                response = GetValidatedString(question, Console.ReadLine());
+            }
+            while (response.ToLower() != conditionals[0].ToLower() && response.ToLower() != conditionals[1].ToLower())
+            {
+                UI.DisplayError($"Please only enter {conditionals[0]} or {conditionals[1]}!");
+                response = GetValidatedString(question);
+            }
+
+            return response.ToLower();
+        }
+
     }
 }

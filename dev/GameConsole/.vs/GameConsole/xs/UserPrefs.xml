@@ -2,15 +2,10 @@
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/UI.cs">
     <Files>
-      <File FileName="GameConsole/Program.cs" Line="26" Column="89" />
-      <File FileName="GameConsole/User.cs" />
-      <File FileName="GameConsole/Users.txt" />
-      <File FileName="GameConsole/Theme.cs" />
-      <File FileName="GameConsole/Themes.txt" />
+      <File FileName="GameConsole/Program.cs" Line="3" Column="1" />
       <File FileName="GameConsole/Menu.cs" />
-      <File FileName="GameConsole/Validation.cs" Line="143" Column="6" />
-      <File FileName="GameConsole/UI.cs" Line="135" Column="6" />
-      <File FileName="GameConsole/TicTacToe.cs" />
+      <File FileName="GameConsole/Validation.cs" />
+      <File FileName="GameConsole/UI.cs" Line="3" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
