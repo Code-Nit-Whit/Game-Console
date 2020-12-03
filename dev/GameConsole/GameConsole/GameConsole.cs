@@ -6,7 +6,7 @@ namespace GameConsole
     {
         private bool _keepGoing = true;
 
-        private User User { get; set; }
+        private User _user;
 
         public GameConsole()
         {
@@ -14,8 +14,8 @@ namespace GameConsole
 
         public void Init() // Main Menu
         {
-            User = User.LogIn();
-            UI.DisplayTitle($"Hello, {User.Username}! Welcome To...\r\n\r\n         The Game Console!");
+            _user = User.LogIn();
+            UI.DisplayTitle($"Hello, {_user.Username}! Welcome To...\r\n\r\n         The Game Console!");
             string[] mainMenuArr = { "Game Console- Main Menu", "Games", "User Menu", "Exit" };
             Menu mainMenu = new Menu();
             mainMenu.Init(mainMenuArr);
@@ -32,15 +32,6 @@ namespace GameConsole
                 }
                 HandleMainMenuSelection(selection);
             }
-
-           //List<string> userOptions = new List<string> { "User" };
-            //Menu userMenu = new Menu("User", userOptions);
-
-            //List<string> systemOptions = new List<string> { "Exit Game" };
-            //Menu system = new Menu("System", systemOptions);
-
-            // List<Menu> mainMenu = new List<Menu> { games, userMenu, system };
-
         }
 
         //MENU SELECTION HANDLING
@@ -51,11 +42,11 @@ namespace GameConsole
             switch(selection)
             {
                 case 1: //Games
-                    GamesMenu();
+                    OpenGamesMenu();
                     break;
 
                 case 2: //User Menu
-                    UserMenu();
+                    OpenUserMenu();
                     break;
 
                 case 0: //Exit
@@ -71,7 +62,7 @@ namespace GameConsole
                 case 1: //TicTacToe
                     while (keepPlaying)
                     {
-                        TicTacToe game1 = new TicTacToe(User);
+                        TicTacToe game1 = new TicTacToe(_user);
                         game1.Play();
                         keepPlaying = PlayAgain();
                     }
@@ -80,7 +71,7 @@ namespace GameConsole
                 case 2: //High Low
                     while (keepPlaying)
                     {
-                        HighLow game2 = new HighLow(User);
+                        HighLow game2 = new HighLow(_user);
                         game2.Play();
                         keepPlaying = PlayAgain();
                     }
@@ -89,7 +80,7 @@ namespace GameConsole
                 case 3: //Mastermind
                     while (keepPlaying)
                     {
-                        Mastermind game3 = new Mastermind(User);
+                        Mastermind game3 = new Mastermind(_user);
                         game3.Play();
                         keepPlaying = PlayAgain();
                     }
@@ -98,7 +89,7 @@ namespace GameConsole
                 case 4: //Math Challenge
                     while (keepPlaying)
                     {
-                        MathChallenge game4 = new MathChallenge(User);
+                        MathChallenge game4 = new MathChallenge(_user);
                         game4.Play();
                         keepPlaying = PlayAgain();
                     }
@@ -107,7 +98,7 @@ namespace GameConsole
                 case 5: //Hangman
                     while (keepPlaying)
                     {
-                        Hangman game5 = new Hangman(User);
+                        Hangman game5 = new Hangman(_user);
                         game5.Play();
                         keepPlaying = PlayAgain();
                     }
@@ -116,16 +107,11 @@ namespace GameConsole
                 case 6: //Crack the Code
                     while (keepPlaying)
                     {
-                        CrackTheCode game6 = new CrackTheCode(User);
+                        CrackTheCode game6 = new CrackTheCode(_user);
                         game6.Play();
                         keepPlaying = PlayAgain();
                     }
                     break;
-
-                case 7: //Display User Profile-Menu
-                    User.DisplayProfile();
-                    break;
-
 
                 case 0: //Back
                     break;
@@ -144,21 +130,21 @@ namespace GameConsole
             switch (selection)
             {
                 case 1: //Create New User
-                    SaveNewUser();
+                    User.CreateUser();
                     break;
 
                 case 2: //Change Username
                     UI.ComingSoon();
-                    //ChangeUsername();
+                    //_user.ChangeUsername();
                     break;
 
                 case 3: //Change Password
                     UI.ComingSoon();
-                    //ChangePassword();
+                    //_user.ChangePassword();
                     break;
 
                 case 4: //Change Theme
-                    ChangeTheme();
+                    _user.ChangeTheme();
                     break;
 
                 case 0: //Back
@@ -171,7 +157,7 @@ namespace GameConsole
         //MENU CREATION
         //
         //
-        private void GamesMenu()
+        private void OpenGamesMenu()
         {
             string[] gamesMenuArr = { "Game Console- Game Menu", "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code", "Back" };
             Menu gamesMenu = new Menu();
@@ -190,7 +176,7 @@ namespace GameConsole
                 HandleGameMenuSelection(selection);
             }
         }
-        private void UserMenu()
+        private void OpenUserMenu()
         {
             string[] userMenuaArr = { "Game console- User Menu", "Create User", "Change Username", "Change Password", "Change Theme", "Back" };
             Menu userMenu = new Menu();
