@@ -59,7 +59,7 @@ namespace GameConsole
         }
         private void OpenUserMenu()
         {
-            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Back" };
+            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Log Out", "Back" };
             Menu userMenu = new Menu();
             userMenu.Init(userMenuaArr);
             bool keepGoing = true;
@@ -213,8 +213,14 @@ namespace GameConsole
                         User.DeleteAUser(_user);
                         UI.DisplaySuccess("Your account has been deleted.");
                         UI.Continue();
-                        User.LogIn();
+                        Program.RestartConsole();
                     }
+                    break;
+
+                case 7: //LogOut (restart console)
+                    UI.DisplaySuccess("Logged Out");
+                    UI.Continue();
+                    Program.RestartConsole();
                     break;
 
                 case 0: //Back

@@ -33,7 +33,7 @@ namespace GameConsole
                 UI.DisplayTitle("Log In");
                 string question = "[Username]: ";
                 string username = Validation.GetValidatedString(question);
-                question = "[Passowrd]: ";
+                question = "[Password]: ";
                 string password = Validation.GetValidatedString(question);
                 bool successful = false;
                 for(int i = 0; i < _availableUsers.Count; i++)
