@@ -57,67 +57,73 @@ namespace GameConsole
         }
         private void HandleGameMenuSelection(int response)
         {
-            bool keepPlaying = true;
+            //bool keepPlaying = true;
             switch (response)
             {
                 case 1: //TicTacToe
-                    while (keepPlaying)
+                    /*while (keepPlaying)
                     {
                         //TicTacToe game1 = new TicTacToe(_user);
                         //game1.Play();
                         keepPlaying = PlayAgain();
                         UI.ComingSoon();
-                    }
+                    }*/
+                    UI.ComingSoon();
                     break;
 
                 case 2: //High Low
-                    while (keepPlaying)
+                    /*while (keepPlaying)
                     {
                         //HighLow game2 = new HighLow(_user);
                         //game2.Play();
                         keepPlaying = PlayAgain();
                         UI.ComingSoon();
-                    }
+                    }*/
+                    UI.ComingSoon();
                     break;
 
                 case 3: //Mastermind
-                    while (keepPlaying)
+                    /*while (keepPlaying)
                     {
                         //Mastermind game3 = new Mastermind(_user);
                         //game3.Play();
                         keepPlaying = PlayAgain();
                         UI.ComingSoon();
-                    }
+                    }*/
+                    UI.ComingSoon();
                     break;
 
                 case 4: //Math Challenge
-                    while (keepPlaying)
+                    /*while (keepPlaying)
                     {
                         //MathChallenge game4 = new MathChallenge(_user);
                         //game4.Play();
                         keepPlaying = PlayAgain();
                         UI.ComingSoon();
-                    }
+                    }*/
+                    UI.ComingSoon();
                     break;
 
                 case 5: //Hangman
-                    while (keepPlaying)
+                    /*while (keepPlaying)
                     {
                         //Hangman game5 = new Hangman(_user);
                         //game5.Play();
                         keepPlaying = PlayAgain();
                         UI.ComingSoon();
-                    }
+                    }*/
+                    UI.ComingSoon();
                     break;
 
                 case 6: //Crack the Code
-                    while (keepPlaying)
-                    {
+                        //while (keepPlaying)
+                        //{
                         //CrackTheCode game6 = new CrackTheCode(_user);
                         //game6.Play();
-                        keepPlaying = PlayAgain();
-                        UI.ComingSoon();
-                    }
+                        //keepPlaying = PlayAgain();
+                        //UI.ComingSoon();
+                        //}
+                    UI.ComingSoon();
                     break;
 
                 case 0: //Back

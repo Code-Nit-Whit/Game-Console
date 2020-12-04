@@ -9,12 +9,12 @@ namespace GameConsole
 
         //Properties
         public string Name { get; }
-        private static ConsoleColor _text;
-        private static ConsoleColor _background;
-        private static ConsoleColor _title;
-        private static ConsoleColor _success;
-        private static ConsoleColor _error;
-        private static ConsoleColor _info;
+        private ConsoleColor _text;
+        private ConsoleColor _background;
+        private ConsoleColor _title;
+        private ConsoleColor _success;
+        private ConsoleColor _error;
+        private ConsoleColor _info;
 
 
         public Theme(string name, string text, string background, string title, string success, string error, string info)
