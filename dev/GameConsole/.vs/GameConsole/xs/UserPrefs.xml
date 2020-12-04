@@ -2,15 +2,15 @@
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/FileIO.cs">
     <Files>
-      <File FileName="GameConsole/GameConsole.cs" Line="61" Column="31" />
-      <File FileName="GameConsole/Menu.cs" />
-      <File FileName="GameConsole/Validation.cs" />
-      <File FileName="GameConsole/UI.cs" />
-      <File FileName="GameConsole/FileIO.cs" Line="18" Column="1" />
-      <File FileName="GameConsole/User.cs" />
-      <File FileName="GameConsole/Users.txt" />
-      <File FileName="GameConsole/Theme.cs" />
-      <File FileName="GameConsole/Themes.txt" />
+      <File FileName="GameConsole/GameConsole.cs" Line="17" Column="26" />
+      <File FileName="GameConsole/Menu.cs" Line="11" Column="41" />
+      <File FileName="GameConsole/Validation.cs" Line="4" Column="2" />
+      <File FileName="GameConsole/UI.cs" Line="24" Column="44" />
+      <File FileName="GameConsole/User.cs" Line="68" Column="30" />
+      <File FileName="GameConsole/Users.txt" Line="1" Column="1" />
+      <File FileName="GameConsole/Theme.cs" Line="1" Column="14" NotebookId="1" />
+      <File FileName="GameConsole/Themes.txt" Line="2" Column="6" NotebookId="1" />
+      <File FileName="GameConsole/FileIO.cs" Line="102" Column="50" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

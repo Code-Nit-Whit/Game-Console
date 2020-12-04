@@ -74,42 +74,16 @@ namespace GameConsole
 
 
 
-            //THEMES
-            //
-            //
-            //Load Themes
-
-
-
-            //DICTIONARY
-            //
-            //
-            //Load Dictionary
-
-
-    }//end of class
-}
-
-/*
- using System;
-using System.Collections.Generic;
-using System.IO;
-
-//Name: Codie Whitaker
-//Date: December 3rd, 2020
-//Class: Application Architecture
-//Assignment: 2.3 Code Exercise
-
-namespace EmployeeTracker
-{
-    public static class FileIO
-    {
-        public static List<Employee> LoadEmployees(string filePath)
+        //THEMES
+        //
+        //
+        //Load Themes
+        public static List<Theme> LoadThemes(string filePath)
         {
-            List<Employee> employees = new List<Employee>();
+            List<Theme> themes = new List<Theme>();
             if (!File.Exists(filePath))
             {
-                return employees;
+                return themes;
             }
             else
             {
@@ -120,55 +94,19 @@ namespace EmployeeTracker
                     {
                         string[] lineSplit = line.Split(":");
                         string name = lineSplit[0];
-                        string address = lineSplit[1];
-                        decimal hoursWorked = decimal.Parse(lineSplit[3]);
-                        decimal rateOfPay = decimal.Parse(lineSplit[2]);
+                        string text = lineSplit[1];
+                        string background = lineSplit[2];
+                        string title = lineSplit[3];
+                        string success = lineSplit[4];
+                        string error = lineSplit[5];
+                        string info = lineSplit[6];
 
-                        FullTime newEmployee = new FullTime(name, address, rateOfPay, 40, hoursWorked);
-                        employees.Add(newEmployee);
+                        Theme newTheme = new Theme(name, text, background, title, success, error, info);
+                        themes.Add(newTheme);
                     }
-
-                    return employees;
+                    return themes;
                 }
             }
         }
-
-        public static void SaveEmployees(string filePath, List<Employee> employees)
-        {
-            if (!File.Exists(filePath))
-            {
-                File.Create(filePath);
-            }
-            using (StreamWriter sw = new StreamWriter(filePath))
-            {
-                //Research how to do this conditionally based of the Employee's type.
-                //Pretty sure this is built in somewhere with inheritance and abstract methods
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                for (int i = 0; i < employees.Count; i++)
-                {
-                    if (employees[i] is FullTime)
-                    {
-                        string[] saveData = ((FullTime)employees[i]).GetSaveData();
-                        //string toWrite = $"{saveData[0]}:{saveData[1]}:{saveData[2]}:{saveData[3]}";
-                        string toWrite = "";
-                        foreach (string dataPoint in saveData)
-                        {
-                            if(toWrite == "")
-                            {
-                                toWrite = dataPoint;
-                            }
-                            else
-                            {
-                                toWrite = $"{toWrite}:{dataPoint}";
-                            }
-                            
-                        }
-                        sw.WriteLine(toWrite);
-                    }
-                }
-            }
-        }
-    }
+    }//end of class
 }
-
- */

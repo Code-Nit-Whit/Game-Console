@@ -1,27 +1,25 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace GameConsole
 {
     public class User
     {
-        private string _username;
+        public string Username { get; set; }
         private string _password;
         private int _age;
         private Theme _theme;
 
-        private static string _filePath = "";
+        private static string _filePath = "../../../users.txt";
         private static List<User> _availableUsers;
 
        
         public User(string username, string password, int age, string theme)
         {
-            _username = username;
+            Username = username;
             _password = password;
             _age = age;
-            _theme = new Theme(theme);
+            _theme = UI.FindTheme(theme);
         }
 
         public static User LogIn()
@@ -44,13 +42,14 @@ namespace GameConsole
                     }
                 }
             }
+            UI.SetTheme(returnUser._theme);
             UI.DisplaySuccess("Login Successful!");
             UI.Continue();
             return returnUser;
         }
         private bool CheckUserPassword(string username, string password)
         {
-            if(username == _username && password == _password)
+            if(username == Username && password == _password)
             {
                 return true;
             }
@@ -61,10 +60,14 @@ namespace GameConsole
         }
 
 
-
-
         //Display user profile
-        public void DisplayProfile()
+        public string[] GetSaveData()
+        {
+            string[] saveData = { Username, _password, _age.ToString(), _theme.Name};
+            return saveData;
+        }
+
+        public void DisplayUserProfile()
         {
 
         }

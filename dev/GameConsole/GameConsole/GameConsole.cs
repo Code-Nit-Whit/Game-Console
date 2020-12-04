@@ -14,8 +14,9 @@ namespace GameConsole
 
         public void Init() // Main Menu
         {
+            UI.LoadThemes();
             _user = User.LogIn();
-            UI.DisplayTitle($"Hello, {_user.Username}! Welcome To...\r\n\r\n         The Game Console!");
+            UI.DisplayTitle($"Hello, {_user.Username}! Welcome To The Game Console!");
             string[] mainMenuArr = { "Game Console- Main Menu", "Games", "User Menu", "Exit" };
             Menu mainMenu = new Menu();
             mainMenu.Init(mainMenuArr);
@@ -129,21 +130,23 @@ namespace GameConsole
         {
             switch (selection)
             {
-                case 1: //Create New User
+                case 1: //Display User Profile
+                    _user.DisplayUserProfile();
+                    break;
+
+                case 2: //Create New User
                     User.CreateUser();
                     break;
 
-                case 2: //Change Username
-                    UI.ComingSoon();
-                    //_user.ChangeUsername();
+                case 3: //Change Username
+                    _user.ChangeUsername();
                     break;
 
-                case 3: //Change Password
-                    UI.ComingSoon();
-                    //_user.ChangePassword();
+                case 4: //Change Password
+                    _user.ChangePassword();
                     break;
 
-                case 4: //Change Theme
+                case 5: //Change Theme
                     _user.ChangeTheme();
                     break;
 
@@ -178,7 +181,7 @@ namespace GameConsole
         }
         private void OpenUserMenu()
         {
-            string[] userMenuaArr = { "Game console- User Menu", "Create User", "Change Username", "Change Password", "Change Theme", "Back" };
+            string[] userMenuaArr = { "Game console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Back" };
             Menu userMenu = new Menu();
             userMenu.Init(userMenuaArr);
             bool keepGoing = true;

@@ -1,69 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace GameConsole
 {
     public class Theme
     {
         //Fields
-        private List<ConsoleColor> ThemeColorList;
 
         //Properties
-        public string Name { get; set; }
-        public ConsoleColor MainForeground { get; set; }
-        public ConsoleColor InstructionsForeground { get; set; }
-        public ConsoleColor MainBackground { get; set; }
+        public string Name { get; }
+        private static ConsoleColor _text;
+        private static ConsoleColor _background;
+        private static ConsoleColor _title;
+        private static ConsoleColor _success;
+        private static ConsoleColor _error;
+        private static ConsoleColor _info;
 
 
-        public Theme(string theme)
+        public Theme(string name, string text, string background, string title, string success, string error, string info)
         {
-            Name = theme;
-
-            if (theme == "light")
-            {
-                GetThemeColorList(0);
-            }
-            else if (theme == "dark")
-            {
-                GetThemeColorList(1);
-            }
-
-            MainForeground = ThemeColorList[0];
-            InstructionsForeground = ThemeColorList[1];
-            MainBackground = ThemeColorList[2];
+            Name = name;
+            //Figure out how to convert a string to console color
+            _text = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), text);
+            _background = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), background);
+            _title = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), title);
+            _success = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), success);
+            _error = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), error);
+            _info = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), info);
         }
 
-        private void GetThemeColorList(int iterator)
+        public ConsoleColor[] GetColors()
         {
-            string correctLine = "";
-
-            string path = "../../../Themes.txt";
-            using (StreamReader sr = new StreamReader(path))
-            {
-                
-                string line;
-                int lineNumber = 0;
-                while ((line = sr.ReadLine()) != null && correctLine == "")
-                {
-                    if (iterator == lineNumber)
-                    {
-                        correctLine = line;
-                    }
-                    else
-                    {
-                        lineNumber++;
-                    }
-                }
-            }
-
-            string[] data = correctLine.Split(':');
-            ThemeColorList = new List<ConsoleColor>();
-            for (int i = 0; i < data.Length; i++)
-            {
-                ThemeColorList.Add((ConsoleColor)Enum.Parse(typeof(ConsoleColor), data[i]));
-            }
-            
+            ConsoleColor[] toReturn = { _text, _background, _title, _success, _error, _info};
+            return toReturn;
         }
+
     }
 }

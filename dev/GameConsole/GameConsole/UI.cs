@@ -8,18 +8,40 @@ namespace GameConsole
 
         //COLOR & FORMATTING
         //Fields
-        private static ConsoleColor _text = ConsoleColor.Black;
-        private static ConsoleColor _background = ConsoleColor.White;
-        private static ConsoleColor _title = ConsoleColor.Blue;
-        private static ConsoleColor _success = ConsoleColor.DarkGreen;
-        private static ConsoleColor _error = ConsoleColor.Red;
-        private static ConsoleColor _info = ConsoleColor.DarkGray;
+        private static string _themesFilePath = "../../../themes.txt";
+        private static List<Theme> _availableThemes;
+        private static Theme _currentTheme;
+        private static ConsoleColor[] _currentColors;
+
+        public static Theme FindTheme(string theme)
+        {
+            if(theme == "light")
+            {
+                return _availableThemes[0];
+            }
+            else
+            {
+                return _availableThemes[1];
+            }
+        }
+
+        public static void LoadThemes()
+        {
+            _availableThemes = FileIO.LoadThemes(_themesFilePath);
+        }
+
+        //Set Theme
+        public static void SetTheme(Theme newTheme)
+        {
+            _currentTheme = newTheme;
+            _currentColors = _currentTheme.GetColors();
+        }
 
         //Set Colors
         public static void SetColors()
         {
-            Console.ForegroundColor = _text;
-            Console.BackgroundColor = _background;
+            Console.ForegroundColor = _currentColors[0];
+            Console.BackgroundColor = _currentColors[1];
         }
 
         //Display a title
@@ -27,7 +49,7 @@ namespace GameConsole
         {
             SetColors();
             Console.Clear();
-            Console.ForegroundColor = _title;
+            Console.ForegroundColor = _currentColors[2];
             Console.WriteLine("==============================");
             Console.WriteLine($"       {text}   ");
             Console.WriteLine("==============================\r\n\r\n");
@@ -36,21 +58,21 @@ namespace GameConsole
 
         public static void DisplaySuccess(string text)
         {
-            Console.ForegroundColor = _success;
+            Console.ForegroundColor = _currentColors[3];
             Console.WriteLine(text);
             SetColors();
         }
 
         public static void DisplayError(string text)
         {
-            Console.ForegroundColor = _error;
+            Console.ForegroundColor = _currentColors[4];
             Console.WriteLine("");
             Console.WriteLine(text);
             SetColors();
         }
         public static void DisplayInfo(string str)
         {
-            Console.ForegroundColor = _info;
+            Console.ForegroundColor = _currentColors[5];
             Console.Write(str);
             SetColors();
         }
