@@ -1,23 +1,23 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/FileIO.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/UI.cs">
     <Files>
-      <File FileName="GameConsole/GameConsole.cs" Line="17" Column="26" />
+      <File FileName="GameConsole/GameConsole.cs" Line="146" Column="44" />
       <File FileName="GameConsole/Menu.cs" Line="11" Column="41" />
       <File FileName="GameConsole/Validation.cs" Line="4" Column="2" />
-      <File FileName="GameConsole/UI.cs" Line="24" Column="44" />
-      <File FileName="GameConsole/User.cs" Line="68" Column="30" />
+      <File FileName="GameConsole/User.cs" Line="120" Column="1" />
       <File FileName="GameConsole/Users.txt" Line="1" Column="1" />
-      <File FileName="GameConsole/Theme.cs" Line="1" Column="14" NotebookId="1" />
+      <File FileName="GameConsole/Theme.cs" Line="35" Column="10" NotebookId="1" />
       <File FileName="GameConsole/Themes.txt" Line="2" Column="6" NotebookId="1" />
-      <File FileName="GameConsole/FileIO.cs" Line="102" Column="50" NotebookId="1" />
+      <File FileName="GameConsole/FileIO.cs" Line="110" Column="10" NotebookId="1" />
+      <File FileName="GameConsole/UI.cs" Line="41" Column="25" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="FileIO.cs" selected="True" />
+              <Node name="UI.cs" selected="True" />
             </Node>
           </Node>
         </State>

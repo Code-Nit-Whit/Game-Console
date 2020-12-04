@@ -6,37 +6,76 @@ namespace GameConsole
     public static class UI
     {
 
-        //COLOR & FORMATTING
+        
         //Fields
         private static string _themesFilePath = "../../../themes.txt";
         private static List<Theme> _availableThemes;
         private static Theme _currentTheme;
         private static ConsoleColor[] _currentColors;
 
-        public static Theme FindTheme(string theme)
-        {
-            if(theme == "light")
-            {
-                return _availableThemes[0];
-            }
-            else
-            {
-                return _availableThemes[1];
-            }
-        }
 
+        //THEME MANAGEMENT
+        //
+        //
         public static void LoadThemes()
         {
             _availableThemes = FileIO.LoadThemes(_themesFilePath);
         }
 
-        //Set Theme
+        public static Theme FindTheme(string theme)
+        {
+            Theme newTheme = null;
+            for(int i = 0; i < _availableThemes.Count; i++)
+            {
+                if(theme == _availableThemes[i].Name)
+                {
+                    newTheme = _availableThemes[i];
+                }
+            }
+            return newTheme;
+        }
+
         public static void SetTheme(Theme newTheme)
         {
             _currentTheme = newTheme;
-            _currentColors = _currentTheme.GetColors();
+            SetColors();
         }
 
+        public static Theme SelectThemeMenu()
+        {
+            //NEED TO MAKE DYNAMIC
+            //Make it a menu
+            string[] themeMenuArr = new string[_availableThemes.Count];
+            themeMenuArr[0] = "Select a Theme";
+            for(int i = 1; i <= _availableThemes.Count; i++)
+            {
+                themeMenuArr[i] = _availableThemes[i-1].Name;
+            }
+            themeMenuArr[themeMenuArr.Length - 1] = "Back";
+            Menu themeMenu = new Menu();
+            themeMenu.Init(themeMenuArr);
+            themeMenu.Display();
+            string question = "Please select a theme from above [1,2]... ";
+            int[] range = { 0, _availableThemes.Count };
+            int selection = Validation.GetValidatedRange(question, range);
+            return HandleSelection(selection);
+        }
+        private static Theme HandleSelection(int selection)
+        {
+            if(selection == 0)
+            {
+                return _currentTheme;
+            }
+            else
+            {
+                return _availableThemes[selection - 1];
+            }
+        }
+
+
+        //COLOR & FORMATTING
+        //
+        //
         //Set Colors
         public static void SetColors()
         {
@@ -80,7 +119,9 @@ namespace GameConsole
 
 
 
-        //USER INTERACTIVITY- Getting user input
+        //MISC USER INTERACTIVITY- Getting user input
+        //
+        //
         public static void Continue()
         {
             AskQuestion("Press enter to continue... ");
@@ -102,6 +143,11 @@ namespace GameConsole
 
 
 
+
+
+        //SPECIAL FORMATTING
+        //
+        //
 
         //Each of these overloads are available to use independently, and are
         //recursively called in reverse order. Basically you can jump into these overloads

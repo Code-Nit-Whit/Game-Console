@@ -33,6 +33,5 @@ namespace GameConsole
             ConsoleColor[] toReturn = { _text, _background, _title, _success, _error, _info};
             return toReturn;
         }
-
     }
 }

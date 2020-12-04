@@ -5,7 +5,8 @@ namespace GameConsole
 {
     public class User
     {
-        public string Username { get; set; }
+        private string _username;
+        public string Username { get { return _username; } }
         private string _password;
         private int _age;
         private Theme _theme;
@@ -16,7 +17,7 @@ namespace GameConsole
        
         public User(string username, string password, int age, string theme)
         {
-            Username = username;
+            _username = username;
             _password = password;
             _age = age;
             _theme = UI.FindTheme(theme);
@@ -103,21 +104,54 @@ namespace GameConsole
 
         public void ChangeUsername()
         {
-            //Display Current Username
-            //Prompt new username
-            //Yes or no confirmation
+            UI.DisplayTitle("Change Username");
+            string question = "Please enter your new username... ";
+            string username = Validation.GetValidatedString(question);
+            _username = username;
+            for (int i = 0; i < _availableUsers.Count; i++)
+            {
+                if (_availableUsers[i].Username == _username)
+                {
+                    _availableUsers[i]._username = username;
+                }
+            }
+            FileIO.SaveEmployees(_filePath, _availableUsers);
+            UI.DisplaySuccess($"Username Changed to {Username}!!");
+            UI.Continue();
         }
 
         public void ChangePassword()
         {
-            //Prompt for current password
-            //Prompt for new password
-            //Yes or no confirmation
+            UI.DisplayTitle("Change Password");
+            string question = "Please enter any combination of letters and numbers as a new password... ";
+            string password = Validation.GetValidatedString(question);
+            _password = password;
+            for (int i = 0; i < _availableUsers.Count; i++)
+            {
+                if (_availableUsers[i].Username == Username)
+                {
+                    _availableUsers[i]._password = password;
+                }
+            }
+            FileIO.SaveEmployees(_filePath, _availableUsers);
+            UI.DisplaySuccess("Password Changed!!");
+            UI.Continue();
         }
 
         public void ChangeTheme()
         {
-            
+            _theme = UI.SelectThemeMenu();
+            for(int i = 0; i < _availableUsers.Count; i++)
+            {
+                if(_availableUsers[i].Username == Username)
+                {
+                    _availableUsers[i]._theme = _theme;
+                }
+            }
+            FileIO.SaveEmployees(_filePath, _availableUsers);
+            UI.SetTheme(_theme);
+            UI.DisplaySuccess($"Theme changed to {_theme.Name}!");
+            UI.Continue();
         }
 
     }//end of class
