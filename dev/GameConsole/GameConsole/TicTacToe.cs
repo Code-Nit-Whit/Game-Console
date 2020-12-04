@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GameConsole
 {
-    public class TicTacToe : Game
+    public class TicTacToe : TwoPlayerGame
     {
         private new List<string> _instructions = new List<string>{
             "Get ready to beat your opponent!",
@@ -28,33 +28,25 @@ namespace GameConsole
             {
                 //Local variables
                 string winner = null;
-                bool stalemate = false;
                 string player;
-
                 //Display Board
                 UpdateGameDisplay();
-
                 //Play until someone wins
                 int turns = 1;
-                while (winner == null && !stalemate)
+                while (winner == null)
                 {
                     //Select Player
                     player = (turns % 2 == 0) ? "Player 2" : "Player 1";
                     _marker = (turns % 2 == 0) ? "O" : "X";
-
                     //Chose space and validate
                     int space = ValidateSpace(_spaces, player) - 1;
-                    _spaces[space] = _marker;
-
                     //Refresh Board
                     UpdateGameDisplay();
-
                     //Check for winners
                     winner = CheckWinner();
                     turns++;
                 }
-                Display2PWinner(winner);
-
+                DisplayWinner(winner);
                 keepGoing = PlayAgain();
             }
         }
@@ -69,10 +61,8 @@ namespace GameConsole
             {
                 UI.DisplayInfo(instruction);
             }
-
             //Instructions
             Console.WriteLine(" ");
-
             //Board
             Console.WriteLine($"     |     |     ");
             Console.WriteLine($"  {_spaces[0]}  |  {_spaces[1]}  |  {_spaces[2]}  ");
@@ -84,7 +74,6 @@ namespace GameConsole
             Console.WriteLine($"  {_spaces[6]}  |  {_spaces[7]}  |  {_spaces[8]}  ");
             Console.WriteLine($"     |     |     ");
             Console.WriteLine("");
-
         }
 
         //Check Lines (Check Winner)
@@ -96,12 +85,10 @@ namespace GameConsole
                 (_spaces[0] == _spaces[1] && _spaces[1] == _spaces[2])
                 || (_spaces[3] == _spaces[4] && _spaces[4] == _spaces[5])
                 || (_spaces[6] == _spaces[7] && _spaces[7] == _spaces[8])
-
                 //Verticals
                 || (_spaces[0] == _spaces[3] && _spaces[3] == _spaces[6])
                 || (_spaces[1] == _spaces[4] && _spaces[4] == _spaces[7])
                 || (_spaces[2] == _spaces[5] && _spaces[5] == _spaces[8])
-
                 //Diagonals
                 || (_spaces[0] == _spaces[4] && _spaces[4] == _spaces[8])
                 || (_spaces[2] == _spaces[4] && _spaces[4] == _spaces[6])
@@ -127,7 +114,6 @@ namespace GameConsole
                 UI.DisplayError("Invalid input, Please try again");
                 guess = Validation.GetValidatedRange(question, range);
             }
-
             return guess;
         }
     }

@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/TicTacToe.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Game.cs">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="17" Column="26" />
-      <File FileName="GameConsole/GameConsole.cs" Line="62" Column="189" />
+      <File FileName="GameConsole/GameConsole.cs" Line="170" Column="9" />
       <File FileName="GameConsole/Menu.cs" Line="29" Column="24" />
       <File FileName="GameConsole/Validation.cs" Line="4" Column="2" />
       <File FileName="GameConsole/User.cs" Line="36" Column="36" />
@@ -12,9 +12,11 @@
       <File FileName="GameConsole/Theme.cs" Line="28" Column="1" />
       <File FileName="GameConsole/Themes.txt" Line="2" Column="36" />
       <File FileName="GameConsole/FileIO.cs" Line="100" Column="1" />
-      <File FileName="GameConsole/Game.cs" Line="1" Column="1" />
-      <File FileName="GameConsole/TicTacToe.cs" Line="189" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/HighLow.cs" Line="206" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Game.cs" Line="19" Column="49" />
+      <File FileName="GameConsole/OnePlayerGame.cs" Line="10" Column="11" />
+      <File FileName="GameConsole/TwoPlayerGame.cs" Line="27" Column="9" />
+      <File FileName="GameConsole/TicTacToe.cs" Line="89" Column="40" NotebookId="1" />
+      <File FileName="GameConsole/HighLow.cs" Line="2" Column="24" NotebookId="1" />
       <File FileName="GameConsole/MathChallenge.cs" Line="88" Column="4" NotebookId="1" />
       <File FileName="GameConsole/Problem.cs" Line="92" Column="4" NotebookId="1" />
       <File FileName="GameConsole/Mastermind.cs" Line="93" Column="4" NotebookId="1" />
@@ -31,7 +33,7 @@
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="TicTacToe.cs" selected="True" />
+              <Node name="Game.cs" selected="True" />
             </Node>
           </Node>
         </State>

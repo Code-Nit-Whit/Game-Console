@@ -16,7 +16,6 @@ namespace GameConsole
         }
 
         public abstract void Play();
-        protected abstract string CheckWinner();
         protected abstract void UpdateGameDisplay();
 
         protected bool PlayAgain()
@@ -25,37 +24,6 @@ namespace GameConsole
             string[] conditionals = { "y", "n" };
             string response = Validation.GetValidatedConditional(question, conditionals);
             return response == "y" ? true : false;
-        }
-
-        protected virtual void Display2PWinner(string winner)
-        {
-            UI.DisplayTitle("Match Results...");
-            //Display winner
-            if (winner != "stalemate")
-            {
-                UI.DisplaySuccess($"Winner: {winner}!");
-                UI.Continue();
-            }
-            else if (winner == "stalemate")
-            {
-                UI.DisplayError("Oops, looks like a Stalemate!");
-                UI.Continue();
-
-            }
-        }
-        protected virtual void Display1PWinner(bool didWin)
-        {
-            UI.DisplayTitle("Game Results...");
-            if (didWin)
-            {
-                UI.DisplaySuccess($"Winner!");
-                UI.Continue();
-            }
-            else
-            {
-                UI.DisplayError($"Loser :(");
-                UI.Continue();
-            }
         }
     }
 }

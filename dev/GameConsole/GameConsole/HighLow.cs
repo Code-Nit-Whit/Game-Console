@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Threading;
 using System.Collections.Generic;
 
@@ -10,14 +10,9 @@ using System.Collections.Generic;
 
 namespace GameConsole
 {
-    public class HighLow
+    public class HighLow : OnePlayerGame
     {
-
-
-        private User _player;
-        private readonly string _title = "High-Low";
-        private int _score;
-        private readonly List<string> _instructions = new List<string>{
+        private new List<string> _instructions = new List<string>{
             "The game is simple! You will be asked to guess a number.",
             "You get to set the range of possible numbers to guess from.",
             "If incorrect, you'll get a hint and be given another guess.",
@@ -25,73 +20,50 @@ namespace GameConsole
             "I'll calculate the required number of moves based on the maxumum number you enter.",
             "Each guess you make will lower the amount of points you add to your score.",
             "If you take more than the require guesses, you will lose points on your score.",
-            "You can win by reaching 1000 points."};
+            "You can win by reaching 1000 points."
+        };
+        private int _score;
+        private int _numberOfMoves;
+        private int _guessedNumber;
+        private int _correctNumber;
 
-
-        public HighLow(User player)
+        public HighLow(User player, string title) : base(player, title)
         {
-            _player = player;
             _score = 0;
         }
 
-        public void Play()
+        public override void Play()
         {
             //Local variables
-            bool keepPlaying = true; //Controls whether you play again
-            bool keepGuessing; //Controls whether you guess again
-            int correctNumber;
-            int guessedNumber;
-            int numberOfMoves;
-
+            bool keepPlaying = true;
             while (keepPlaying) //This game (because of my scoring, game win setup) requires mutiple playsto win. You accumulate a score over time.
             {
                 //Display game title and instructions
-                UI.Header(_title);
-                Console.WriteLine($"Player Score: {_score}");
-                UI.DisplayInstructions(_instructions);
-
-                numberOfMoves = 0;
-
+                UpdateGameDisplay();
+                _numberOfMoves = 0;
                 //Request a Maximum Number
-                Console.WriteLine("");
-                string maxNumPrompt = " Please select a maximum number... ";
-                UI.Separator();
-                Console.Write(maxNumPrompt);
-                int maximumNumber = Validation.IntergerValidation(Console.ReadLine(), maxNumPrompt);
-
-                //Create a method to validate this method, asking again if necessary
-                //int maximumNumber = Validation.IntergerValidation(response, maxNumPrompt);
-
+                string question = "Please select a maximum number... ";
+                int maximumNumber = Validation.GetValidatedInt(question);
                 //Generate a random number between 1 and the maximum for the user to guess
                 Random rnd = new Random();
-                correctNumber = rnd.Next(1, maximumNumber + 1);
-
+                _correctNumber = rnd.Next(1, maximumNumber + 1);
                 //Report back to user
-                string haveSelected = $"  Ok I have selected a number between 1 and {maximumNumber}  ";
-                UI.Separator(haveSelected);
-
+                UI.DisplaySuccess($" Ok, I have selected a number between 1 and {maximumNumber}");
                 //Until the user has won, keep guessing and hinting
-                keepGuessing = true;
+                bool keepGuessing = true;
                 while (keepGuessing)
                 {
 
                     //Prompt user for a guess.. reuse previously created method to validate
-                    string guessPrompt = " What is your guess?... ";
-                    Console.Write(guessPrompt);
-                    guessedNumber = Validation.IntergerValidation(Console.ReadLine(), guessPrompt);
-
+                    question = "What is your guess?... ";
+                    int[] range = { 0, maximumNumber };
+                    _guessedNumber = Validation.GetValidatedRange(question, range);
                     // Create another method to compare player's guess to generated random number. If incorrect, provide the user a hint of :"too low" or "too high"
-                    keepGuessing = CheckNumber(guessedNumber, correctNumber);
-
-
-                    numberOfMoves += 1;
+                    keepGuessing = Check1PWinner();
+                    _numberOfMoves += 1;
                 }
-
-
                 //Create one more method to calculate the score
-                _score += CalculateScore(numberOfMoves, maximumNumber, _score);
-
-
+                _score += CalculateScore(_numberOfMoves, maximumNumber, _score);
                 if (_score < 1000)
                 {
                     //Keep Trying?
@@ -110,24 +82,28 @@ namespace GameConsole
 
         }//end of play method
 
+        protected override void UpdateGameDisplay()
+        {
+            UI.DisplayTitle(_title);
+            UI.DisplayInfo($"Player Score: {_score}");
+            foreach(string instruction in _instructions)
+            {
 
-        
-
-        
-
-
+                UI.DisplayInfo(instruction);
+            }
+        }
 
         //Check Number
-        private bool CheckNumber(int guessedNumber, int correctNumber)
+        protected override bool CheckWinner()
         {
             bool keepGuessing = true;
 
             //Use conditional block
-            if (guessedNumber < correctNumber)
+            if (_guessedNumber < _correctNumber)
             {
                 UI.Separator("  You guessed too low. ");
             }
-            else if (guessedNumber > correctNumber)
+            else if (_guessedNumber > _correctNumber)
             {
                 UI.Separator("  You guessed too high. "); 
             }
@@ -142,12 +118,7 @@ namespace GameConsole
 
         }
 
-
-
-
-
         //Calculate Score
-
         //I there 1 or 2 left?
         //  1: Add one      2: Add two
         //This is total required moves
@@ -186,9 +157,6 @@ namespace GameConsole
                 string textOutput = "You Win!";
                 UI.Header(textOutput);
             }
-
-
-
             //Output user score
             Console.WriteLine($"  There were, at max, {requiredMoves} necessary to guess the right number. ");
             Console.WriteLine($"  The highest possible score adjustment was +{totalPossibleAddition} points. ");
@@ -196,11 +164,8 @@ namespace GameConsole
             Console.WriteLine($"  Total guesses: {totalMoves}");
             Console.WriteLine($"  Your score: {score} ");
             Console.WriteLine("");
-
             //return adjustment for score tracking
             return scoreAdjustment;
-
-
         }
     }//end of class
-}*/
+}
