@@ -6,13 +6,14 @@ namespace GameConsole
 {
     public class TicTacToe : Game
     {
-
         private new List<string> _instructions = new List<string>{
             "Get ready to beat your opponent!",
             "In this two player game, you will take turns placing a marker on the game board.",
             "The first player to get three of their markers in a row (horizontal, vertical, or diagonal), wins!",
             "To place a marker, simply enter the number of the space where you would like to place it."
         };
+        private string[] _spaces = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        private string _marker = "";
 
         public TicTacToe(User player) : base(player, "Tic-Tac-Toe")
         {
@@ -26,14 +27,12 @@ namespace GameConsole
             while(keepGoing)
             {
                 //Local variables
-                string[] spaces = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
                 string winner = null;
                 bool stalemate = false;
                 string player;
-                string marker;
 
                 //Display Board
-                UpdateGameDisplay(spaces);
+                UpdateGameDisplay();
 
                 //Play until someone wins
                 int turns = 1;
@@ -41,17 +40,17 @@ namespace GameConsole
                 {
                     //Select Player
                     player = (turns % 2 == 0) ? "Player 2" : "Player 1";
-                    marker = (turns % 2 == 0) ? "O" : "X";
+                    _marker = (turns % 2 == 0) ? "O" : "X";
 
                     //Chose space and validate
-                    int space = ValidateSpace(spaces, player) - 1;
-                    spaces[space] = marker;
+                    int space = ValidateSpace(_spaces, player) - 1;
+                    _spaces[space] = _marker;
 
                     //Refresh Board
-                    UpdateGameDisplay(spaces);
+                    UpdateGameDisplay();
 
                     //Check for winners
-                    winner = CheckWinner(spaces, marker);
+                    winner = CheckWinner();
                     turns++;
                 }
                 Display2PWinner(winner);
@@ -59,7 +58,7 @@ namespace GameConsole
         }
 
         //Game board
-        protected override void UpdateGameDisplay(string[] spaces)
+        protected override void UpdateGameDisplay()
         {
             //Header
             UI.DisplayTitle(_title);
@@ -74,41 +73,41 @@ namespace GameConsole
 
             //Board
             Console.WriteLine($"     |     |     ");
-            Console.WriteLine($"  {spaces[0]}  |  {spaces[1]}  |  {spaces[2]}  ");
+            Console.WriteLine($"  {_spaces[0]}  |  {_spaces[1]}  |  {_spaces[2]}  ");
             Console.WriteLine($"_____|_____|_____");
             Console.WriteLine($"     |     |     ");
-            Console.WriteLine($"  {spaces[3]}  |  {spaces[4]}  |  {spaces[5]}  ");
+            Console.WriteLine($"  {_spaces[3]}  |  {_spaces[4]}  |  {_spaces[5]}  ");
             Console.WriteLine($"_____|_____|_____");
             Console.WriteLine($"     |     |     ");
-            Console.WriteLine($"  {spaces[6]}  |  {spaces[7]}  |  {spaces[8]}  ");
+            Console.WriteLine($"  {_spaces[6]}  |  {_spaces[7]}  |  {_spaces[8]}  ");
             Console.WriteLine($"     |     |     ");
             Console.WriteLine("");
 
         }
 
         //Check Lines (Check Winner)
-        protected override string CheckWinner(string[] spaces, string marker)
+        protected override string CheckWinner()
         {
             string winner = null;
             if (
                 //Horizontals
-                (spaces[0] == spaces[1] && spaces[1] == spaces[2])
-                || (spaces[3] == spaces[4] && spaces[4] == spaces[5])
-                || (spaces[6] == spaces[7] && spaces[7] == spaces[8])
+                (_spaces[0] == _spaces[1] && _spaces[1] == _spaces[2])
+                || (_spaces[3] == _spaces[4] && _spaces[4] == _spaces[5])
+                || (_spaces[6] == _spaces[7] && _spaces[7] == _spaces[8])
 
                 //Verticals
-                || (spaces[0] == spaces[3] && spaces[3] == spaces[6])
-                || (spaces[1] == spaces[4] && spaces[4] == spaces[7])
-                || (spaces[2] == spaces[5] && spaces[5] == spaces[8])
+                || (_spaces[0] == _spaces[3] && _spaces[3] == _spaces[6])
+                || (_spaces[1] == _spaces[4] && _spaces[4] == _spaces[7])
+                || (_spaces[2] == _spaces[5] && _spaces[5] == _spaces[8])
 
                 //Diagonals
-                || (spaces[0] == spaces[4] && spaces[4] == spaces[8])
-                || (spaces[2] == spaces[4] && spaces[4] == spaces[6])
+                || (_spaces[0] == _spaces[4] && _spaces[4] == _spaces[8])
+                || (_spaces[2] == _spaces[4] && _spaces[4] == _spaces[6])
                 )
             {
-                winner = marker;
+                winner = _marker;
             }
-            else if(winner == null && spaces.Distinct().Count() == 2)
+            else if(winner == null && _spaces.Distinct().Count() == 2)
             {
                 winner = "stalemate";
             }
