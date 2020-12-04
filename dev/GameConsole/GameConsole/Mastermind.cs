@@ -1,93 +1,94 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
-
-
-// Name: Whitaker, Codie
-// Date: September 11th, 2020
-// Course: APD
-// Synopsis: CE05: Milestone 2
-
 
 namespace GameConsole
 {
-    public class Mastermind
+    public class Mastermind : OnePlayerGame
     {
-
-        private User _player;
-        private string _title = "MASTERMIND";
-        private List<string> _instructions = new List<string> { " What's the sequence of colors? ",
+        private new List<string> _instructions = new List<string> { " What's the sequence of colors? ",
             " Each item can either be RED, BLUE, GREEN, or YELLOW. ",
             " Please type in the color's full name to select that color. ",
-            " Type colors in sequence, using spaces to separate each color. ",
+            " Type colors in sequence, using spaces between colors. ",
             " Do not use special characters, number, or colors not in the above list. " };
 
         private bool _solved;
         private int _numTries;
+        private Sequence _sequence;
+        private string[] _guess;
 
 
 
-        public Mastermind(User player)
+        public Mastermind(User player) : base(player, "Mastermind")
         {
             _player = player;
-            _solved = false;
-            _numTries = 1;
-
         }
 
-        public void Play()
+        public override void Play()
         {
-            UI.Header(_title);
-
-            //Display instructions
-            UI.DisplayInstructions(_instructions);
-
-            //Generate sequence
-            string textOutput = " How many colors should the sequence contain? ";
-            UI.Separator(textOutput);
-            int size = Validation.IntergerValidation(Console.ReadLine(), textOutput);
-
-            Sequence sequence = new Sequence(size, _player);
-            sequence.Display();
-
-            //Play until soved
-            while (_solved == false)
+            bool keepPlaying = true;
+            while(keepPlaying)
             {
-                textOutput = " Please guess the color of each box, separating each color with a space...";
-                UI.Separator(textOutput);
-                string response = Validation.StringValidation(Console.ReadLine().ToUpper(), textOutput);
-                string[] guess = response.Split();
-
-                //Compare sequence to guess
-                int numCorrect = sequence.Display(guess);
-                if (numCorrect < sequence.Size)
+                _solved = false;
+                _numTries = 1;
+                UpdateGameDisplay();
+                //Generate sequence
+                string question = "How many colors should the sequence contain?... ";
+                int size = Validation.GetValidatedInt(question);
+                _sequence = new Sequence(size);
+                _sequence.Display();
+                //Play until soved
+                while (_solved == false)
                 {
-                    Console.WriteLine($"  {numCorrect} Correct, try again. ");
-                    UI.Separator();
-                    Console.WriteLine("");
-                    _numTries++;
+                    _guess = ValidateGuess();
+                    //Compare sequence to guess
+                    _solved = CheckWinner();
                 }
-                else
-                {
-
-                    _solved = true;
-                }
+                //Solved message
+                UI.DisplaySuccess($"Congrats, you've solved the sequence!\r\n\r\nScore: {Score(_sequence)}");
+                keepPlaying = PlayAgain();
             }
+        }
 
-            //Solved message
-            textOutput = $"  Congrats, you've solved the sequence!\r\n  Score: {Score(sequence)} ";
-            UI.Header(textOutput);
+        protected override bool CheckWinner()
+        {
+            int numberCorrect = _sequence.Display(_guess);
+            if(numberCorrect == _sequence.Size)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        protected override void UpdateGameDisplay()
+        {
+            UI.DisplayTitle(_title);
+            foreach (string instruction in _instructions)
+            {
+                UI.DisplayInfo(instruction);
+            }
         }
 
         //Calculate Score
-        public int Score(Sequence sequence)
+        private int Score(Sequence sequence)
         {
-
             int points = (sequence.Size * 100) / _numTries;
-
             return points;
-
         }
 
-        
+        private string[] ValidateGuess()
+        {
+            string question = "Please guess the color of each box, separating each color with a space... ";
+            string response = Validation.GetValidatedString(question).ToUpper();
+            string[] guess = response.Split(" ");
+            while(guess.Length != _sequence.Size)
+            {
+                response = Validation.GetValidatedString(question).ToUpper();
+                guess = response.Split(" ");
+            }
+            return guess;
+        }
     }
-}*/
+}

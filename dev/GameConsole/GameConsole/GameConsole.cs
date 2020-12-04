@@ -113,14 +113,8 @@ namespace GameConsole
                     break;
 
                 case 3: //Mastermind
-                    /*while (keepPlaying)
-                    {
-                        //Mastermind game3 = new Mastermind(_user);
-                        //game3.Play();
-                        keepPlaying = PlayAgain();
-                        UI.ComingSoon();
-                    }*/
-                    UI.ComingSoon();
+                    Mastermind mm = new Mastermind(_user);
+                    mm.Play();
                     break;
 
                 case 4: //Math Challenge
