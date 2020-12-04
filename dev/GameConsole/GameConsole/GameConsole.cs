@@ -103,7 +103,8 @@ namespace GameConsole
             switch (response)
             {
                 case 1: //TicTacToe
-                    TicTacToe game1 = new TicTacToe(_user);
+                    TicTacToe game = new TicTacToe(_user);
+                    game.Play();
                     //UI.ComingSoon();
                     break;
 
@@ -166,14 +167,7 @@ namespace GameConsole
                     break;
             }
         }
-        private bool PlayAgain()
-        {
-            string question = "Would you like to play again? [y,n]... ";
-            string[] conditionals = { "y", "n" };
-            UI.AskQuestion(question);
-            string response = Validation.GetValidatedConditional(question, conditionals);
-            return response == "y" ? true : false;
-        }
+        
         private void HandleUserMenuSelection(int selection)
         {
             switch (selection)

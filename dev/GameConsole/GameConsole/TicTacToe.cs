@@ -54,6 +54,8 @@ namespace GameConsole
                     turns++;
                 }
                 Display2PWinner(winner);
+
+                keepGoing = PlayAgain();
             }
         }
 

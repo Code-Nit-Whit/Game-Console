@@ -19,6 +19,14 @@ namespace GameConsole
         protected abstract string CheckWinner();
         protected abstract void UpdateGameDisplay();
 
+        protected bool PlayAgain()
+        {
+            string question = "Would you like to play again? [y,n]... ";
+            string[] conditionals = { "y", "n" };
+            string response = Validation.GetValidatedConditional(question, conditionals);
+            return response == "y" ? true : false;
+        }
+
         protected virtual void Display2PWinner(string winner)
         {
             UI.DisplayTitle("Match Results...");
