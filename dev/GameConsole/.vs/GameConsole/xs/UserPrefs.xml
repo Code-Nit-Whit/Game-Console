@@ -1,23 +1,34 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/UI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Theme.cs">
     <Files>
-      <File FileName="GameConsole/GameConsole.cs" Line="146" Column="44" />
-      <File FileName="GameConsole/Menu.cs" Line="11" Column="41" />
-      <File FileName="GameConsole/Validation.cs" Line="4" Column="2" />
-      <File FileName="GameConsole/User.cs" Line="120" Column="1" />
-      <File FileName="GameConsole/Users.txt" Line="1" Column="1" />
-      <File FileName="GameConsole/Theme.cs" Line="35" Column="10" NotebookId="1" />
-      <File FileName="GameConsole/Themes.txt" Line="2" Column="6" NotebookId="1" />
-      <File FileName="GameConsole/FileIO.cs" Line="110" Column="10" NotebookId="1" />
-      <File FileName="GameConsole/UI.cs" Line="41" Column="25" NotebookId="1" />
+      <File FileName="GameConsole/GameConsole.cs" Line="10" Column="10" />
+      <File FileName="GameConsole/Menu.cs" />
+      <File FileName="GameConsole/Validation.cs" />
+      <File FileName="GameConsole/User.cs" Line="154" Column="33" />
+      <File FileName="GameConsole/Users.txt" Line="4" Column="1" />
+      <File FileName="GameConsole/UI.cs" Line="36" Column="1" />
+      <File FileName="GameConsole/Themes.txt" Line="2" Column="36" />
+      <File FileName="GameConsole/FileIO.cs" Line="107" Column="1" />
+      <File FileName="GameConsole/TicTacToe.cs" Line="189" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Sequence.cs" Line="67" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Problem.cs" Line="92" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/MathChallenge.cs" Line="88" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Mastermind.cs" Line="93" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Hints.cs" Line="1" Column="3" NotebookId="1" />
+      <File FileName="GameConsole/HighLow.cs" Line="206" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Hangman.cs" Line="34" Column="24" NotebookId="1" />
+      <File FileName="GameConsole/Gallows.cs" Line="141" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/CrackTheCode.cs" Line="165" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Code.cs" Line="39" Column="4" NotebookId="1" />
+      <File FileName="GameConsole/Theme.cs" Line="34" Column="65" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="UI.cs" selected="True" />
+              <Node name="Theme.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -27,7 +38,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/codiewhitaker/Desktop/GitStuff/Game-Console/dev/GameConsole/GameConsole/FileIO.cs" relfile="GameConsole/FileIO.cs" line="107" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

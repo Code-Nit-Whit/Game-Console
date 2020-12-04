@@ -11,7 +11,7 @@ namespace GameConsole
         private static string _themesFilePath = "../../../themes.txt";
         private static List<Theme> _availableThemes;
         private static Theme _currentTheme;
-        private static ConsoleColor[] _currentColors;
+        private static List<ConsoleColor> _currentColors;
 
 
         //THEME MANAGEMENT
@@ -38,6 +38,7 @@ namespace GameConsole
         public static void SetTheme(Theme newTheme)
         {
             _currentTheme = newTheme;
+            _currentColors = newTheme.GetColors();
             SetColors();
         }
 
@@ -45,7 +46,7 @@ namespace GameConsole
         {
             //NEED TO MAKE DYNAMIC
             //Make it a menu
-            string[] themeMenuArr = new string[_availableThemes.Count];
+            string[] themeMenuArr = new string[_availableThemes.Count+2];
             themeMenuArr[0] = "Select a Theme";
             for(int i = 1; i <= _availableThemes.Count; i++)
             {
@@ -54,7 +55,7 @@ namespace GameConsole
             themeMenuArr[themeMenuArr.Length - 1] = "Back";
             Menu themeMenu = new Menu();
             themeMenu.Init(themeMenuArr);
-            themeMenu.Display();
+            themeMenu.Display(themeMenuArr[0]);
             string question = "Please select a theme from above [1,2]... ";
             int[] range = { 0, _availableThemes.Count };
             int selection = Validation.GetValidatedRange(question, range);

@@ -1,2 +1,2 @@
-﻿light:Black:White:Blue:DarkGreen:Red:DarkGrey
-dark:White:Black:Cyan:Green:Red:Grey
+﻿light:Black:White:Blue:DarkGreen:Red:DarkGray
+dark:White:Black:Cyan:Green:Red:Gray

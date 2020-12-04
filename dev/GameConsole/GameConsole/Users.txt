@@ -1,4 +1,3 @@
-codie:password:25:light
+CodeNitWhit:whitaker:25:light
 drake:password:26:dark
 teacher:password:0:light
-

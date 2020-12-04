@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GameConsole
 {
@@ -28,9 +29,9 @@ namespace GameConsole
             _info = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), info);
         }
 
-        public ConsoleColor[] GetColors()
+        public List<ConsoleColor> GetColors()
         {
-            ConsoleColor[] toReturn = { _text, _background, _title, _success, _error, _info};
+            List<ConsoleColor> toReturn = new List<ConsoleColor>{ _text, _background, _title, _success, _error, _info};
             return toReturn;
         }
     }

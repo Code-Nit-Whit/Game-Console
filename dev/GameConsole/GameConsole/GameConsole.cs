@@ -4,8 +4,6 @@ namespace GameConsole
 {
     public class GameConsole
     {
-        private bool _keepGoing = true;
-
         private User _user;
 
         public GameConsole()
@@ -15,6 +13,8 @@ namespace GameConsole
         public void Init() // Main Menu
         {
             UI.LoadThemes();
+            Theme defaultTheme = UI.FindTheme("light");
+            UI.SetTheme(defaultTheme);
             _user = User.LogIn();
             UI.DisplayTitle($"Hello, {_user.Username}! Welcome To The Game Console!");
             string[] mainMenuArr = { "Game Console- Main Menu", "Games", "User Menu", "Exit" };
@@ -25,7 +25,7 @@ namespace GameConsole
             {
                 mainMenu.Display(mainMenuArr[0]);
                 string question = "Please select a menu from the options above [1,2]... ";
-                int[] range = { 0, mainMenuArr.Length-1};
+                int[] range = { 0, mainMenuArr.Length-2};
                 int selection = Validation.GetValidatedRange(question, range);
                 if(selection == 0)
                 {
@@ -63,54 +63,60 @@ namespace GameConsole
                 case 1: //TicTacToe
                     while (keepPlaying)
                     {
-                        TicTacToe game1 = new TicTacToe(_user);
-                        game1.Play();
+                        //TicTacToe game1 = new TicTacToe(_user);
+                        //game1.Play();
                         keepPlaying = PlayAgain();
+                        UI.ComingSoon();
                     }
                     break;
 
                 case 2: //High Low
                     while (keepPlaying)
                     {
-                        HighLow game2 = new HighLow(_user);
-                        game2.Play();
+                        //HighLow game2 = new HighLow(_user);
+                        //game2.Play();
                         keepPlaying = PlayAgain();
+                        UI.ComingSoon();
                     }
                     break;
 
                 case 3: //Mastermind
                     while (keepPlaying)
                     {
-                        Mastermind game3 = new Mastermind(_user);
-                        game3.Play();
+                        //Mastermind game3 = new Mastermind(_user);
+                        //game3.Play();
                         keepPlaying = PlayAgain();
+                        UI.ComingSoon();
                     }
                     break;
 
                 case 4: //Math Challenge
                     while (keepPlaying)
                     {
-                        MathChallenge game4 = new MathChallenge(_user);
-                        game4.Play();
+                        //MathChallenge game4 = new MathChallenge(_user);
+                        //game4.Play();
                         keepPlaying = PlayAgain();
+                        UI.ComingSoon();
                     }
                     break;
 
                 case 5: //Hangman
                     while (keepPlaying)
                     {
-                        Hangman game5 = new Hangman(_user);
-                        game5.Play();
+                        //Hangman game5 = new Hangman(_user);
+                        //game5.Play();
                         keepPlaying = PlayAgain();
+                        UI.ComingSoon();
                     }
                     break;
 
                 case 6: //Crack the Code
                     while (keepPlaying)
                     {
-                        CrackTheCode game6 = new CrackTheCode(_user);
-                        game6.Play();
+                        //CrackTheCode game6 = new CrackTheCode(_user);
+                        //game6.Play();
                         keepPlaying = PlayAgain();
+                        UI.ComingSoon();
                     }
                     break;
 
@@ -170,7 +176,7 @@ namespace GameConsole
             {
                 gamesMenu.Display(gamesMenuArr[0]);
                 string question = "Please select a game from the options above [1,2,3]... ";
-                int[] range = { 0, gamesMenuArr.Length - 1 };
+                int[] range = { 0, gamesMenuArr.Length - 2 };
                 int selection = Validation.GetValidatedRange(question, range);
                 if(selection == 0)
                 {
@@ -181,7 +187,7 @@ namespace GameConsole
         }
         private void OpenUserMenu()
         {
-            string[] userMenuaArr = { "Game console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Back" };
+            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Back" };
             Menu userMenu = new Menu();
             userMenu.Init(userMenuaArr);
             bool keepGoing = true;
@@ -189,7 +195,7 @@ namespace GameConsole
             {
                 userMenu.Display(userMenuaArr[0]);
                 string question = "Please select an option from the menu above [1,2,3]... ";
-                int[] range = { 0, userMenuaArr.Length-1};
+                int[] range = { 0, userMenuaArr.Length-2};
                 int selection = Validation.GetValidatedRange(question, range);
                 if(selection == 0)
                 {

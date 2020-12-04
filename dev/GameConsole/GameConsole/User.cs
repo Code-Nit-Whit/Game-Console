@@ -30,6 +30,7 @@ namespace GameConsole
             bool loggedIn = false;
             while(!loggedIn)
             {
+                UI.DisplayTitle("Log In");
                 string question = "[Username]: ";
                 string username = Validation.GetValidatedString(question);
                 question = "[Passowrd]: ";
@@ -40,11 +41,12 @@ namespace GameConsole
                     if(loggedIn)
                     {
                         returnUser = _availableUsers[i];
+                        break;
                     }
                 }
             }
             UI.SetTheme(returnUser._theme);
-            UI.DisplaySuccess("Login Successful!");
+            UI.DisplaySuccess("\r\nLogin Successful!");
             UI.Continue();
             return returnUser;
         }

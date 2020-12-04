@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace GameConsole
             }
         }
 
-        public /*static*/ void Play()
+        public /*static void Play()
         {
             //Validation.ComingSoon();
 
@@ -50,4 +50,4 @@ namespace GameConsole
         }
 
     }//end of class
-}
+}*/

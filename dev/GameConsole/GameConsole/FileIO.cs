@@ -87,25 +87,17 @@ namespace GameConsole
             }
             else
             {
-                using (StreamReader sr = new StreamReader(filePath))
+                using(StreamReader sr = new StreamReader(filePath))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
                         string[] lineSplit = line.Split(":");
-                        string name = lineSplit[0];
-                        string text = lineSplit[1];
-                        string background = lineSplit[2];
-                        string title = lineSplit[3];
-                        string success = lineSplit[4];
-                        string error = lineSplit[5];
-                        string info = lineSplit[6];
-
-                        Theme newTheme = new Theme(name, text, background, title, success, error, info);
+                        Theme newTheme = new Theme(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3], lineSplit[4], lineSplit[5], lineSplit[6]);
                         themes.Add(newTheme);
                     }
-                    return themes;
                 }
+                return themes;
             }
         }
     }//end of class
