@@ -35,6 +35,48 @@ namespace GameConsole
             }
         }
 
+        //MENU CREATION
+        //
+        //
+        private void OpenGamesMenu()
+        {
+            string[] gamesMenuArr = { "Game Console- Game Menu", "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code", "Back" };
+            Menu gamesMenu = new Menu();
+            gamesMenu.Init(gamesMenuArr);
+            bool keepGoing = true;
+            while (keepGoing)
+            {
+                gamesMenu.Display(gamesMenuArr[0]);
+                string question = "Please select a game from the options above [1,2,3]... ";
+                int[] range = { 0, gamesMenuArr.Length - 2 };
+                int selection = Validation.GetValidatedRange(question, range);
+                if (selection == 0)
+                {
+                    keepGoing = false;
+                }
+                HandleGameMenuSelection(selection);
+            }
+        }
+        private void OpenUserMenu()
+        {
+            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Back" };
+            Menu userMenu = new Menu();
+            userMenu.Init(userMenuaArr);
+            bool keepGoing = true;
+            while (keepGoing)
+            {
+                userMenu.Display(userMenuaArr[0]);
+                string question = "Please select an option from the menu above [1,2,3]... ";
+                int[] range = { 0, userMenuaArr.Length - 2 };
+                int selection = Validation.GetValidatedRange(question, range);
+                if (selection == 0)
+                {
+                    keepGoing = false;
+                }
+                HandleUserMenuSelection(selection);
+            }
+        }
+
         //MENU SELECTION HANDLING
         //
         //
@@ -162,56 +204,23 @@ namespace GameConsole
                     _user.ChangeTheme();
                     break;
 
+                case 6: //Delete This User
+                    string question = "Are you sure you want to delete your account? This cant be undone [y,n]... ";
+                    string[] conditionals = { "y", "n" };
+                    string response = Validation.GetValidatedConditional(question, conditionals);
+                    if (response == "y")
+                    {
+                        User.DeleteAUser(_user);
+                        UI.DisplaySuccess("Your account has been deleted.");
+                        UI.Continue();
+                        User.LogIn();
+                    }
+                    break;
+
                 case 0: //Back
                     break;
             }
         }
-
-
-
-        //MENU CREATION
-        //
-        //
-        private void OpenGamesMenu()
-        {
-            string[] gamesMenuArr = { "Game Console- Game Menu", "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code", "Back" };
-            Menu gamesMenu = new Menu();
-            gamesMenu.Init(gamesMenuArr);
-            bool keepGoing = true;
-            while(keepGoing)
-            {
-                gamesMenu.Display(gamesMenuArr[0]);
-                string question = "Please select a game from the options above [1,2,3]... ";
-                int[] range = { 0, gamesMenuArr.Length - 2 };
-                int selection = Validation.GetValidatedRange(question, range);
-                if(selection == 0)
-                {
-                    keepGoing = false;
-                }
-                HandleGameMenuSelection(selection);
-            }
-        }
-        private void OpenUserMenu()
-        {
-            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Back" };
-            Menu userMenu = new Menu();
-            userMenu.Init(userMenuaArr);
-            bool keepGoing = true;
-            while(keepGoing)
-            {
-                userMenu.Display(userMenuaArr[0]);
-                string question = "Please select an option from the menu above [1,2,3]... ";
-                int[] range = { 0, userMenuaArr.Length-2};
-                int selection = Validation.GetValidatedRange(question, range);
-                if(selection == 0)
-                {
-                    keepGoing = false;
-                }
-                HandleUserMenuSelection(selection);
-            }
-        }
-
-
 
 
         private void ExitProgram()

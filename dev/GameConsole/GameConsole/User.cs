@@ -35,19 +35,27 @@ namespace GameConsole
                 string username = Validation.GetValidatedString(question);
                 question = "[Passowrd]: ";
                 string password = Validation.GetValidatedString(question);
+                bool successful = false;
                 for(int i = 0; i < _availableUsers.Count; i++)
                 {
                     loggedIn = _availableUsers[i].CheckUserPassword(username, password);
                     if(loggedIn)
                     {
                         returnUser = _availableUsers[i];
+                        successful = true;
                         break;
                     }
                 }
+                if(!successful)
+                
+                {
+                    UI.DisplayError("Login Failed :( Please try again...");
+                    UI.Continue();
+                }
             }
-            UI.SetTheme(returnUser._theme);
             UI.DisplaySuccess("\r\nLogin Successful!");
             UI.Continue();
+            UI.SetTheme(returnUser._theme);
             return returnUser;
         }
         private bool CheckUserPassword(string username, string password)
@@ -80,6 +88,7 @@ namespace GameConsole
             bool keepGoing = true;
             while(keepGoing)
             {
+                UI.DisplayTitle("Create User");
                 string question = "What would you like your username to be?... ";
                 string username = Validation.GetValidatedString(question);
                 question = $"What should {username}'s password be?... ";
@@ -151,9 +160,21 @@ namespace GameConsole
                 }
             }
             FileIO.SaveEmployees(_filePath, _availableUsers);
-            UI.SetTheme(_theme);
             UI.DisplaySuccess($"Theme changed to {_theme.Name}!");
             UI.Continue();
+            UI.SetTheme(_theme);
+        }
+
+        public static void DeleteAUser(User user)
+        {
+            for (int i = 0; i < _availableUsers.Count; i++)
+            {
+                if (_availableUsers[i].Username == user.Username)
+                {
+                    _availableUsers.RemoveAt(i);
+                }
+            }
+            FileIO.SaveEmployees(_filePath, _availableUsers);
         }
 
     }//end of class

@@ -1,4 +1,3 @@
 CodeNitWhit:whitaker:25:dark
 drake:password:26:dark
 teacher:password:0:light
-Billy:Bob:199:dark

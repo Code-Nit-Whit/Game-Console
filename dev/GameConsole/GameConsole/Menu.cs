@@ -7,7 +7,6 @@ namespace GameConsole
     {
         //Fields
         private string _title;
-
         private List<string> _menuItems;
 
         public Menu()
@@ -27,6 +26,7 @@ namespace GameConsole
             }
         }
 
+        //Two Overloads
         //Prints menu title and list of menu options to the console
         public void Display()
         {
