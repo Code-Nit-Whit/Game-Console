@@ -118,14 +118,8 @@ namespace GameConsole
                     break;
 
                 case 4: //Math Challenge
-                    /*while (keepPlaying)
-                    {
-                        //MathChallenge game4 = new MathChallenge(_user);
-                        //game4.Play();
-                        keepPlaying = PlayAgain();
-                        UI.ComingSoon();
-                    }*/
-                    UI.ComingSoon();
+                    MathChallenge mc = new MathChallenge(_user);
+                    mc.Play();
                     break;
 
                 case 5: //Hangman

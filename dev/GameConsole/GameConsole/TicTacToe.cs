@@ -6,7 +6,7 @@ namespace GameConsole
 {
     public class TicTacToe : TwoPlayerGame
     {
-        private new List<string> _instructions = new List<string>{
+        private readonly new List<string> _instructions = new List<string>{
             "Get ready to beat your opponent!",
             "In this two player game, you will take turns placing a marker on the game board.",
             "The first player to get three of their markers in a row (horizontal, vertical, or diagonal), wins!",
@@ -106,7 +106,7 @@ namespace GameConsole
         //Validate Space
         private int ValidateSpace(string[] spaces, string player)
         {
-            string question = $" [{player}]: Please choose a space... ";
+            string question = $"[{player}]: Please choose a space... ";
             int[] range = { 0, 9 };
             int guess = Validation.GetValidatedRange(question, range);
             while (spaces[guess - 1] == "X" || spaces[guess - 1] == "O")

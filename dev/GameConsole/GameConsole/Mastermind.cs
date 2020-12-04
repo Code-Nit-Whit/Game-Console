@@ -5,7 +5,7 @@ namespace GameConsole
 {
     public class Mastermind : OnePlayerGame
     {
-        private new List<string> _instructions = new List<string> { " What's the sequence of colors? ",
+        private readonly new List<string> _instructions = new List<string> { " What's the sequence of colors? ",
             " Each item can either be RED, BLUE, GREEN, or YELLOW. ",
             " Please type in the color's full name to select that color. ",
             " Type colors in sequence, using spaces between colors. ",

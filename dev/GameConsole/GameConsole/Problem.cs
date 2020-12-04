@@ -1,26 +1,20 @@
-﻿/*using System;
-
-
-// Name: Whitaker, Codie
-// Date: September 11th, 2020
-// Course: APD
-// Synopsis: CE05: Milestone 2
-
+﻿using System;
 
 namespace GameConsole
 {
     public class Problem
     {
-
         //Fields
+        private string _expression;
+        private int _solution;
         private readonly char[] _operators = { '+', '-', '*', '/', '%' };
         private char _operator;
         private int _term1;
         private int _term2;
 
         //Properties
-        public string Expression { get; set; }
-        public int Solution { get; set; }
+        public string Expression { get { return _expression; } }
+        public int Solution { get { return _solution; } }
 
         //Constructor
         public Problem()
@@ -28,22 +22,19 @@ namespace GameConsole
             //Randomly set value of each field and property,
             //Create random object
             Random random = new Random();
-
             //Set limits of random number for operator to the index of the _operators array
             //Use this random number to select an operator from the array
             _operator = _operators[random.Next(0, _operators.Length)];
-
             //Use the same random object to generate random numbers (no bounds), but with different seed values (whatever I want)
             //Use each of these random numbers as the 2 terms on either side of the operator
             //Don't allow zeros. This will cause the random generators to eventually cause the console to try to divide by zero, which throws an error
             _term1 = random.Next(2, 100);
             _term2 = random.Next(1, 100);
-
             //Use methods to concatenate the expression and calculate the solution
             //Call method to concatenate problem for output to user
-            Expression = ConcatProblem();
+            _expression = ConcatProblem();
             //Call method to solve the randomized problem
-            Solution = SolveProblem();
+            _solution = SolveProblem();
 
         }
 
@@ -51,7 +42,6 @@ namespace GameConsole
         public string ConcatProblem()
         {
             string expression = $"{_term1} {_operator} {_term2} = ";
-
             return expression;
         }
 
@@ -84,10 +74,6 @@ namespace GameConsole
             int roundedSolution = (int)Math.Floor(solution);
             return roundedSolution;
         }
-
-
-
-
     }//end class
-}*/
+}
 

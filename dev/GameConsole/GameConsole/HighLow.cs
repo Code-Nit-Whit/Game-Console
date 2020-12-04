@@ -11,7 +11,7 @@ namespace GameConsole
 {
     public class HighLow : OnePlayerGame
     {
-        private new List<string> _instructions = new List<string>{
+        private readonly new List<string> _instructions = new List<string>{
             "The game is simple! You will be asked to guess a number.",
             "You get to set the range of possible numbers to guess from.",
             "If incorrect, you'll get a hint and be given another guess.",
