@@ -1,45 +1,39 @@
-﻿/*using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 
 namespace GameConsole
 {
-    public class TicTacToe
+    public class TicTacToe : Game
     {
 
-
-        private User _player;
-        private readonly string _title = "Tic-Tac-Toe";
-        private readonly List<string> _instructions = new List<string>{
+        private new List<string> _instructions = new List<string>{
             "Get ready to beat your opponent!",
             "In this two player game, you will take turns placing a marker on the game board.",
             "The first player to get three of their markers in a row (horizontal, vertical, or diagonal), wins!",
-            "To place a marker, simply enter the number of the space where you would like to place it." };
+            "To place a marker, simply enter the number of the space where you would like to place it."
+        };
 
-
-        public TicTacToe(User player)
+        public TicTacToe(User player) : base(player, "Tic-Tac-Toe")
         {
-
-            _player = player;
-
+            
         }
 
         // Play
-        public void Play()
+        public override void Play()
         {
-
+            bool keepGoing = true;
+            while(keepGoing)
+            {
                 //Local variables
                 string[] spaces = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
                 string winner = null;
                 bool stalemate = false;
-
                 string player;
                 string marker;
 
-                
-
                 //Display Board
-                DisplayBoard(spaces);
+                UpdateGameDisplay(spaces);
 
                 //Play until someone wins
                 int turns = 1;
@@ -50,51 +44,30 @@ namespace GameConsole
                     marker = (turns % 2 == 0) ? "O" : "X";
 
                     //Chose space and validate
-                    string chooseSpacePrompt = $" [{player}]: Please choose a space... ";
-                    int space = ValidateSpace(spaces, chooseSpacePrompt) - 1;
+                    int space = ValidateSpace(spaces, player) - 1;
                     spaces[space] = marker;
 
                     //Refresh Board
-                    DisplayBoard(spaces);
+                    UpdateGameDisplay(spaces);
 
                     //Check for winners
                     winner = CheckWinner(spaces, marker);
-                    stalemate = CheckStalemate(spaces, winner);
-
-
                     turns++;
                 }
-
-                //Display winner
-                if (winner != null)
-                {
-                    string textOutput = $"Winner: {winner}";
-                    UI.Header(textOutput);
-                }
-                else if (stalemate)
-                {
-                    string textOutput = "Oops, looks like a Stalemate!";
-                    UI.Header(textOutput);
-                }
-
+                Display2PWinner(winner);
+            }
         }
 
-
-
-
-
-
-
-
         //Game board
-        private void DisplayBoard(string[] spaces)
+        protected override void UpdateGameDisplay(string[] spaces)
         {
-
             //Header
-            UI.Header(_title);
-
+            UI.DisplayTitle(_title);
             //Display Instructions
-            UI.DisplayInstructions(_instructions);
+            foreach(string instruction in _instructions)
+            {
+                UI.DisplayInfo(instruction);
+            }
 
             //Instructions
             Console.WriteLine(" ");
@@ -113,14 +86,8 @@ namespace GameConsole
 
         }
 
-
-
-
-
-
-
         //Check Lines (Check Winner)
-        private string CheckWinner(string[] spaces, string marker)
+        protected override string CheckWinner(string[] spaces, string marker)
         {
             string winner = null;
             if (
@@ -141,49 +108,26 @@ namespace GameConsole
             {
                 winner = marker;
             }
-
+            else if(winner == null && spaces.Distinct().Count() == 2)
+            {
+                winner = "stalemate";
+            }
             return winner;
         }
-
-
-
-
-
-
-        //Check for stalemate
-        private bool CheckStalemate(string[] spaces, string winner)
-        {
-            bool stalemate = false;
-            if (winner == null && spaces.Distinct().Count() == 2)
-            {
-                stalemate = true;
-            }
-
-            return stalemate;
-        }
-
-
-
-
-
-
-
-
+        
         //Validate Space
-        private int ValidateSpace(string[] spaces, string message)
+        private int ValidateSpace(string[] spaces, string player)
         {
-            UI.Separator(message);
-            string input = Console.ReadLine();
-            int guess;
-
-            while (!Int32.TryParse(input, out guess) || guess < 0 || guess > 9 || spaces[guess - 1] == "X" || spaces[guess - 1] == "O")
+            string question = $" [{player}]: Please choose a space... ";
+            int[] range = { 0, 9 };
+            int guess = Validation.GetValidatedRange(question, range);
+            while (spaces[guess - 1] == "X" || spaces[guess - 1] == "O")
             {
-                string errorMessage = " Invalid input, Please try again: ";
-                UI.Separator(errorMessage);
-                input = Console.ReadLine();
+                UI.DisplayError("Invalid input, Please try again");
+                guess = Validation.GetValidatedRange(question, range);
             }
 
             return guess;
         }
     }
-}*/
+}
