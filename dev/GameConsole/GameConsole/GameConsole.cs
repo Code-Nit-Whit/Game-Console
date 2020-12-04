@@ -103,20 +103,13 @@ namespace GameConsole
             switch (response)
             {
                 case 1: //TicTacToe
-                    TicTacToe game = new TicTacToe(_user);
-                    game.Play();
-                    //UI.ComingSoon();
+                    TicTacToe ttt = new TicTacToe(_user);
+                    ttt.Play();
                     break;
 
                 case 2: //High Low
-                    /*while (keepPlaying)
-                    {
-                        //HighLow game2 = new HighLow(_user);
-                        //game2.Play();
-                        keepPlaying = PlayAgain();
-                        UI.ComingSoon();
-                    }*/
-                    UI.ComingSoon();
+                    HighLow hl = new HighLow(_user);
+                    hl.Play();
                     break;
 
                 case 3: //Mastermind

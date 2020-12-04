@@ -112,6 +112,7 @@ namespace GameConsole
         }
         public static void DisplayInfo(string str)
         {
+            Console.WriteLine("");
             Console.ForegroundColor = _currentColors[5];
             Console.Write(str);
             SetColors();
@@ -131,7 +132,7 @@ namespace GameConsole
         //A way of taking user input without any validation
         public static void AskQuestion(string question)
         {
-            Console.WriteLine("---------------------");
+            Console.WriteLine("\r\n\r\n---------------------");
             Console.Write(question);
         }
         //Coming Soon!!!
