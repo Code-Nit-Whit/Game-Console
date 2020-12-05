@@ -8,51 +8,43 @@ namespace GameConsole
         private readonly new List<string> _instructions = new List<string>() { "Think you have what it takes to be a master code cracker?", "Let's find out!", "Using the hints to the right, try to figure out the correct code.", "-Hint: The code doesn't have any repeating numbers.-" };
         private string _filePath = "../../../CodesAndHintsDict.txt";
         private int _guesses;
-        private List<string> _hints;
         private string _guess;
         private List<Code> _availableCodes;
         private Random _rnd = new Random();
-
-        public Code CurrentCode { get; set; } 
-        public User Player { get; set; }
+        private Code _currentCode;
 
         public CrackTheCode(User player) : base(player, "Crath the Code")
         {
             _availableCodes = FileIO.LoadCodes(_filePath);
-            _guesses = 0;
-            CurrentCode = _availableCodes[_rnd.Next(0, _availableCodes.Count-1)];
         }
 
         public override void Play()
         {
-            UpdateGameDisplay();
-
-
-            string report = "";
-            bool keepGuessing = true;
-            while (keepGuessing)
+            bool keepPlaying = true;
+            while (keepPlaying)
             {
+                SetACode();
                 UpdateGameDisplay();
-
-            //Prompt for a guess
-                Console.WriteLine("");
-                Console.WriteLine("");
-                UI.Separator();
-                Console.WriteLine(report);
-                string codePrompt = " What is the code? ";
-
-                    
-                Console.Write(codePrompt);
-                int guess = ValidateResponse(Console.ReadLine(), codePrompt);
-
+                //Prompt for a guess
+                _guess = ValidateResponse();
+                _guesses += 1;
                 //Check guess- use a method
-                keepGuessing = CheckWinner(guess);
-                if (keepGuessing)
+                keepPlaying = CheckWinner();
+                if (keepPlaying)
                 {
-                    report = "  Incorrect, try again";
+                    DisplayWinner(false);
+                }
+                else
+                {
+                    DisplayWinner(true);
                 }
             }
-            
+        }
+
+        private void SetACode()
+        {
+            _currentCode = _availableCodes[_rnd.Next(0, _availableCodes.Count - 1)];
+            _guesses = 0;
         }
 
         protected override void UpdateGameDisplay()
@@ -65,16 +57,11 @@ namespace GameConsole
                 UI.DisplayInfo(instruction);
             }
             Console.WriteLine("\r\n\r\n");
-            foreach (/*hint in list*/)
+            for(int i = 0; i < _currentCode.Hints.Count; i++)
             {
+                Console.WriteLine($"{_currentCode.Hints[i]}: {_currentCode.HintBodies[i]}");
                 Console.Write("\r\n");
-                foreach (int digit in kvp.Key)
-                {
-                    Console.Write($"{digit} ");
-                }
-                Console.Write($": {kvp.Value}");
             }
-            
         }
 
         private int ValidateResponse(string response, string question)
@@ -114,21 +101,6 @@ namespace GameConsole
             }
 
             return (guess == ConvertingList()) ? false : true;
-        }
-
-        private int ConvertingList()
-        {
-            string codeString = "";
-            int codeNumber = 0;
-            foreach(int digit in Code.CodeDigits)
-            {
-                codeString = $" {codeString}{digit.ToString()}";
-                
-            }
-            codeString.Trim();
-            codeNumber = Int32.Parse(codeString);
-
-            return codeNumber;
-        }
+        } 
     }
 }

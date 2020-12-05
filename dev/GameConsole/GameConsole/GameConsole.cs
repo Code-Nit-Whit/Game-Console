@@ -129,9 +129,8 @@ namespace GameConsole
                     break;
 
                 case 6: //Crack the Code
-                    //CrackTheCode ctc = new CrackTheCode();
-                    //ctc.Play();
-                    UI.ComingSoon();
+                    CrackTheCode ctc = new CrackTheCode(_user);
+                    ctc.Play();
                     break;
 
                 case 0: //Back

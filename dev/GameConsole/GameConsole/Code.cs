@@ -9,7 +9,8 @@ namespace GameConsole
         private List<string> _hints;
         private List<string> _hintBodies = new List<string> { "One is correct, and in the right spot.", "One is correct, and in the wrong spot.", "Two are correct, and in the wrong spots.", "Nothing is correct.", "One is correct, and in the wrong spot." };
 
-        public List<string> HintBodies { get { return _hintBodies; } }
+        public List<string> HintBodies { get { return _hintBodies;}}
+        public List<string> Hints { get{ return _hints; } }
 
         public Code(string[] data)
         {
@@ -20,11 +21,5 @@ namespace GameConsole
             }
         }
 
-        public Dictionary<string, List<string>> GetCodeData()
-        {
-            Dictionary<string, List<string>> codeData = new Dictionary<string, List<string>>();
-            codeData.Add(_code, _hints);
-            return codeData;
-        }
     }
 }
