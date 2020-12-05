@@ -100,5 +100,33 @@ namespace GameConsole
                 return themes;
             }
         }
+
+
+        //GAMES
+        //
+        //
+        //Crack the Code
+        public static List<Code> LoadCodes(string filePath)
+        {
+            List<Code> codes = new List<Code>();
+            if (!File.Exists(filePath))
+            {
+                return codes;
+            }
+            else
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] lineSplit = line.Split(":");
+                        Code newCode = new Code(lineSplit);
+                        codes.Add(newCode);
+                    }
+                }
+                return codes;
+            }
+        }
     }//end of class
 }

@@ -3,84 +3,69 @@ using System.Collections.Generic;
 
 namespace GameConsole
 {
-    public class CrackTheCode
+    public class CrackTheCode : OnePlayerGame
     {
-        //fields
-        private string _title = "Crack the Code";
+        private readonly new List<string> _instructions = new List<string>() { "Think you have what it takes to be a master code cracker?", "Let's find out!", "Using the hints to the right, try to figure out the correct code.", "-Hint: The code doesn't have any repeating numbers.-" };
+        private string _filePath = "../../../CodesAndHintsDict.txt";
         private int _guesses;
-        private bool _ready = true;
-        private List<string> _instructions = new List<string>() { "Think you have what it takes to be a master code cracker?", "Let's find out!", "Using the hints to the right, try to figure out the correct code.", "-Hint: The code doesn't have any repeating numbers.-"};
-        private Hints _hints;
+        private List<string> _hints;
+        private string _guess;
+        private List<Code> _availableCodes;
+        private Random _rnd = new Random();
 
-        public Code Code { get; set; } 
+        public Code CurrentCode { get; set; } 
         public User Player { get; set; }
 
-        public CrackTheCode(User player)
+        public CrackTheCode(User player) : base(player, "Crath the Code")
         {
-            if (_ready)
-            {
-                _guesses = 0;
-                Player = player;
-                Code = new Code(3);
-                _hints = new Hints(Code.CodeDigits);
-                
-            }
+            _availableCodes = FileIO.LoadCodes(_filePath);
+            _guesses = 0;
+            CurrentCode = _availableCodes[_rnd.Next(0, _availableCodes.Count-1)];
         }
 
-
-
-
-
-
-        public void Play()
+        public override void Play()
         {
-            
-            
-            
-                UI.Header(_title);
+            UpdateGameDisplay();
 
-                UI.DisplayInstructions(_instructions);
 
+            string report = "";
+            bool keepGuessing = true;
+            while (keepGuessing)
+            {
+                UpdateGameDisplay();
+
+            //Prompt for a guess
+                Console.WriteLine("");
+                Console.WriteLine("");
                 UI.Separator();
-
-
-                string report = "";
-                bool keepGuessing = true;
-                while (keepGuessing)
-                {
-                    DisplayHints();
-
-                //Prompt for a guess
-                    Console.WriteLine("");
-                    Console.WriteLine("");
-                    UI.Separator();
-                    Console.WriteLine(report);
-                    string codePrompt = " What is the code? ";
+                Console.WriteLine(report);
+                string codePrompt = " What is the code? ";
 
                     
-                    Console.Write(codePrompt);
-                    int guess = ValidateResponse(Console.ReadLine(), codePrompt);
+                Console.Write(codePrompt);
+                int guess = ValidateResponse(Console.ReadLine(), codePrompt);
 
-                    //Check guess- use a method
-                    keepGuessing = CheckGuess(guess);
-                    if (keepGuessing)
-                    {
-                        report = "  Incorrect, try again";
-                    }
+                //Check guess- use a method
+                keepGuessing = CheckWinner(guess);
+                if (keepGuessing)
+                {
+                    report = "  Incorrect, try again";
                 }
+            }
             
         }
 
-
-
-
-
-        private void DisplayHints()
+        protected override void UpdateGameDisplay()
         {
             //Use a consistent background and foreground color formatting for the sample codes (a method
             //Use color formatting on the forground of the hint text
-            Console.Clear();
-            foreach (KeyValuePair<int[], string> kvp in _hints.HintsList)
+            UI.DisplayTitle(_title);
+            foreach(string instruction in _instructions)
+            {
+                UI.DisplayInfo(instruction);
+            }
+            Console.WriteLine("\r\n\r\n");
+            foreach (/*hint in list*/)
             {
                 Console.Write("\r\n");
                 foreach (int digit in kvp.Key)
@@ -91,11 +76,6 @@ namespace GameConsole
             }
             
         }
-
-
-
-
-
 
         private int ValidateResponse(string response, string question)
         {
@@ -110,7 +90,7 @@ namespace GameConsole
             return number;
         }
 
-        private bool CheckGuess(int guess)
+        protected override bool CheckWinner()
         {
 
 
@@ -150,10 +130,5 @@ namespace GameConsole
 
             return codeNumber;
         }
-
-
-        
-
-        
     }
 }

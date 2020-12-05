@@ -1,39 +1,30 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace GameConsole
 {
     public class Code
     {
-        
+        private string _code;
+        private List<string> _hints;
+        private List<string> _hintBodies = new List<string> { "One is correct, and in the right spot.", "One is correct, and in the wrong spot.", "Two are correct, and in the wrong spots.", "Nothing is correct.", "One is correct, and in the wrong spot." };
 
+        public List<string> HintBodies { get { return _hintBodies; } }
 
-        public List<int> CodeDigits  { get; }
-
-
-        public Code(int length)
+        public Code(string[] data)
         {
-            //Construct the random code
-            //No repeating numers
-            //Make code length dynamic for future updates (different levels)
-            //Use private method for easy reading and privacy of code
-            CodeDigits = new List<int>() { 11,11,11 };
-            
-            for (int i = 0; i < length; i++)
+            _code = data[0];
+            for(int i = 1; i < data.Length; i++)
             {
-                CodeDigits[i] = AddDigit();
+                _hints.Add(data[i]);
             }
         }
 
-        private int AddDigit()
+        public Dictionary<string, List<string>> GetCodeData()
         {
-            Random rnd = new Random();
-            int randomDigit = rnd.Next(0, 10);
-            while(CodeDigits.Contains(randomDigit))
-            {
-                randomDigit = rnd.Next(0,10);
-            }
-            return randomDigit;
+            Dictionary<string, List<string>> codeData = new Dictionary<string, List<string>>();
+            codeData.Add(_code, _hints);
+            return codeData;
         }
     }
-}*/
+}

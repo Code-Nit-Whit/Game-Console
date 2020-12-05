@@ -7,7 +7,7 @@ namespace GameConsole
     {
         protected User _player;
         protected readonly string _title;
-        protected List<string> _instructions;
+        protected readonly List<string> _instructions;
 
         public Game(User player, string title)
         {
