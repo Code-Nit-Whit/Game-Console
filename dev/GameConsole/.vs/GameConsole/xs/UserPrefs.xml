@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/UI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Hints.cs">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="17" Column="26" />
       <File FileName="GameConsole/GameConsole.cs" />
@@ -26,14 +26,14 @@
       <File FileName="GameConsole/Dictionary.txt" NotebookId="1" />
       <File FileName="GameConsole/CrackTheCode.cs" NotebookId="1" />
       <File FileName="GameConsole/Code.cs" NotebookId="1" />
-      <File FileName="GameConsole/Hints.cs" NotebookId="1" />
+      <File FileName="GameConsole/Hints.cs" Line="13" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="UI.cs" selected="True" />
+              <Node name="Hints.cs" selected="True" />
             </Node>
           </Node>
         </State>
