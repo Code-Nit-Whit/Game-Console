@@ -123,24 +123,14 @@ namespace GameConsole
                     break;
 
                 case 5: //Hangman
-                    /*while (keepPlaying)
-                    {
-                        //Hangman game5 = new Hangman(_user);
-                        //game5.Play();
-                        keepPlaying = PlayAgain();
-                        UI.ComingSoon();
-                    }*/
+                    //Hangman hm = new Hangman(_user);
+                    //hm.Play();
                     UI.ComingSoon();
                     break;
 
                 case 6: //Crack the Code
-                        //while (keepPlaying)
-                        //{
-                        //CrackTheCode game6 = new CrackTheCode(_user);
-                        //game6.Play();
-                        //keepPlaying = PlayAgain();
-                        //UI.ComingSoon();
-                        //}
+                    //CrackTheCode ctc = new CrackTheCode();
+                    //ctc.Play();
                     UI.ComingSoon();
                     break;
 

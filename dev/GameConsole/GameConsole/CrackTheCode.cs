@@ -1,16 +1,10 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
-
-
-
-
 
 namespace GameConsole
 {
     public class CrackTheCode
     {
-        
-
         //fields
         private string _title = "Crack the Code";
         private int _guesses;
@@ -162,4 +156,4 @@ namespace GameConsole
 
         
     }
-}*/
+}

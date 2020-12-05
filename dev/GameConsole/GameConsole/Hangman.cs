@@ -8,8 +8,6 @@ namespace GameConsole
     public class Hangman
     {
         //Fields
-        private User _player;
-        private string _title = "HANGMAN";
         private List<string> _instructions = new List<string>() { };
         private Random _rnd = new Random();
         private Dictionary<string, string> _dictionary = new Dictionary<string, string>();
@@ -50,4 +48,5 @@ namespace GameConsole
         }
 
     }//end of class
-}*/
+}
+*/
