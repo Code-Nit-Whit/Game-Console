@@ -1,39 +1,39 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Game.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/UI.cs">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="17" Column="26" />
-      <File FileName="GameConsole/GameConsole.cs" Line="170" Column="9" />
-      <File FileName="GameConsole/Menu.cs" Line="29" Column="24" />
-      <File FileName="GameConsole/Validation.cs" Line="4" Column="2" />
-      <File FileName="GameConsole/User.cs" Line="36" Column="36" />
-      <File FileName="GameConsole/Users.txt" Line="4" Column="1" />
-      <File FileName="GameConsole/UI.cs" Line="29" Column="14" />
-      <File FileName="GameConsole/Theme.cs" Line="28" Column="1" />
-      <File FileName="GameConsole/Themes.txt" Line="2" Column="36" />
-      <File FileName="GameConsole/FileIO.cs" Line="100" Column="1" />
-      <File FileName="GameConsole/Game.cs" Line="19" Column="49" />
-      <File FileName="GameConsole/OnePlayerGame.cs" Line="10" Column="11" />
-      <File FileName="GameConsole/TwoPlayerGame.cs" Line="27" Column="9" />
-      <File FileName="GameConsole/TicTacToe.cs" Line="89" Column="40" NotebookId="1" />
-      <File FileName="GameConsole/HighLow.cs" Line="2" Column="24" NotebookId="1" />
-      <File FileName="GameConsole/MathChallenge.cs" Line="88" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/Problem.cs" Line="92" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/Mastermind.cs" Line="93" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/Sequence.cs" Line="67" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/Hangman.cs" Line="34" Column="24" NotebookId="1" />
-      <File FileName="GameConsole/Gallows.cs" Line="141" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/Dictionary.txt" Line="10" Column="44" NotebookId="1" />
-      <File FileName="GameConsole/CrackTheCode.cs" Line="165" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/Code.cs" Line="39" Column="4" NotebookId="1" />
-      <File FileName="GameConsole/Hints.cs" Line="1" Column="3" NotebookId="1" />
+      <File FileName="GameConsole/GameConsole.cs" />
+      <File FileName="GameConsole/Menu.cs" />
+      <File FileName="GameConsole/Validation.cs" />
+      <File FileName="GameConsole/User.cs" />
+      <File FileName="GameConsole/Users.txt" />
+      <File FileName="GameConsole/UI.cs" Line="294" Column="10" />
+      <File FileName="GameConsole/Theme.cs" />
+      <File FileName="GameConsole/Themes.txt" />
+      <File FileName="GameConsole/FileIO.cs" />
+      <File FileName="GameConsole/Game.cs" />
+      <File FileName="GameConsole/OnePlayerGame.cs" />
+      <File FileName="GameConsole/TwoPlayerGame.cs" />
+      <File FileName="GameConsole/TicTacToe.cs" Line="109" Column="33" NotebookId="1" />
+      <File FileName="GameConsole/HighLow.cs" NotebookId="1" />
+      <File FileName="GameConsole/Mastermind.cs" NotebookId="1" />
+      <File FileName="GameConsole/Sequence.cs" NotebookId="1" />
+      <File FileName="GameConsole/MathChallenge.cs" NotebookId="1" />
+      <File FileName="GameConsole/Problem.cs" NotebookId="1" />
+      <File FileName="GameConsole/Hangman.cs" NotebookId="1" />
+      <File FileName="GameConsole/Gallows.cs" NotebookId="1" />
+      <File FileName="GameConsole/Dictionary.txt" NotebookId="1" />
+      <File FileName="GameConsole/CrackTheCode.cs" NotebookId="1" />
+      <File FileName="GameConsole/Code.cs" NotebookId="1" />
+      <File FileName="GameConsole/Hints.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="Game.cs" selected="True" />
+              <Node name="UI.cs" selected="True" />
             </Node>
           </Node>
         </State>
