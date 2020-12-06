@@ -6,38 +6,45 @@ namespace GameConsole
     public class CrackTheCode : OnePlayerGame
     {
         private readonly new List<string> _instructions = new List<string>() { "Think you have what it takes to be a master code cracker?", "Let's find out!", "Using the hints to the right, try to figure out the correct code.", "-Hint: The code doesn't have any repeating numbers.-" };
-        private string _filePath = "../../../CodesAndHintsDict.txt";
+        private string _filePath = "../../../CodesHintsDict.txt";
         private int _guesses;
         private string _guess;
         private List<Code> _availableCodes;
         private Random _rnd = new Random();
         private Code _currentCode;
 
-        public CrackTheCode(User player) : base(player, "Crath the Code")
+        public CrackTheCode(User player) : base(player, "Crack the Code")
         {
-            _availableCodes = FileIO.LoadCodes(_filePath);
         }
 
         public override void Play()
         {
+            _availableCodes = FileIO.LoadCodes(_filePath);
             bool keepPlaying = true;
             while (keepPlaying)
             {
                 SetACode();
-                UpdateGameDisplay();
-                //Prompt for a guess
-                _guess = ValidateResponse();
-                _guesses += 1;
-                //Check guess- use a method
-                keepPlaying = CheckWinner();
-                if (keepPlaying)
+                bool keepGuessing = true;
+                while(keepGuessing)
                 {
-                    DisplayWinner(false);
+
+                    UpdateGameDisplay();
+                    //Prompt for a guess
+                    string question = "What is your guess?... ";
+                    _guess = Validation.GetValidatedString(question);
+                    _guesses += 1;
+                    //Check guess- use a method
+                    keepGuessing = CheckWinner();
+                    if (keepGuessing)
+                    {
+                        DisplayWinner(false);
+                    }
+                    else if (!keepGuessing)
+                    {
+                        DisplayWinner(true);
+                    }
                 }
-                else
-                {
-                    DisplayWinner(true);
-                }
+                keepPlaying = PlayAgain();
             }
         }
 
@@ -56,51 +63,39 @@ namespace GameConsole
             {
                 UI.DisplayInfo(instruction);
             }
-            Console.WriteLine("\r\n\r\n");
-            for(int i = 0; i < _currentCode.Hints.Count; i++)
+            //Add in total guesses display!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            Console.WriteLine($"\r\n\r\nNumber of guesses: {_guesses}");
+            //also figure out a neat display for both codes and hints
+            Console.WriteLine("\r\n");
+            Console.WriteLine(_currentCode.CodeName);
+            DisplaySpecial("____   ____   ____");
+            Console.WriteLine("\r\n");
+            for (int i = 0; i < _currentCode.Hints.Count; i++)
             {
-                Console.WriteLine($"{_currentCode.Hints[i]}: {_currentCode.HintBodies[i]}");
-                Console.Write("\r\n");
+                DisplaySpecial(_currentCode.Hints[i]);
+                Console.Write($": {_currentCode.HintBodies[i]}");
+                Console.WriteLine("");
             }
-        }
-
-        private int ValidateResponse(string response, string question)
-        {
-            int number = Validation.IntergerValidation(response, question);
-            while (number < 012 || number > 987) //The lowest and max you could go without repeating numbers
-            {
-                Console.WriteLine("  Please enter a three digit number like the hints. The code cannot have repeating numbers...");
-                Console.WriteLine(question);
-                number = Validation.IntergerValidation(Console.ReadLine(), question);
-            }
-
-            return number;
         }
 
         protected override bool CheckWinner()
         {
-
-
-            if(guess == ConvertingList())
+            if (_guess == _currentCode.CodeName)
             {
-                UI.Header($"Congrats! You got it! The code was... ");
-                for (int i = 0; i < 3; i++)
-                {
-                    Console.Write(Code.CodeDigits[i]);
-                }
-                Console.WriteLine("");
-                Console.WriteLine($"Number of Guesses: {_guesses}");
-
-                
+                return false;
             }
             else
             {
-                UI.Separator("  Not quite. Try again!");
-               
-                _guesses++;
+                return true;
             }
+        }
 
-            return (guess == ConvertingList()) ? false : true;
-        } 
+        //Cool Formatting method for 3 digit code displays
+        private void DisplaySpecial(string code)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.Write(code);
+            UI.SetColors();
+        }
     }
 }

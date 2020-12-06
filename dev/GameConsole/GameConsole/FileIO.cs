@@ -111,6 +111,8 @@ namespace GameConsole
             List<Code> codes = new List<Code>();
             if (!File.Exists(filePath))
             {
+                Console.WriteLine("No such file!");
+                Console.ReadLine();
                 return codes;
             }
             else

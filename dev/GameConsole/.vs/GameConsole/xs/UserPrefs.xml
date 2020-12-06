@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/FileIO.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/CrackTheCode.cs">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="17" Column="26" />
-      <File FileName="GameConsole/GameConsole.cs" Line="1" Column="1" />
+      <File FileName="GameConsole/GameConsole.cs" Line="132" Column="45" />
       <File FileName="GameConsole/Validation.cs" />
-      <File FileName="GameConsole/FileIO.cs" Line="1" Column="1" />
+      <File FileName="GameConsole/FileIO.cs" Line="111" Column="49" />
       <File FileName="GameConsole/User.cs" />
       <File FileName="GameConsole/Users.txt" />
-      <File FileName="GameConsole/UI.cs" />
+      <File FileName="GameConsole/UI.cs" Line="294" Column="10" />
       <File FileName="GameConsole/Theme.cs" />
-      <File FileName="GameConsole/Themes.txt" />
+      <File FileName="GameConsole/Themes.txt" Line="1" Column="1" />
       <File FileName="GameConsole/Game.cs" Line="10" Column="27" />
       <File FileName="GameConsole/OnePlayerGame.cs" Line="1" Column="1" />
       <File FileName="GameConsole/TwoPlayerGame.cs" Line="1" Column="1" />
@@ -20,21 +20,18 @@
       <File FileName="GameConsole/Sequence.cs" NotebookId="1" />
       <File FileName="GameConsole/MathChallenge.cs" Line="8" Column="29" NotebookId="1" />
       <File FileName="GameConsole/Problem.cs" NotebookId="1" />
-      <File FileName="GameConsole/Hangman.cs" NotebookId="1" />
-      <File FileName="GameConsole/Gallows.cs" NotebookId="1" />
+      <File FileName="GameConsole/Hangman.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="GameConsole/Gallows.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="GameConsole/Dictionary.txt" NotebookId="1" />
-      <File FileName="GameConsole/CrackTheCode.cs" Line="13" Column="27" NotebookId="1" />
-      <File FileName="GameConsole/Code.cs" Line="27" Column="29" NotebookId="1" />
+      <File FileName="GameConsole/CrackTheCode.cs" Line="79" Column="14" NotebookId="1" />
+      <File FileName="GameConsole/Code.cs" Line="26" Column="2" NotebookId="1" />
       <File FileName="GameConsole/CodesHintsDict .txt" Line="1" Column="1" NotebookId="1" />
-      <File FileName="GameConsole/Hints.cs" Line="16" Column="254" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
-            <Node name="GameConsole" expanded="True">
-              <Node name="FileIO.cs" selected="True" />
-            </Node>
+            <Node name="GameConsole" expanded="True" />
           </Node>
         </State>
       </Pad>

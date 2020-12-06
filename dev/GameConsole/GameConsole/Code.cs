@@ -6,9 +6,10 @@ namespace GameConsole
     public class Code
     {
         private string _code;
-        private List<string> _hints;
+        private List<string> _hints = new List<string>();
         private List<string> _hintBodies = new List<string> { "One is correct, and in the right spot.", "One is correct, and in the wrong spot.", "Two are correct, and in the wrong spots.", "Nothing is correct.", "One is correct, and in the wrong spot." };
 
+        public string CodeName { get { return _code; } }
         public List<string> HintBodies { get { return _hintBodies;}}
         public List<string> Hints { get{ return _hints; } }
 
