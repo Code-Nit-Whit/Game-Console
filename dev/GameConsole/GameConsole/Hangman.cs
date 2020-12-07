@@ -1,52 +1,66 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace GameConsole
 {
-    public class Hangman
+    public class Hangman : OnePlayerGame
     {
         //Fields
         private List<string> _instructions = new List<string>() { };
+        private string _filePath = "";
+        private Dictionary<string, Dictionary<string, string>> _availableDictionaries;
         private Random _rnd = new Random();
-        private Dictionary<string, string> _dictionary = new Dictionary<string, string>();
+        private Dictionary<string, string> _currentDictionary = new Dictionary<string, string>();
+        private Gallows _currentGallows;
 
-        public Hangman(User player)
+        public Hangman(User player) : base(player, "Hangman")
         {
-            _player = player;
+        }
 
-            using (StreamReader sr = new StreamReader("../../../Dictionary.txt"))
+        public override void Play()
+        {
+            _availableDictionaries = FileIO.LoadDictionaries();
+            string[] dictMenuArr = new string[_availableDictionaries.Count + 1];
+            int i = 1;
+            foreach(KeyValuePair<string, Dictionary<string, string>> kvp in _availableDictionaries)
             {
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    string[] splitElements = line.Split(':');
-                    
-                    _dictionary.Add(splitElements[0], splitElements[1]);
-                    
-                }
+                dictMenuArr[i] = kvp.Key;
+                i++;
+            }
+            Menu dictionariesMenu = new Menu();
+            dictionariesMenu.Init(dictMenuArr);
+            bool keepPlaying = true;
+            while(keepPlaying)
+            {
+                dictionariesMenu.Display(dictMenuArr[0]);
+                HandleMenuSelection();
+                int index = _rnd.Next(0, _dictionary.Count - 1);
+                string word = _dictionary.ElementAt(index).Key;
+                string definition = _dictionary.ElementAt(index).Value;
+                Gallows gallows = new Gallows(word, definition);
+                gallows.ComenceHanging();
             }
         }
 
-        public /*static void Play()
+        private void HandleMenuSelection()
         {
-            //Validation.ComingSoon();
+            string question = "Which dictionary would you like to use? They are listed by topic... ";
+            int[] range = { 0, _availableDictionaries.Count };
+            string selection = 
+            _currentDictionary = _availableDictionaries[selection - 1];
+        }
 
-            //Rndomly choose word from dictionary... Need to research method that work like an index w/ dictionaries
-            int index = _rnd.Next(0, _dictionary.Count - 1);
+        protected override void UpdateGameDisplay()
+        {
 
-            string word = _dictionary.ElementAt(index).Key;
-            string definition = _dictionary.ElementAt(index).Value;
+        }
 
+        protected override bool CheckWinner()
+        {
 
-            //Instantiate a gallows object, passing in the word and definition
-            Gallows gallows = new Gallows(word, definition);
-
-            //Call a method from this object that actually plays the game...
-            gallows.ReallyPlay(_title);
         }
 
     }//end of class
 }
-*/

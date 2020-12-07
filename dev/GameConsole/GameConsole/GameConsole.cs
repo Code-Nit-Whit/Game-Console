@@ -123,9 +123,8 @@ namespace GameConsole
                     break;
 
                 case 5: //Hangman
-                    //Hangman hm = new Hangman(_user);
-                    //hm.Play();
-                    UI.ComingSoon();
+                    Hangman hm = new Hangman(_user);
+                    hm.Play();
                     break;
 
                 case 6: //Crack the Code

@@ -1,10 +1,11 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace GameConsole
 {
     public class Gallows
     {
+        private string _title = "The Gallows";
         private string _word;
         private string _definition;
         private List<char> _guesses = new List<char>();
@@ -16,30 +17,16 @@ namespace GameConsole
             _definition = definition;
         }
 
-        public void ReallyPlay(string title)
+        public void ComenceHanging()
         {
-            //Display Title
-            //UI.Header("Hangman");
-            //Done in display word method instead
-
-            //Display definition
-            //Console.WriteLine($"Definition: {_definition}");
-            //Done in loop
-
             //Loop- until user wins or misses 6 times
             bool winner = false;
             while (!winner && _misses.Count < 6)
             {
-                Console.Clear();
-                UI.Header(title);
+                UI.DisplayTitle(_title);
                 Console.WriteLine($"Definition: {_definition}\r\n\r\n");
-                //Use mehod to display each letter in the word, replacing it with underscore if it isn't within guesses'
                 DisplayWord();
-
-                //Call another method to display misses
                 DisplayMisses();
-
-                //Call another method to allow player to guess, making sure to validate against repeats (guesses and misses)
                 winner = PromptGuess();
             }
             //Display Win/Lost Hangman Message
@@ -115,8 +102,6 @@ namespace GameConsole
 
         private void DisplayWinLoseResult(bool winner)
         {
-
-
             char[] word = _word.ToCharArray();
 
             //If misses = 6, Lose
@@ -138,4 +123,4 @@ namespace GameConsole
 
         }
     }
-}*/
+}
