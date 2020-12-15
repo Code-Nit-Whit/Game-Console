@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/MathChallenge.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Hangman.cs">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="17" Column="26" />
       <File FileName="GameConsole/GameConsole.cs" />
@@ -14,13 +14,7 @@
       <File FileName="GameConsole/Game.cs" />
       <File FileName="GameConsole/OnePlayerGame.cs" />
       <File FileName="GameConsole/TwoPlayerGame.cs" />
-      <File FileName="GameConsole/TicTacToe.cs" Line="9" Column="29" NotebookId="1" />
-      <File FileName="GameConsole/HighLow.cs" NotebookId="1" />
-      <File FileName="GameConsole/Mastermind.cs" NotebookId="1" />
-      <File FileName="GameConsole/Sequence.cs" NotebookId="1" />
-      <File FileName="GameConsole/MathChallenge.cs" Line="8" Column="29" NotebookId="1" />
-      <File FileName="GameConsole/Problem.cs" NotebookId="1" />
-      <File FileName="GameConsole/Hangman.cs" NotebookId="1" />
+      <File FileName="GameConsole/Hangman.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="GameConsole/Dictionary.txt" NotebookId="1" />
       <File FileName="GameConsole/CrackTheCode.cs" NotebookId="1" />
       <File FileName="GameConsole/Code.cs" NotebookId="1" />
@@ -30,7 +24,7 @@
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="MathChallenge.cs" selected="True" />
+              <Node name="Hangman.cs" selected="True" />
             </Node>
           </Node>
         </State>
