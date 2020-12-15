@@ -19,21 +19,11 @@ namespace GameConsole
 
         public void ComenceHanging()
         {
-            //Loop- until user wins or misses 6 times
-            bool winner = false;
-            while (!winner && _misses.Count < 6)
-            {
-                UI.DisplayTitle(_title);
-                Console.WriteLine($"Definition: {_definition}\r\n\r\n");
-                DisplayWord();
-                DisplayMisses();
-                winner = PromptGuess();
-            }
-            //Display Win/Lost Hangman Message
-            DisplayWinLoseResult(winner);
+            UI.DisplayTitle(_title);
+            Console.WriteLine($"Definition: {_definition}\r\n\r\n");
+            DisplayWord();
+            DisplayMisses();
         }
-
-
         private void DisplayWord()
         {
             char[] word = _word.ToCharArray();
@@ -49,7 +39,6 @@ namespace GameConsole
                 }
             }
         }
-
         private void DisplayMisses()
         {
             UI.Separator();
@@ -60,7 +49,7 @@ namespace GameConsole
             }
         }
 
-        private bool PromptGuess()
+        public bool PromptGuess()
         {
             UI.Separator();
             Console.Write(" Choose a Letter: ");
@@ -98,29 +87,6 @@ namespace GameConsole
             }
 
             return winner;
-        }
-
-        private void DisplayWinLoseResult(bool winner)
-        {
-            char[] word = _word.ToCharArray();
-
-            //If misses = 6, Lose
-            if (_misses.Count == 6)
-            {
-
-                Console.WriteLine("You Lost.");
-                Console.WriteLine($"The word was: {_word}.");
-                Console.WriteLine("Maybe next time.");
-            }
-            else
-            {
-                UI.Footer("You Won!");
-                Console.WriteLine($"The word was: {_word}.");
-                //Display the answer?
-
-                Console.ReadLine();
-            }
-
         }
     }
 }

@@ -1,0 +1,10 @@
+﻿KNOWLEDGE: Facts, information, and skills acquired by a person through experience or education; the theoretical or practical understanding of a subject.
+COMPUTER: An electronic device for storing and processing data, typically in binary form, according to instructions given to it in a variable program.
+PHOTOGRAPHY: The art or practice of taking and processing photographs.
+METHOD: A particular form of procedure for accomplishing or approaching something, especially a systematic or established one.
+DESIGN: The art or action of conceiving of and producing a plan or drawing.
+TECHNOLOGY: Machinery and equipment developed from the application of scientific knowledge.
+PROGRAMMING: The action or process of writing computer programs.
+WEBSITE: A location connected to the Internet that maintains one or more pages on the World Wide Web.
+APPLICATION: A program or piece of software designed and written to fulfill a particular purpose of the user.
+CERTIFICATION: An official document attesting to a status or level of achievement.

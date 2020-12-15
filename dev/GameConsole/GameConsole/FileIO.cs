@@ -132,9 +132,9 @@ namespace GameConsole
         }
 
         //Hangman
-        public static Dictionary<string, string> LoadAvailableDictionaries(string filePath) //<descript, filePath>
+        public static List<string> LoadAvailableDictionaries(string filePath) //<descript, filePath>
         {
-            Dictionary<string, string> dictionaries = new Dictionary<string, string>();
+            List<string> dictionaries = new List<string>();
             if (!File.Exists(filePath))
             {
                 Console.WriteLine("No such file!");
@@ -148,8 +148,7 @@ namespace GameConsole
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        string[] lineSplit = line.Split(":");
-                        dictionaries.Add(lineSplit[0], lineSplit[1]);
+                        dictionaries.Add(line);
                     }
                 }
                 return dictionaries;

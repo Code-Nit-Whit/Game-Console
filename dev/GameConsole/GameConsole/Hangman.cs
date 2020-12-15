@@ -11,10 +11,10 @@ namespace GameConsole
         private string _filePath = "../../Dictionaries.txt";
         private List<string> _availableDictionaries; //dictionary name
         private List<string> _availableDictFilePaths;
+        private bool _winner = false;
 
         private Random _rnd = new Random();
         private Dictionary<string, string> _currentDictionary = new Dictionary<string, string>();
-        private Gallows _currentGallows;
 
         public Hangman(User player) : base(player, "Hangman")
         {
@@ -29,8 +29,7 @@ namespace GameConsole
                 int selection = SelectCurrentDictionary();
                 if(selection != 0)
                 {
-                    bool keepPlaying = true;
-                    while (keepPlaying)
+                    while (!_winner)
                     {
                         UpdateGameDisplay();
                     }
@@ -77,18 +76,17 @@ namespace GameConsole
 
         protected override void UpdateGameDisplay()
         {
-            dictionariesMenu.Display(dictMenuArr[0]);
-            HandleMenuSelection();
-            int index = _rnd.Next(0, _dictionary.Count - 1);
-            string word = _dictionary.ElementAt(index).Key;
-            string definition = _dictionary.ElementAt(index).Value;
+            int index = _rnd.Next(0, _currentDictionary.Count - 1);
+            string word = _currentDictionary.ElementAt(index).Key;
+            string definition = _currentDictionary.ElementAt(index).Value;
             Gallows gallows = new Gallows(word, definition);
             gallows.ComenceHanging();
+            _winner = CheckWinner(gallows);
         }
 
-        protected override bool CheckWinner()
+        protected override bool CheckWinner(Gallows g)
         {
-
+            return g.PromptGuess();
         }
 
     }//end of class

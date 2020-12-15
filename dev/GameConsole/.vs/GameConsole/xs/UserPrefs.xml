@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Gallows.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/DictionaryProgramming.txt">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="17" Column="26" NotebookId="1" />
       <File FileName="GameConsole/GameConsole.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="GameConsole/Validation.cs" NotebookId="1" />
-      <File FileName="GameConsole/FileIO.cs" Line="135" Column="91" NotebookId="1" />
+      <File FileName="GameConsole/FileIO.cs" Line="146" Column="34" NotebookId="1" />
       <File FileName="GameConsole/User.cs" NotebookId="1" />
       <File FileName="GameConsole/Users.txt" NotebookId="1" />
       <File FileName="GameConsole/UI.cs" NotebookId="1" />
@@ -14,15 +14,14 @@
       <File FileName="GameConsole/Game.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="GameConsole/OnePlayerGame.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="GameConsole/TwoPlayerGame.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="GameConsole/Hangman.cs" Line="80" Column="13" NotebookId="2" />
-      <File FileName="GameConsole/Gallows.cs" Line="1" Column="1" NotebookId="2" />
+      <File FileName="GameConsole/Hangman.cs" Line="34" Column="22" NotebookId="2" />
       <File FileName="GameConsole/Dictionary.txt" Line="1" Column="1" NotebookId="2" />
+      <File FileName="GameConsole/DictionaryProgramming.txt" Line="1" Column="1" NotebookId="2" />
     </Files>
     <FloatingWindows>
-      <FloatingWindow WindowId="1" X="1941" Y="27" Width="920" Height="1027">
+      <FloatingWindow WindowId="1" X="1920" Y="23" Width="941" Height="1035">
         <Files>
-          <File FileName="GameConsole/CrackTheCode.cs" Line="1" Column="1" />
-          <File FileName="GameConsole/Code.cs" Line="1" Column="1" />
+          <File FileName="GameConsole/Gallows.cs" Line="20" Column="20" />
         </Files>
       </FloatingWindow>
     </FloatingWindows>
@@ -31,7 +30,7 @@
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="Gallows.cs" selected="True" />
+              <Node name="DictionaryProgramming.txt" selected="True" />
             </Node>
           </Node>
         </State>
