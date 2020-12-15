@@ -10,6 +10,11 @@ namespace GameConsole
         private string _definition;
         private List<char> _guesses = new List<char>();
         private List<char> _misses = new List<char>();
+        private bool _winner = false;
+        private bool _loser = false;
+
+        public bool Winner { get { return _winner; } }
+        public bool Loser { get { return _loser; } }
 
         public Gallows(string word, string definition)
         {
@@ -49,33 +54,33 @@ namespace GameConsole
             }
         }
 
-        public bool PromptGuess()
+        public char PromptGuess()
         {
-            UI.Separator();
-            Console.Write(" Choose a Letter: ");
-            string response = Console.ReadLine();
-            char[] word = _word.ToCharArray();
+            string question = "Choose a Letter: ";
+            UI.AskQuestion(question);
+            string response = Validation.GetValidatedString(question);
             char[] resp = response.ToUpper().ToCharArray();
-            bool winner = false;
             while ((resp.Length > 1 || resp.Length < 1) || _guesses.Contains(resp[0]))
             {
-                UI.Separator();
-                Console.WriteLine("  Please only enter one letter, avoiding letters you've already guessed.");
-                Console.Write(" Please choose a letter: ");
-                response = Console.ReadLine();
+                UI.DisplayError("Please only enter one letter, avoiding letters you've already guessed.");
+                UI.AskQuestion(question);
+                response = Validation.GetValidatedString(question);
                 resp = response.ToUpper().ToCharArray();
             }
-
             _guesses.Add(resp[0]);
+            return resp[0];
+        }
 
-
-            if (!_word.Contains(resp[0]))
+        public void CheckGuess(char c)
+        {
+            /*if (!_word.Contains(_guesses[_guesses.Count-1]))
             {
-                _misses.Add(resp[0]);
+                _misses.Add([_guesses.Count - 1]);
 
             }
             else
             {
+
                 winner = true;
                 for (int i = 0; i < word.Length; i++)
                 {
@@ -84,7 +89,7 @@ namespace GameConsole
                         winner = false;
                     }
                 }
-            }
+            }*/
 
             return winner;
         }

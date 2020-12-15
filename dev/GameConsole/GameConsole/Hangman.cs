@@ -11,7 +11,7 @@ namespace GameConsole
         private string _filePath = "../../Dictionaries.txt";
         private List<string> _availableDictionaries; //dictionary name
         private List<string> _availableDictFilePaths;
-        private bool _winner = false;
+        private Gallows _currentGallows;
 
         private Random _rnd = new Random();
         private Dictionary<string, string> _currentDictionary = new Dictionary<string, string>();
@@ -29,9 +29,11 @@ namespace GameConsole
                 int selection = SelectCurrentDictionary();
                 if(selection != 0)
                 {
-                    while (!_winner)
+                    bool keepPlaying = true;
+                    while (keepPlaying)
                     {
                         UpdateGameDisplay();
+                        keepPlaying = PlayAgain();
                     }
                 }
                 else
@@ -79,14 +81,16 @@ namespace GameConsole
             int index = _rnd.Next(0, _currentDictionary.Count - 1);
             string word = _currentDictionary.ElementAt(index).Key;
             string definition = _currentDictionary.ElementAt(index).Value;
-            Gallows gallows = new Gallows(word, definition);
-            gallows.ComenceHanging();
-            _winner = CheckWinner(gallows);
+            _currentGallows = new Gallows(word, definition);
+            _currentGallows.ComenceHanging();
+
+            char guess = _currentGallows.PromptGuess();
+            _currentGallows.CheckGuess(guess);
         }
 
-        protected override bool CheckWinner(Gallows g)
+        protected override bool CheckWinner()
         {
-            return g.PromptGuess();
+            return _currentGallows._winner || _loser ? true : false;
         }
 
     }//end of class
