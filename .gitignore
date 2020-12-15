@@ -403,3 +403,7 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+.DS_Store
+dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.csprojAssemblyReference.cache
+dev/GameConsole/.vs/GameConsole/xs/UserPrefs.xml
+dev/GameConsole/.vs/GameConsole/xs/project-cache/GameConsole-Debug.json
