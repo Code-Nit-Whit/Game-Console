@@ -130,5 +130,53 @@ namespace GameConsole
                 return codes;
             }
         }
+
+        //Hangman
+        public static Dictionary<string, string> LoadAvailableDictionaries(string filePath) //<descript, filePath>
+        {
+            Dictionary<string, string> dictionaries = new Dictionary<string, string>();
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("No such file!");
+                Console.ReadLine();
+                return dictionaries;
+            }
+            else
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] lineSplit = line.Split(":");
+                        dictionaries.Add(lineSplit[0], lineSplit[1]);
+                    }
+                }
+                return dictionaries;
+            }
+        }
+        public static Dictionary<string, string> LoadDictionary(string filePath)
+        {
+            Dictionary<string, string> theDictionary = new Dictionary<string, string>();
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("No such file!");
+                Console.ReadLine();
+                return theDictionary;
+            }
+            else
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] lineSplit = line.Split(":");
+                        theDictionary.Add(lineSplit[0], lineSplit[1]);
+                    }
+                }
+                return theDictionary;
+            }
+        }
     }//end of class
 }

@@ -1,30 +1,36 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Hangman.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/CrackTheCode.cs">
     <Files>
-      <File FileName="GameConsole/Program.cs" Line="17" Column="26" />
-      <File FileName="GameConsole/GameConsole.cs" />
-      <File FileName="GameConsole/Validation.cs" />
-      <File FileName="GameConsole/FileIO.cs" />
-      <File FileName="GameConsole/User.cs" />
-      <File FileName="GameConsole/Users.txt" />
-      <File FileName="GameConsole/UI.cs" />
-      <File FileName="GameConsole/Theme.cs" />
-      <File FileName="GameConsole/Themes.txt" />
-      <File FileName="GameConsole/Game.cs" />
-      <File FileName="GameConsole/OnePlayerGame.cs" />
-      <File FileName="GameConsole/TwoPlayerGame.cs" />
-      <File FileName="GameConsole/Hangman.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="GameConsole/Dictionary.txt" NotebookId="1" />
-      <File FileName="GameConsole/CrackTheCode.cs" NotebookId="1" />
-      <File FileName="GameConsole/Code.cs" NotebookId="1" />
+      <File FileName="GameConsole/Program.cs" Line="17" Column="26" NotebookId="1" />
+      <File FileName="GameConsole/GameConsole.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="GameConsole/Validation.cs" NotebookId="1" />
+      <File FileName="GameConsole/FileIO.cs" NotebookId="1" />
+      <File FileName="GameConsole/User.cs" NotebookId="1" />
+      <File FileName="GameConsole/Users.txt" NotebookId="1" />
+      <File FileName="GameConsole/UI.cs" NotebookId="1" />
+      <File FileName="GameConsole/Theme.cs" NotebookId="1" />
+      <File FileName="GameConsole/Themes.txt" NotebookId="1" />
+      <File FileName="GameConsole/Game.cs" NotebookId="1" />
+      <File FileName="GameConsole/OnePlayerGame.cs" NotebookId="1" />
+      <File FileName="GameConsole/TwoPlayerGame.cs" NotebookId="1" />
+      <File FileName="GameConsole/Hangman.cs" Line="2" Column="34" NotebookId="2" />
+      <File FileName="GameConsole/Dictionary.txt" NotebookId="2" />
+      <File FileName="GameConsole/Code.cs" NotebookId="2" />
     </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="1941" Y="27" Width="823" Height="1027">
+        <Files>
+          <File FileName="GameConsole/CrackTheCode.cs" Line="1" Column="1" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="Hangman.cs" selected="True" />
+              <Node name="CrackTheCode.cs" selected="True" />
             </Node>
           </Node>
         </State>
