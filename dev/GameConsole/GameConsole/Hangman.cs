@@ -23,26 +23,18 @@ namespace GameConsole
 
         public override void Play()
         {
-            int selection = SelectCurrentDictionary();
-            if(selection != 0)
+            SelectCurrentDictionary();
+            UpdateGameDisplay();
+            bool winner = CheckWinner();
+            DisplayWinner(winner);
+            if (PlayAgain() == true)
             {
-                UpdateGameDisplay();
-                bool winner = CheckWinner();
-                DisplayWinner(winner);
-                if (PlayAgain() == true)
-                {
-                    Play();
-                }
-                else
-                {
-                    //Exit method
-                }
+                Play();
             }
             else
             {
                 //Exit method
             }
-            
         }
     
 

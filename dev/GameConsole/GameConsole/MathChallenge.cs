@@ -27,24 +27,26 @@ namespace GameConsole
         }
 
         public override void Play()
-        {
-            bool keepPlaying = true;
-            while(keepPlaying)
+        {            //Until wrong answer is given...
+            bool answerCorrect = true;
+            while (answerCorrect)
             {
-                //Until wrong answer is given...
-                bool answerCorrect = true;
-                while (answerCorrect)
-                {
-                    //Instantiate a Problem object
-                    _problem = new Problem();
-                    UpdateGameDisplay();
-                    //Request and answer
-                    string question = "What is the answer to this problem? ";
-                    _answer = Validation.GetValidatedInt(question);
-                    //Compare answer to problem's solution
-                    answerCorrect = CheckWinner();
-                }
-                keepPlaying = PlayAgain();
+                //Instantiate a Problem object
+                _problem = new Problem();
+                UpdateGameDisplay();
+                //Request and answer
+                string question = "What is the answer to this problem? ";
+                _answer = Validation.GetValidatedInt(question);
+                //Compare answer to problem's solution
+                answerCorrect = CheckWinner();
+            }
+            if (PlayAgain())
+            {
+                Play();
+            }
+            else
+            {
+                //Exit option
             }
         }
 

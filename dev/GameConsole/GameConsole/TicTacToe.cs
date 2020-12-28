@@ -23,31 +23,33 @@ namespace GameConsole
         // Play
         public override void Play()
         {
-            bool keepGoing = true;
-            while(keepGoing)
+            string winner = null;
+            string player;
+            //Display Board
+            UpdateGameDisplay();
+            //Play until someone wins
+            int turns = 1;
+            while (winner == null)
             {
-                //Local variables
-                string winner = null;
-                string player;
-                //Display Board
+                //Select Player
+                player = (turns % 2 == 0) ? "Player 2" : "Player 1";
+                _marker = (turns % 2 == 0) ? "O" : "X";
+                //Chose space and validate
+                int space = ValidateSpace(_spaces, player) - 1;
+                //Refresh Board
                 UpdateGameDisplay();
-                //Play until someone wins
-                int turns = 1;
-                while (winner == null)
-                {
-                    //Select Player
-                    player = (turns % 2 == 0) ? "Player 2" : "Player 1";
-                    _marker = (turns % 2 == 0) ? "O" : "X";
-                    //Chose space and validate
-                    int space = ValidateSpace(_spaces, player) - 1;
-                    //Refresh Board
-                    UpdateGameDisplay();
-                    //Check for winners
-                    winner = CheckWinner();
-                    turns++;
-                }
-                DisplayWinner(winner);
-                keepGoing = PlayAgain();
+                //Check for winners
+                winner = CheckWinner();
+                turns++;
+            }
+            DisplayWinner(winner);
+            if (PlayAgain())
+            {
+                Play();
+            }
+            else
+            {
+                //Exit option
             }
         }
 

@@ -34,46 +34,56 @@ namespace GameConsole
 
         public override void Play()
         {
-            //Local variables
-            bool keepPlaying = true;
-            while (keepPlaying) //This game (because of my scoring, game win setup) requires mutiple playsto win. You accumulate a score over time.
+            _numberOfMoves = 0;
+            UpdateGameDisplay();
+            string question = "Please select a maximum number... ";
+            _maximumNumber = Validation.GetValidatedInt(question);
+            //Generate a random number between 1 and the maximum for the user to guess
+            Random rnd = new Random();
+            _correctNumber = rnd.Next(1, _maximumNumber + 1);
+            UI.DisplaySuccess($" Ok, I have selected a number between 1 and {_maximumNumber}");
+
+            //Until the user has won, keep guessing and hinting
+            while (_guessedNumber != _correctNumber)
             {
-                UpdateGameDisplay();
-                _numberOfMoves = 0;
-                string question = "Please select a maximum number... ";
-                _maximumNumber = Validation.GetValidatedInt(question);
-                //Generate a random number between 1 and the maximum for the user to guess
-                Random rnd = new Random();
-                _correctNumber = rnd.Next(1, _maximumNumber + 1);
-                UI.DisplaySuccess($" Ok, I have selected a number between 1 and {_maximumNumber}");
-                //Until the user has won, keep guessing and hinting
-                bool keepGuessing = true;
-                while (keepGuessing)
+                //Prompt user for a guess.. reuse previously created method to validate
+                question = "What is your guess?... ";
+                int[] range = { 0, _maximumNumber };
+                _guessedNumber = Validation.GetValidatedRange(question, range);
+                // Create another method to compare player's guess to generated random number. If incorrect, provide the user a hint of :"too low" or "too high"
+                CheckGuess();
+                _numberOfMoves += 1;
+            }
+            _score += CalculateScore();
+            if(!CheckWinner())
+            {
+                //Keep Trying?
+                question = "Keep playing? You need 1000 points to win... [Y/N] ";
+                string[] conditionals = { "y", "n" };
+                string response = Validation.GetValidatedConditional(question, conditionals);
+                if (response == "Y")
                 {
-                    //Prompt user for a guess.. reuse previously created method to validate
-                    question = "What is your guess?... ";
-                    int[] range = { 0, _maximumNumber };
-                    _guessedNumber = Validation.GetValidatedRange(question, range);
-                    // Create another method to compare player's guess to generated random number. If incorrect, provide the user a hint of :"too low" or "too high"
-                    keepGuessing = CheckGuess();
-                    _numberOfMoves += 1;
-                }
-                //Create one more method to calculate the score
-                _score += CalculateScore();
-                if(!CheckWinner())
-                {
-                    //Keep Trying?
-                    question = "Keep playing? You need 1000 points to win... [Y/N] ";
-                    string[] conditionals = { "y", "n" };
-                    string response = Validation.GetValidatedConditional(question, conditionals);
-                    keepPlaying = (response == "n") ? false:true;
+                    Play();
                 }
                 else
                 {
-                    DisplayWinner(true);
-                    keepPlaying = false;
+                    //Exit option
                 }
             }
+            else
+            {
+                DisplayWinner(true);
+                if (PlayAgain())
+                {
+                    HighLow newGame = new HighLow(_player);
+                    newGame.Play();
+                }
+                else
+                {
+                    //Exit option
+                }
+            }
+            
 
         }//end of play method
 
@@ -89,12 +99,11 @@ namespace GameConsole
 
         protected override bool CheckWinner()
         {
-            return _score >= 200;
+            return _score >= 400;
         }
 
-        private bool CheckGuess()
+        private void CheckGuess()
         {
-            bool noWin = true;
             //Use conditional block
             if (_guessedNumber < _correctNumber)
             {
@@ -107,9 +116,7 @@ namespace GameConsole
             else
             {
                 UI.DisplaySuccess("That's it!");
-                noWin = false;
             }
-            return noWin;
         }
 
         //Calculate Score

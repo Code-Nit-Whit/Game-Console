@@ -12,39 +12,42 @@ namespace GameConsole
         private List<Code> _availableCodes;
         private Random _rnd = new Random();
         private Code _currentCode;
+        private bool _winner = false;
 
         public CrackTheCode(User player) : base(player, "Crack the Code")
         {
+            _availableCodes = FileIO.LoadCodes(_filePath);
         }
 
         public override void Play()
         {
-            _availableCodes = FileIO.LoadCodes(_filePath);
-            bool keepPlaying = true;
-            while (keepPlaying)
+            SetACode();
+            while(!_winner)
             {
-                SetACode();
-                bool keepGuessing = true;
-                while(keepGuessing)
+                UpdateGameDisplay();
+                //Prompt for a guess
+                string question = "What is your guess?... ";
+                _guess = Validation.GetValidatedString(question);
+                _guesses += 1;
+                //Check guess- use a method
+                if (CheckWinner())
                 {
-
-                    UpdateGameDisplay();
-                    //Prompt for a guess
-                    string question = "What is your guess?... ";
-                    _guess = Validation.GetValidatedString(question);
-                    _guesses += 1;
-                    //Check guess- use a method
-                    keepGuessing = CheckWinner();
-                    if (keepGuessing)
-                    {
-                        DisplayWinner(false);
-                    }
-                    else if (!keepGuessing)
-                    {
-                        DisplayWinner(true);
-                    }
+                    DisplayWinner(true);
+                    _winner = true;
                 }
-                keepPlaying = PlayAgain();
+                else 
+                {
+                    DisplayWinner(false);
+                    //Try again
+                }
+            }
+            if (PlayAgain())
+            {
+                Play();
+            }
+            else
+            {
+                //Exit option
             }
         }
 
@@ -82,11 +85,11 @@ namespace GameConsole
         {
             if (_guess == _currentCode.CodeName)
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 

@@ -25,28 +25,33 @@ namespace GameConsole
 
         public override void Play()
         {
-            bool keepPlaying = true;
-            while(keepPlaying)
+            
+            _solved = false;
+            _numTries = 1;
+            UpdateGameDisplay();
+            //Generate sequence
+            string question = "How many colors should the sequence contain?... ";
+            int size = Validation.GetValidatedInt(question);
+            _sequence = new Sequence(size);
+            _sequence.Display();
+            //Play until soved
+            while (_solved == false)
             {
-                _solved = false;
-                _numTries = 1;
-                UpdateGameDisplay();
-                //Generate sequence
-                string question = "How many colors should the sequence contain?... ";
-                int size = Validation.GetValidatedInt(question);
-                _sequence = new Sequence(size);
-                _sequence.Display();
-                //Play until soved
-                while (_solved == false)
-                {
-                    _guess = ValidateGuess();
-                    //Compare sequence to guess
-                    _solved = CheckWinner();
-                }
-                //Solved message
-                UI.DisplaySuccess($"Congrats, you've solved the sequence!\r\n\r\nScore: {Score(_sequence)}");
-                keepPlaying = PlayAgain();
+                _guess = ValidateGuess();
+                //Compare sequence to guess
+                _solved = CheckWinner();
             }
+            //Solved message
+            UI.DisplaySuccess($"Congrats, you've solved the sequence!\r\n\r\nScore: {Score(_sequence)}");
+            if (PlayAgain())
+            {
+                Play();
+            }
+            else
+            {
+                //Exit option
+            }
+            
         }
 
         protected override bool CheckWinner()
