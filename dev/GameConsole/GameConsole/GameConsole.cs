@@ -5,6 +5,9 @@ namespace GameConsole
     public class GameConsole
     {
         private User _user;
+        private Menu _mainMenu;
+        private Menu _gameMenu;
+        private Menu _userMenu;
 
         public GameConsole()
         {
@@ -17,63 +20,65 @@ namespace GameConsole
             UI.SetTheme(defaultTheme);
             _user = User.LogIn();
             UI.DisplayTitle($"Hello, {_user.Username}! Welcome To The Game Console!");
+            //Create Main Menu
             string[] mainMenuArr = { "Game Console- Main Menu", "Games", "User Menu", "Exit" };
-            Menu mainMenu = new Menu();
-            mainMenu.Init(mainMenuArr);
-            bool keepGoing = true;
-            while(keepGoing)
-            {
-                mainMenu.Display(mainMenuArr[0]);
-                string question = "Please select a menu from the options above [1,2]... ";
-                int[] range = { 0, mainMenuArr.Length-2};
-                int selection = Validation.GetValidatedRange(question, range);
-                if(selection == 0)
-                {
-                    keepGoing = false;
-                }
-                HandleMainMenuSelection(selection);
-            }
-        }
-
-        //MENU CREATION
-        //
-        //
-        private void OpenGamesMenu()
-        {
+            _mainMenu = new Menu();
+            _mainMenu.Init(mainMenuArr);
+            //Create Games Menu
             string[] gamesMenuArr = { "Game Console- Game Menu", "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code", "Back" };
             Menu gamesMenu = new Menu();
             gamesMenu.Init(gamesMenuArr);
-            bool keepGoing = true;
-            while (keepGoing)
+            //Create User Menu
+            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Log Out", "Back" };
+            Menu userMenu = new Menu();
+            userMenu.Init(userMenuaArr);
+            //Start first menu
+            OpenMainMenu();
+        }
+
+        //RUN MENUS
+        //
+        //
+        private void OpenMainMenu()
+        {
+            _mainMenu.Display(_mainMenu.Title);
+            string question = "Please select a menu from the options above [1,2]... ";
+            int[] range = { 0, _mainMenu.NumItems };
+            int selection = Validation.GetValidatedRange(question, range);
+            if (selection == 0)
             {
-                gamesMenu.Display(gamesMenuArr[0]);
-                string question = "Please select a game from the options above [1,2,3]... ";
-                int[] range = { 0, gamesMenuArr.Length - 2 };
-                int selection = Validation.GetValidatedRange(question, range);
-                if (selection == 0)
-                {
-                    keepGoing = false;
-                }
+                ExitProgram();
+            }
+            else
+            {
+                HandleMainMenuSelection(selection);
+                OpenMainMenu();
+            }
+            ExitProgram();
+        }
+
+        private void OpenGamesMenu()
+        {
+            _gameMenu.Display(_gameMenu.Title);
+            string question = "Please select a game from the options above [1,2,3]... ";
+            int[] range = { 0, _gameMenu.NumItems };
+            int selection = Validation.GetValidatedRange(question, range);
+            if (selection != 0)
+            {
                 HandleGameMenuSelection(selection);
+                OpenGamesMenu();
             }
         }
         private void OpenUserMenu()
         {
-            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Log Out", "Back" };
-            Menu userMenu = new Menu();
-            userMenu.Init(userMenuaArr);
-            bool keepGoing = true;
-            while (keepGoing)
+            _userMenu.Display(_userMenu.Title);
+            string question = "Please select an option from the menu above [1,2,3]... ";
+            int[] range = { 0, _userMenu.NumItems };
+            int selection = Validation.GetValidatedRange(question, range);
+            if (selection != 0)
             {
-                userMenu.Display(userMenuaArr[0]);
-                string question = "Please select an option from the menu above [1,2,3]... ";
-                int[] range = { 0, userMenuaArr.Length - 2 };
-                int selection = Validation.GetValidatedRange(question, range);
-                if (selection == 0)
-                {
-                    keepGoing = false;
-                }
                 HandleUserMenuSelection(selection);
+                OpenUserMenu();
             }
         }
 

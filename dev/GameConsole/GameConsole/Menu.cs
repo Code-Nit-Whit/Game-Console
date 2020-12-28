@@ -9,6 +9,9 @@ namespace GameConsole
         private string _title;
         private List<string> _menuItems;
 
+        public string Title { get { return _title; } }
+        public int NumItems { get { return _menuItems.Count; } }
+
         public Menu()
         {
         }
