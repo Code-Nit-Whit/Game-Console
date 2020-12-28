@@ -6,7 +6,9 @@ namespace GameConsole
     {
         private User _user;
         private Menu _mainMenu;
-        private Menu _gameMenu;
+        //private Menu _gameMenu;
+        private Menu _onePlayerGameMenu;
+        private Menu _twoPlayerGameMenu;
         private Menu _userMenu;
 
         public GameConsole()
@@ -21,13 +23,19 @@ namespace GameConsole
             _user = User.LogIn();
             UI.DisplayTitle($"Hello, {_user.Username}! Welcome To The Game Console!");
             //Create Main Menu
-            string[] mainMenuArr = { "Games", "User Menu" };
+            string[] mainMenuArr = { "1 Player Games", "2 Player Gmaes", "User Menu" };
             _mainMenu = new Menu("Game Console- Main Menu", "Exit");
             _mainMenu.AddMenuItems(mainMenuArr);
             //Create Games Menu
-            string[] gamesMenuArr = { "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
+            /*string[] gamesMenuArr = { "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
             _gameMenu = new Menu("Game Console- Game Menu", "Back");
-            _gameMenu.AddMenuItems(gamesMenuArr);
+            _gameMenu.AddMenuItems(gamesMenuArr);*/
+            string[] onePGamesMenuArr = { "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
+            _onePlayerGameMenu = new Menu("Game Console- 1 Player Games", "Back");
+            _onePlayerGameMenu.AddMenuItems(onePGamesMenuArr);
+            string[] twoPGamesMenuArr = { "Tic-Tac-Toe" };
+            _twoPlayerGameMenu = new Menu("Game Console- 2 Player Games", "Back");
+            _twoPlayerGameMenu.AddMenuItems(twoPGamesMenuArr);
             //Create User Menu
             string[] userMenuaArr = { "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Log Out" };
             _userMenu = new Menu("Game Console- User Menu", "Back");
@@ -53,18 +61,32 @@ namespace GameConsole
             }
         }
 
-        private void OpenGamesMenu()
+        private void Open1PGamesMenu()
         {
-            _gameMenu.Display(true);
+            _onePlayerGameMenu.Display(true);
             string question = "Please select a game from the options above [1,2,3]... ";
-            int[] range = { 0, _gameMenu.NumItems };
+            int[] range = { 0, _onePlayerGameMenu.NumItems };
             int selection = Validation.GetValidatedRange(question, range);
             if (selection != 0)
             {
                 HandleGameMenuSelection(selection);
-                OpenGamesMenu();
+                Open1PGamesMenu();
             }
         }
+
+        private void Open2PGamesMenu()
+        {
+            _twoPlayerGameMenu.Display(true);
+            string question = "Please select a game from the options above [1,2,3]... ";
+            int[] range = { 0, _twoPlayerGameMenu.NumItems };
+            int selection = Validation.GetValidatedRange(question, range);
+            if (selection != 0)
+            {
+                HandleGameMenuSelection(selection, true);
+                Open2PGamesMenu();
+            }
+        }
+
         private void OpenUserMenu()
         {
             _userMenu.Display(true);
@@ -85,56 +107,66 @@ namespace GameConsole
         {
             switch(selection)
             {
-                case 1: //Games
-                    OpenGamesMenu();
+                case 1: //1 Player Games
+                    Open1PGamesMenu();
                     break;
 
-                case 2: //User Menu
+                case 2: //2 Player Games
+                    Open2PGamesMenu();
+                    break;
+
+                case 3: //User Menu
                     OpenUserMenu();
-                    break;
-
-                case 0: //Exit
-                    ExitProgram();
                     break;
             }
         }
-        private void HandleGameMenuSelection(int response)
+        private void HandleGameMenuSelection(int response, bool twoPlayer = false)
         {
-            //bool keepPlaying = true;
-            switch (response)
+            if (!twoPlayer)
             {
-                case 1: //TicTacToe
-                    TicTacToe ttt = new TicTacToe(_user);
-                    ttt.Play();
-                    break;
+                switch (response)
+                {
+                    case 1: //High Low
+                        HighLow hl = new HighLow(_user);
+                        hl.Play();
+                        break;
 
-                case 2: //High Low
-                    HighLow hl = new HighLow(_user);
-                    hl.Play();
-                    break;
+                    case 2: //Mastermind
+                        Mastermind mm = new Mastermind(_user);
+                        mm.Play();
+                        break;
 
-                case 3: //Mastermind
-                    Mastermind mm = new Mastermind(_user);
-                    mm.Play();
-                    break;
+                    case 3: //Math Challenge
+                        MathChallenge mc = new MathChallenge(_user);
+                        mc.Play();
+                        break;
 
-                case 4: //Math Challenge
-                    MathChallenge mc = new MathChallenge(_user);
-                    mc.Play();
-                    break;
+                    case 4: //Hangman
+                        Hangman hm = new Hangman(_user);
+                        hm.Play();
+                        break;
 
-                case 5: //Hangman
-                    Hangman hm = new Hangman(_user);
-                    hm.Play();
-                    break;
+                    case 5: //Crack the Code
+                        CrackTheCode ctc = new CrackTheCode(_user);
+                        ctc.Play();
+                        break;
 
-                case 6: //Crack the Code
-                    CrackTheCode ctc = new CrackTheCode(_user);
-                    ctc.Play();
-                    break;
+                    case 0: //Back
+                        break;
+                }
+            }
+            else
+            {
+                switch (response)
+                {
+                    case 1: //TicTacToe
+                        TicTacToe ttt = new TicTacToe(_user);
+                        ttt.Play();
+                        break;
 
-                case 0: //Back
-                    break;
+                    case 0: //Back
+                        break;
+                }
             }
         }
         
