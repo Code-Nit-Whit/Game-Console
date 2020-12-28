@@ -70,6 +70,7 @@ namespace GameConsole
                 _score += 150;
                 UI.DisplaySuccess("Correct!");
                 UI.Continue();
+                _player.AddPoint();
                 return true;
             }
             else

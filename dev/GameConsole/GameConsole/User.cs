@@ -10,17 +10,20 @@ namespace GameConsole
         private string _password;
         private int _age;
         private Theme _theme;
+        private int _userScore;
+        
 
         private static string _filePath = "../../../users.txt";
         private static List<User> _availableUsers;
 
        
-        public User(string username, string password, int age, string theme)
+        public User(string username, string password, int age, string theme, int userScore)
         {
             _username = username;
             _password = password;
             _age = age;
             _theme = UI.FindTheme(theme);
+            _userScore = userScore;
         }
 
         public static User LogIn()
@@ -74,7 +77,7 @@ namespace GameConsole
         //Display user profile
         public string[] GetSaveData()
         {
-            string[] saveData = { Username, _password, _age.ToString(), _theme.Name};
+            string[] saveData = { Username, _password, _age.ToString(), _theme.Name, _userScore.ToString()};
             return saveData;
         }
 
@@ -99,7 +102,7 @@ namespace GameConsole
                 string[] conditionals = { "light", "dark" };
                 question = $"Would you like the light or dark theme? Please type in your preference [{conditionals[0]}, {conditionals[1]}]... ";
                 string theme = Validation.GetValidatedConditional(question, conditionals);
-                User newUser = new User(username, password, age, theme);
+                User newUser = new User(username, password, age, theme, 0);
                 _availableUsers.Add(newUser);
                 FileIO.SaveEmployees(_filePath, _availableUsers);
                 UI.DisplaySuccess($"{username} Created!!!");
@@ -183,6 +186,11 @@ namespace GameConsole
                 }
             }
             FileIO.SaveEmployees(_filePath, _availableUsers);
+        }
+
+        public void AddPoint()
+        {
+            _userScore += 1;
         }
 
     }//end of class

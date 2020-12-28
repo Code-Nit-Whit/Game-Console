@@ -85,6 +85,7 @@ namespace GameConsole
         {
             if (_guess == _currentCode.CodeName)
             {
+                _player.AddPoint();
                 return true;
             }
             else

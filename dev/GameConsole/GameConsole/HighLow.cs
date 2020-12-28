@@ -99,6 +99,10 @@ namespace GameConsole
 
         protected override bool CheckWinner()
         {
+            if(_score >= 400)
+            {
+                _player.AddPoint();
+            }
             return _score >= 400;
         }
 

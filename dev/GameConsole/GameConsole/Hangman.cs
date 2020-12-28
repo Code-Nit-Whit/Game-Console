@@ -86,6 +86,10 @@ namespace GameConsole
 
         protected override bool CheckWinner()
         {
+            if (_currentGallows.Winner)
+            {
+                _player.AddPoint();
+            }
             return _currentGallows.Winner ? true : false;
         }
 

@@ -29,8 +29,9 @@ namespace GameConsole
                         string password = lineSplit[1];
                         int age = int.Parse(lineSplit[2]);
                         string theme = lineSplit[3];
+                        int userScore = int.Parse(lineSplit[4]);
 
-                        User newUser = new User(name, password, age, theme);
+                        User newUser = new User(name, password, age, theme, userScore);
                         users.Add(newUser);
                     }
                     return users;
