@@ -47,25 +47,21 @@ namespace GameConsole
             //NEED TO MAKE DYNAMIC
             //Make it a menu
             string[] themeMenuArr = new string[_availableThemes.Count];
-            for(int i = 1; i <= _availableThemes.Count; i++)
+            for(int i = 0; i < _availableThemes.Count; i++)
             {
-                themeMenuArr[i] = _availableThemes[i-1].Name;
+                themeMenuArr[i] = _availableThemes[i].Name;
             }
             Menu themeMenu = new Menu("Select a Theme", "Back");
             themeMenu.AddMenuItems(themeMenuArr);
             themeMenu.Display(true);
             string question = "Please select a theme from above [1,2]... ";
-            int[] range = { 0, _availableThemes.Count };
+            int[] range = { 0, themeMenu.NumItems };
             int selection = Validation.GetValidatedRange(question, range);
             return HandleSelection(selection);
         }
         private static Theme HandleSelection(int selection)
         {
-            if(selection == 0)
-            {
-                return _currentTheme;
-            }
-            else
+            if(selection != 0)
             {
                 return _availableThemes[selection - 1];
             }

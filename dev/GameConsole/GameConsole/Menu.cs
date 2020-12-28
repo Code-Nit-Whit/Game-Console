@@ -10,7 +10,7 @@ namespace GameConsole
         private Dictionary<int, string> _menuItems = new Dictionary<int, string>();
         private string _returnOption;
 
-        public int NumItems { get { return _menuItems.Count; } }
+        public int NumItems { get { return _menuItems.Count;  } }
 
         public Menu(string title, string returnOption = null)
         {

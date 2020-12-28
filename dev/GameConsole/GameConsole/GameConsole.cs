@@ -34,6 +34,7 @@ namespace GameConsole
             _userMenu.AddMenuItems(userMenuaArr);
             //Start first menu
             OpenMainMenu();
+            ExitProgram();
         }
 
         //RUN MENUS
@@ -45,16 +46,11 @@ namespace GameConsole
             string question = "Please select a menu from the options above [1,2]... ";
             int[] range = { 0, _mainMenu.NumItems };
             int selection = Validation.GetValidatedRange(question, range);
-            if (selection == 0)
-            {
-                ExitProgram();
-            }
-            else
+            if (selection != 0)
             {
                 HandleMainMenuSelection(selection);
                 OpenMainMenu();
             }
-            ExitProgram();
         }
 
         private void OpenGamesMenu()
