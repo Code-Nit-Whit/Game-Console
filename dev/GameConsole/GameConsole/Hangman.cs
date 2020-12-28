@@ -51,18 +51,16 @@ namespace GameConsole
 
         private int SelectCurrentDictionary()
         {
-            string[] dictMenuArr = new string[_availableDictionaries.Count + 1];
-            dictMenuArr[0] = "Available Dictionaries";
+            string[] dictMenuArr = new string[_availableDictionaries.Count];
             int i = 1;
             foreach (string dictName in _availableDictionaries)
             {
                 dictMenuArr[i] = dictName;
                 i++;
             }
-            dictMenuArr[dictMenuArr.Length - 1] = "Back";
-            Menu dictionariesMenu = new Menu();
-            dictionariesMenu.Init(dictMenuArr);
-            dictionariesMenu.Display(dictMenuArr[0]);
+            Menu dictionariesMenu = new Menu("Available Dictionaries", "Back");
+            dictionariesMenu.AddMenuItems(dictMenuArr);
+            dictionariesMenu.Display(true);
             string question = "Please select a themed dictionary from the list above [1,2,3]... ";
             int[] range = { 0, dictMenuArr.Length - 1 };
             int selection = Validation.GetValidatedRange(question, range);

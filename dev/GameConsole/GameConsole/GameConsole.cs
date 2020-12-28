@@ -21,17 +21,17 @@ namespace GameConsole
             _user = User.LogIn();
             UI.DisplayTitle($"Hello, {_user.Username}! Welcome To The Game Console!");
             //Create Main Menu
-            string[] mainMenuArr = { "Game Console- Main Menu", "Games", "User Menu", "Exit" };
-            _mainMenu = new Menu();
-            _mainMenu.Init(mainMenuArr);
+            string[] mainMenuArr = { "Games", "User Menu" };
+            _mainMenu = new Menu("Game Console- Main Menu", "Exit");
+            _mainMenu.AddMenuItems(mainMenuArr);
             //Create Games Menu
-            string[] gamesMenuArr = { "Game Console- Game Menu", "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code", "Back" };
-            Menu gamesMenu = new Menu();
-            gamesMenu.Init(gamesMenuArr);
+            string[] gamesMenuArr = { "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
+            Menu gamesMenu = new Menu("Game Console- Game Menu", "Back");
+            gamesMenu.AddMenuItems(gamesMenuArr);
             //Create User Menu
-            string[] userMenuaArr = { "Game Console- User Menu", "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Log Out", "Back" };
-            Menu userMenu = new Menu();
-            userMenu.Init(userMenuaArr);
+            string[] userMenuaArr = { "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Log Out" };
+            Menu userMenu = new Menu("Game Console- User Menu", "Back");
+            userMenu.AddMenuItems(userMenuaArr);
             //Start first menu
             OpenMainMenu();
         }
@@ -41,7 +41,7 @@ namespace GameConsole
         //
         private void OpenMainMenu()
         {
-            _mainMenu.Display(_mainMenu.Title);
+            _mainMenu.Display(true);
             string question = "Please select a menu from the options above [1,2]... ";
             int[] range = { 0, _mainMenu.NumItems };
             int selection = Validation.GetValidatedRange(question, range);
@@ -59,7 +59,7 @@ namespace GameConsole
 
         private void OpenGamesMenu()
         {
-            _gameMenu.Display(_gameMenu.Title);
+            _gameMenu.Display(true);
             string question = "Please select a game from the options above [1,2,3]... ";
             int[] range = { 0, _gameMenu.NumItems };
             int selection = Validation.GetValidatedRange(question, range);
@@ -71,7 +71,7 @@ namespace GameConsole
         }
         private void OpenUserMenu()
         {
-            _userMenu.Display(_userMenu.Title);
+            _userMenu.Display(true);
             string question = "Please select an option from the menu above [1,2,3]... ";
             int[] range = { 0, _userMenu.NumItems };
             int selection = Validation.GetValidatedRange(question, range);

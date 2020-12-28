@@ -7,61 +7,55 @@ namespace GameConsole
     {
         //Fields
         private string _title;
-        private List<string> _menuItems;
+        private Dictionary<int, string> _menuItems = new Dictionary<int, string>();
+        private string _returnOption;
 
-        public string Title { get { return _title; } }
         public int NumItems { get { return _menuItems.Count; } }
 
-        public Menu()
+        public Menu(string title, string returnOption = null)
         {
+            _title = title;
+            if (returnOption != null)
+            {
+                _returnOption = returnOption;
+            }
+        }
+
+        public int GetMenuSize()
+        {
+            return _menuItems.Count;
         }
 
         //Used to update private member fields _title and _menuItems
-        public void Init(string[] menuData)
+        public void AddMenuItems(string[] menuData)
         {
-            //Set title field
-            _title = menuData[0];
-            //Add menu options to lsit
-            _menuItems = new List<string>();
-            for (int i = 1; i < menuData.Length; i++)
+            for (int i = 0; i < menuData.Length; i++)
             {
-                _menuItems.Add(menuData[i]);
+                _menuItems.Add(_menuItems.Count + 1, menuData[i]);
             }
         }
 
-        //Two Overloads
+        public void AddMenuItem(string item)
+        {
+            _menuItems.Add(_menuItems.Count + 1, item);
+        }
+
         //Prints menu title and list of menu options to the console
-        public void Display()
+        public void Display(bool withTitle = false)
         {
-            //Display menu options- use a for loop
-            for (int i = 0; i < _menuItems.Count; i++)
+            if (withTitle)
             {
-                if (_menuItems[i] == "Exit" || _menuItems[i] == "Back")
-                {
-                    Console.WriteLine($"\r\n[{0}] {_menuItems[i]}\r\n");
-                }
-                else
-                {
-                    Console.WriteLine($"[{i + 1}] {_menuItems[i]}");
-                }
+                //Display Menu title
+                UI.DisplayTitle(_title);
             }
-        }
-        public void Display(string name)
-        {
-            //Display Menu title
-            UI.DisplayTitle(name);
-
             //Display menu options- use a for loop
-            for (int i = 0; i < _menuItems.Count; i++)
+            foreach (KeyValuePair<int, string> kvp in _menuItems)
             {
-                if (_menuItems[i] == "Exit" || _menuItems[i] == "Back")
-                {
-                    Console.WriteLine($"\r\n[{0}] {_menuItems[i]}\r\n");
-                }
-                else
-                {
-                    Console.WriteLine($"[{i + 1}] {_menuItems[i]}");
-                }
+                Console.WriteLine($"[{kvp.Key}] {kvp.Value}");
+            }
+            if (_returnOption != null)
+            {
+                Console.WriteLine($"\r\n[{0}] {_returnOption}");
             }
         }
 
