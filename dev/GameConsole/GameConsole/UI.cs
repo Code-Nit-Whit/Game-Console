@@ -65,6 +65,10 @@ namespace GameConsole
             {
                 return _availableThemes[selection - 1];
             }
+            else
+            {
+                return null;
+            }
         }
 
 

@@ -151,18 +151,26 @@ namespace GameConsole
 
         public void ChangeTheme()
         {
-            _theme = UI.SelectThemeMenu();
-            for(int i = 0; i < _availableUsers.Count; i++)
+            Theme newTheme = UI.SelectThemeMenu();
+            if (newTheme != null && newTheme != _theme)
             {
-                if(_availableUsers[i].Username == Username)
+                for (int i = 0; i < _availableUsers.Count; i++)
                 {
-                    _availableUsers[i]._theme = _theme;
+                    if (_availableUsers[i].Username == Username)
+                    {
+                        _availableUsers[i]._theme = _theme;
+                    }
                 }
+                FileIO.SaveEmployees(_filePath, _availableUsers);
+                UI.DisplaySuccess($"Theme changed to {_theme.Name}!");
+                UI.Continue();
+                UI.SetTheme(_theme);
             }
-            FileIO.SaveEmployees(_filePath, _availableUsers);
-            UI.DisplaySuccess($"Theme changed to {_theme.Name}!");
-            UI.Continue();
-            UI.SetTheme(_theme);
+            else if (newTheme == _theme)
+            {
+                UI.DisplayError("This is already your current theme!");
+                UI.Continue();
+            }
         }
 
         public static void DeleteAUser(User user)
