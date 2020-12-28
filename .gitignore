@@ -417,3 +417,6 @@ dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.csprojAssemblyRe
 dev/GameConsole/GameConsole/obj/GameConsole.csproj.nuget.dgspec.json
 dev/GameConsole/GameConsole/obj/project.assets.json
 dev/GameConsole/GameConsole/obj/project.nuget.cache
+*.cache
+*.json
+*.xml
