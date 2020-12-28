@@ -134,9 +134,12 @@ namespace GameConsole
             Console.Write(question);
         }
         //Coming Soon!!!
-        public static void ComingSoon()
+        public static void ComingSoon(bool displayTitle = false)
         {
-            DisplayTitle("Coming Soon!!");
+            if (displayTitle)
+            {
+                DisplayTitle("Coming Soon!!");
+            }
             DisplaySuccess("This page is currently under sonstruction. Thank you for your patience.");
             Continue();
         }

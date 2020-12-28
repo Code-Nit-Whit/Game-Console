@@ -3,8 +3,16 @@ namespace GameConsole
 {
     public abstract class TwoPlayerGame : Game
     {
-        public TwoPlayerGame(User player, string title) : base(player, title)
+        protected User _playerTwo;
+
+        public TwoPlayerGame(User player, User playerTwo, string title) : base(player, title)
         {
+            _playerTwo = playerTwo;
+        }
+
+        protected void DisplayUserStats()
+        {
+            UI.ComingSoon();
         }
 
         protected abstract string CheckWinner();

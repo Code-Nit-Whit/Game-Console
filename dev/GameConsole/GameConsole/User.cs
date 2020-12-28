@@ -83,7 +83,7 @@ namespace GameConsole
 
         public void DisplayUserProfile()
         {
-            UI.ComingSoon();
+            UI.ComingSoon(true);
         }
 
         public static void CreateUser()
