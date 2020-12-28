@@ -34,3 +34,9 @@
 /Users/codiewhitaker/Desktop/GitStuff/Game-Console/dev/GameConsole/GameConsole/bin/Debug/netcoreapp3.1/GameConsole.dll
 /Users/codiewhitaker/Desktop/GitStuff/Game-Console/dev/GameConsole/GameConsole/bin/Debug/netcoreapp3.1/GameConsole.pdb
 /Users/codiewhitaker/Desktop/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.genruntimeconfig.cache
+/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.csprojAssemblyReference.cache
+/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.AssemblyInfoInputs.cache
+/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.AssemblyInfo.cs
+/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.csproj.CoreCompileInputs.cache
+/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.dll
+/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.pdb

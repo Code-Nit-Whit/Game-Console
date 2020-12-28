@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Menu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/Code.cs">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="21" Column="1" NotebookId="1" />
       <File FileName="GameConsole/Validation.cs" Line="1" Column="1" NotebookId="1" />
@@ -13,18 +13,20 @@
       <File FileName="GameConsole/Game.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="GameConsole/OnePlayerGame.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="GameConsole/TwoPlayerGame.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="GameConsole/Menu.cs" Line="12" Column="28" NotebookId="1" />
+      <File FileName="GameConsole/Menu.cs" Line="12" Column="1" NotebookId="1" />
     </Files>
     <FloatingWindows>
-      <FloatingWindow WindowId="1" X="1792" Y="23" Width="1079" Height="1831">
+      <FloatingWindow WindowId="1" X="1792" Y="23" Width="1080" Height="1815">
         <Files>
-          <File FileName="GameConsole/GameConsole.cs" Line="38" Column="32" />
-          <File FileName="GameConsole/Hangman.cs" Line="37" Column="14" />
-          <File FileName="GameConsole/TicTacToe.cs" Line="53" Column="14" />
-          <File FileName="GameConsole/HighLow.cs" Line="106" Column="10" />
+          <File FileName="GameConsole/GameConsole.cs" Line="74" Column="35" />
+          <File FileName="GameConsole/Hangman.cs" Line="54" Column="75" />
+          <File FileName="GameConsole/Gallows.cs" Line="1" Column="1" />
           <File FileName="GameConsole/Mastermind.cs" Line="52" Column="30" />
+          <File FileName="GameConsole/Sequence.cs" Line="1" Column="1" />
           <File FileName="GameConsole/MathChallenge.cs" Line="49" Column="30" />
-          <File FileName="GameConsole/CrackTheCode.cs" Line="38" Column="22" />
+          <File FileName="GameConsole/Problem.cs" Line="1" Column="1" />
+          <File FileName="GameConsole/CrackTheCode.cs" Line="8" Column="58" />
+          <File FileName="GameConsole/Code.cs" Line="1" Column="1" />
         </Files>
       </FloatingWindow>
     </FloatingWindows>
@@ -33,7 +35,7 @@
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="Menu.cs" selected="True" />
+              <Node name="Code.cs" selected="True" />
             </Node>
           </Node>
         </State>

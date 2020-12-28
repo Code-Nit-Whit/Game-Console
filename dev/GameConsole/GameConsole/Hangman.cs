@@ -9,8 +9,8 @@ namespace GameConsole
         //Fields
         private readonly new List<string> _instructions = new List<string>() { };
         private string _filePath = "../../Dictionaries.txt";
-        private List<string> _availableDictionaries; //dictionary name
-        private List<string> _availableDictFilePaths;
+        private List<string> _availableDictionaries = new List<string>(); //dictionary name
+        private List<string> _availableDictFilePaths = new List<string>();
         private Gallows _currentGallows;
 
         private Random _rnd = new Random();

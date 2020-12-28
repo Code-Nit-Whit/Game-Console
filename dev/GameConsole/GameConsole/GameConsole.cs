@@ -26,12 +26,12 @@ namespace GameConsole
             _mainMenu.AddMenuItems(mainMenuArr);
             //Create Games Menu
             string[] gamesMenuArr = { "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
-            Menu gamesMenu = new Menu("Game Console- Game Menu", "Back");
-            gamesMenu.AddMenuItems(gamesMenuArr);
+            _gameMenu = new Menu("Game Console- Game Menu", "Back");
+            _gameMenu.AddMenuItems(gamesMenuArr);
             //Create User Menu
             string[] userMenuaArr = { "Display User Profile", "Create User", "Change Username", "Change Password", "Change Theme", "Delete This User", "Log Out" };
-            Menu userMenu = new Menu("Game Console- User Menu", "Back");
-            userMenu.AddMenuItems(userMenuaArr);
+            _userMenu = new Menu("Game Console- User Menu", "Back");
+            _userMenu.AddMenuItems(userMenuaArr);
             //Start first menu
             OpenMainMenu();
         }
