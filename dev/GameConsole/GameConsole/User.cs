@@ -158,13 +158,13 @@ namespace GameConsole
                 {
                     if (_availableUsers[i].Username == Username)
                     {
-                        _availableUsers[i]._theme = _theme;
+                        _availableUsers[i]._theme = newTheme;
                     }
                 }
                 FileIO.SaveEmployees(_filePath, _availableUsers);
-                UI.DisplaySuccess($"Theme changed to {_theme.Name}!");
+                UI.DisplaySuccess($"Theme changed to {newTheme.Name}!");
                 UI.Continue();
-                UI.SetTheme(_theme);
+                UI.SetTheme(newTheme);
             }
             else if (newTheme == _theme)
             {
