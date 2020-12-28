@@ -18,29 +18,31 @@ namespace GameConsole
 
         public Hangman(User player) : base(player, "Hangman")
         {
+            InitializeDictionaries();
         }
 
         public override void Play()
         {
-            InitializeDictionaries();
-            bool keepGoing = true;
-            while(keepGoing)
+            int selection = SelectCurrentDictionary();
+            if(selection != 0)
             {
-                int selection = SelectCurrentDictionary();
-                if(selection != 0)
+                UpdateGameDisplay();
+                bool winner = CheckWinner();
+                DisplayWinner(winner);
+                if (PlayAgain() == true)
                 {
-                    bool keepPlaying = true;
-                    while (keepPlaying)
-                    {
-                        UpdateGameDisplay();
-                        keepPlaying = PlayAgain();
-                    }
+                    Play();
                 }
                 else
                 {
-                    keepGoing = false;
+                    //Exit method
                 }
             }
+            else
+            {
+                //Exit method
+            }
+            
         }
     
 
@@ -72,8 +74,15 @@ namespace GameConsole
             string question = "Please select a themed dictionary from the list above [1,2,3]... ";
             int[] range = { 0, dictMenuArr.Length - 1 };
             int selection = Validation.GetValidatedRange(question, range);
-            _currentDictionary = FileIO.LoadDictionary(_availableDictFilePaths[selection - 1]);
-            return selection;
+            if (selection != 0)
+            {
+                _currentDictionary = FileIO.LoadDictionary(_availableDictFilePaths[selection - 1]);
+                return -1;
+            }
+            else
+            {
+                return selection;
+            }
         }
 
         protected override void UpdateGameDisplay()
@@ -83,14 +92,11 @@ namespace GameConsole
             string definition = _currentDictionary.ElementAt(index).Value;
             _currentGallows = new Gallows(word, definition);
             _currentGallows.ComenceHanging();
-
-            char guess = _currentGallows.PromptGuess();
-            _currentGallows.CheckGuess(guess);
         }
 
         protected override bool CheckWinner()
         {
-            return _currentGallows._winner || _loser ? true : false;
+            return _currentGallows.Winner ? true : false;
         }
 
     }//end of class

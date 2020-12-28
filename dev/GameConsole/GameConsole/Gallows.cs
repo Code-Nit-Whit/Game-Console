@@ -5,7 +5,7 @@ namespace GameConsole
 {
     public class Gallows
     {
-        private string _title = "The Gallows";
+        private string _title = "Hangman- The Gallows";
         private string _word;
         private string _definition;
         private List<char> _guesses = new List<char>();
@@ -14,7 +14,6 @@ namespace GameConsole
         private bool _loser = false;
 
         public bool Winner { get { return _winner; } }
-        public bool Loser { get { return _loser; } }
 
         public Gallows(string word, string definition)
         {
@@ -26,8 +25,14 @@ namespace GameConsole
         {
             UI.DisplayTitle(_title);
             Console.WriteLine($"Definition: {_definition}\r\n\r\n");
-            DisplayWord();
-            DisplayMisses();
+            //User gets 6 misses before they lose
+            while (!_loser && !_winner)
+            {
+                DisplayWord();
+                DisplayMisses();
+                char guess = PromptGuess();
+                CheckGuess(guess);
+            }
         }
         private void DisplayWord()
         {
@@ -46,7 +51,6 @@ namespace GameConsole
         }
         private void DisplayMisses()
         {
-            UI.Separator();
             Console.Write("\r\nUsed Letters: ");
             foreach (char miss in _misses)
             {
@@ -54,16 +58,14 @@ namespace GameConsole
             }
         }
 
-        public char PromptGuess()
+        private char PromptGuess()
         {
             string question = "Choose a Letter: ";
-            UI.AskQuestion(question);
             string response = Validation.GetValidatedString(question);
             char[] resp = response.ToUpper().ToCharArray();
             while ((resp.Length > 1 || resp.Length < 1) || _guesses.Contains(resp[0]))
             {
                 UI.DisplayError("Please only enter one letter, avoiding letters you've already guessed.");
-                UI.AskQuestion(question);
                 response = Validation.GetValidatedString(question);
                 resp = response.ToUpper().ToCharArray();
             }
@@ -71,27 +73,29 @@ namespace GameConsole
             return resp[0];
         }
 
-        public void CheckGuess(char c)
+        private void CheckGuess(char c)
         {
-            /*if (!_word.Contains(_guesses[_guesses.Count-1]))
+            if (!_word.Contains(_guesses[_guesses.Count-1]))
             {
-                _misses.Add([_guesses.Count - 1]);
+                _misses.Add(_guesses[_guesses.Count - 1]);
+                if (_misses.Count == 6)
+                {
+                    _loser = true;
+                }
 
             }
             else
             {
-
-                winner = true;
-                for (int i = 0; i < word.Length; i++)
+                bool winner = true;
+                for (int i = 0; i < _word.Length; i++)
                 {
-                    if (!_guesses.Contains(word[i]))
+                    if (!_guesses.Contains(_word[i]))
                     {
                         winner = false;
                     }
                 }
-            }*/
-
-            return winner;
+                _winner = winner;
+            }
         }
     }
 }
