@@ -71,7 +71,6 @@ namespace GameConsole
                 for (int i = 0; i < users.Count; i++)
                 {
                     string[] saveData = users[i].GetSaveData();
-                    //string toWrite = $"{saveData[0]}:{saveData[1]}:{saveData[2]}:{saveData[3]}";
                     string toWrite = "";
                     foreach (string dataPoint in saveData)
                     {

@@ -38,6 +38,7 @@ namespace GameConsole
                 userScores.Add("Crack the Code", 0);
                 userScores.Add("Hangman", 0);
                 userScores.Add("Tic-Tac-Toe", 0);
+                userScores.Add("War", 0);
             }
             _userScores = userScores;
         }
@@ -90,7 +91,7 @@ namespace GameConsole
 
         public string[] GetSaveData()
         {
-            string[] saveData = new string[11];
+            string[] saveData = new string[12];
             //{ Username, _password, _age.ToString(), _theme.Name, _userScore.ToString()};
             saveData[0] = Username;
             saveData[1] = _password;

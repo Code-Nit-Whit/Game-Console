@@ -1,3 +1,4 @@
 CodeNitWhit:whitaker:25:dark:0:0:0:0:0:0:0:0
-drake:password:26:dark:2:0:0:0:0:0:2:0
-teacher:password:0:light:0:0:0:0:0:0:0:0
+Drake:password:26:light:2:0:0:0:0:0:1:1
+Teacher:password:0:light:0:0:0:0:0:0:0:0
+Tester:password:0:light:0:0:0:0:0:0:0:0

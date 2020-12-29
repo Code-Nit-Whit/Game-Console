@@ -71,6 +71,7 @@ namespace GameConsole
             {
                 UI.DisplayInfo(dataPoint);
             }
+            Console.WriteLine("\r\n");
         }
 
         public void Round()
@@ -120,6 +121,7 @@ namespace GameConsole
         {
             if (_pOneScore > _pTwoScore)
             {
+                _player.AddAPoint("War");
                 return _player.Username.ToUpper();
             }
             else if (_pOneScore == _pTwoScore)
@@ -128,6 +130,7 @@ namespace GameConsole
             }
             else
             {
+                _playerTwo.AddAPoint("War");
                 return _playerTwo.Username.ToUpper();
             }
         }
