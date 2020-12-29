@@ -105,6 +105,16 @@ namespace GameConsole
             return saveData;
         }
 
+        public string[] GetPlayerData(string game)
+        {
+            string[] playerData = new string[4];
+            playerData[0] = Username;
+            playerData[1] = _age.ToString();
+            playerData[2] = _userScores["Total"].ToString();
+            playerData[3] = _userScores[game].ToString();
+            return playerData;
+        }
+
         public static void SavePlayers(string sucMessage = null)
         {
             FileIO.SavePlayers(_filePath, _availableUsers);
