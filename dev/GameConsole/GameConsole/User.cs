@@ -118,7 +118,7 @@ namespace GameConsole
         {
             UI.DisplayTitle($"{Username}'s Profile");
             //Display demographic info
-            Console.WriteLine("\r\nPersonal Information");
+            Console.WriteLine("Personal Information");
             string[] personalData = {
                 $"Username: {Username}",
                 $"Age: {_age}",
@@ -131,7 +131,7 @@ namespace GameConsole
                 UI.DisplayInfo(dataPoint);
             }
             //Display scoring info
-            Console.WriteLine("\r\nScoreboard");
+            Console.WriteLine("\r\n\r\nScoreboard");
             string[] scoreData = {
                 $"Total: {_userScores["Total"]}",
                 $"High-Low: {_userScores["High-Low"]}",
