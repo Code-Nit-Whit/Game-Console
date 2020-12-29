@@ -21,6 +21,7 @@ namespace GameConsole
             Theme defaultTheme = UI.FindTheme("light");
             UI.SetTheme(defaultTheme);
             _user = User.LogIn();
+            UI.SetTheme(_user.TheTheme);
             UI.DisplayTitle($"Hello, {_user.Username}! Welcome To The Game Console!");
             //Create Main Menu
             string[] mainMenuArr = { "1 Player Games", "2 Player Gmaes", "User Menu" };
@@ -161,6 +162,7 @@ namespace GameConsole
                 {
                     case 1: //TicTacToe
                         TicTacToe ttt = new TicTacToe(_user);
+                        ttt.LogInSecondPlayer();
                         ttt.Play();
                         break;
 

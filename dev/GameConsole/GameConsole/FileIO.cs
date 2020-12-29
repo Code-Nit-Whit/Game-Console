@@ -10,7 +10,7 @@ namespace GameConsole
         //
         //
         //Load Users
-        public static List<User> LoadUsers(string filePath)
+        public static List<User> LoadPlayers(string filePath)
         {
             List<User> users = new List<User>();
             if (!File.Exists(filePath))
@@ -39,7 +39,7 @@ namespace GameConsole
             }
         }
         //Save Users
-        public static void SaveEmployees(string filePath, List<User> users)
+        public static void SavePlayers(string filePath, List<User> users)
         {
             if (!File.Exists(filePath))
             {

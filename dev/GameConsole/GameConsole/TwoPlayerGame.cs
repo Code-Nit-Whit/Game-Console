@@ -5,9 +5,18 @@ namespace GameConsole
     {
         protected User _playerTwo;
 
-        public TwoPlayerGame(User player, User playerTwo, string title) : base(player, title)
+        public TwoPlayerGame(User player, string title) : base(player, title)
         {
-            _playerTwo = playerTwo;
+        }
+
+        public void LogInSecondPlayer()
+        {
+            UI.DisplaySuccess("\r\nYou need to log in with a second user to play a two player game.");
+            UI.Continue();
+            _playerTwo = User.LogIn();
+            UI.DisplayTitle("Player 2 Loaded");
+            UI.DisplaySuccess($"Welcome, {_playerTwo.Username}, you are Player Two!");
+            UI.Continue();
         }
 
         protected void DisplayUserStats()

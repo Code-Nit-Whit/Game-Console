@@ -32,10 +32,11 @@ namespace GameConsole
             while (winner == null)
             {
                 //Select Player
-                player = (turns % 2 == 0) ? "Player 2" : "Player 1";
-                _marker = (turns % 2 == 0) ? "O" : "X";
+                player = (turns % 2 == 0) ? _player.Username : _playerTwo.Username;
+                _marker = (turns % 2 == 0) ? "X" : "O";
                 //Chose space and validate
                 int space = ValidateSpace(_spaces, player) - 1;
+                _spaces[space] = _marker;
                 //Refresh Board
                 UpdateGameDisplay();
                 //Check for winners
@@ -81,7 +82,7 @@ namespace GameConsole
         //Check Lines (Check Winner)
         protected override string CheckWinner()
         {
-            string winner = null;
+            string winningMarker = null;
             if (
                 //Horizontals
                 (_spaces[0] == _spaces[1] && _spaces[1] == _spaces[2])
@@ -96,13 +97,26 @@ namespace GameConsole
                 || (_spaces[2] == _spaces[4] && _spaces[4] == _spaces[6])
                 )
             {
-                winner = _marker;
+                winningMarker = _marker;
+                if (winningMarker == "X")
+                {
+                    _player.AddPoint();
+                    return _player.Username;
+                }
+                else
+                {
+                    _playerTwo.AddPoint();
+                    return _playerTwo.Username;
+                }
             }
-            else if(winner == null && _spaces.Distinct().Count() == 2)
+            else if(winningMarker == null && _spaces.Distinct().Count() == 2)
             {
-                winner = "stalemate";
+                return "stalemate";
             }
-            return winner;
+            else
+            {
+                return null;
+            }
         }
         
         //Validate Space

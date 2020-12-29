@@ -16,6 +16,7 @@ namespace GameConsole
         private static string _filePath = "../../../users.txt";
         private static List<User> _availableUsers;
 
+        public Theme TheTheme { get { return _theme; } }
        
         public User(string username, string password, int age, string theme, int userScore)
         {
@@ -28,7 +29,7 @@ namespace GameConsole
 
         public static User LogIn()
         {
-            _availableUsers = FileIO.LoadUsers(_filePath);
+            _availableUsers = FileIO.LoadPlayers(_filePath);
             User returnUser = null;
             bool loggedIn = false;
             while(!loggedIn)
@@ -58,7 +59,6 @@ namespace GameConsole
             }
             UI.DisplaySuccess("\r\nLogin Successful!");
             UI.Continue();
-            UI.SetTheme(returnUser._theme);
             return returnUser;
         }
         private bool CheckUserPassword(string username, string password)
@@ -73,12 +73,19 @@ namespace GameConsole
             }
         }
 
-
-        //Display user profile
         public string[] GetSaveData()
         {
             string[] saveData = { Username, _password, _age.ToString(), _theme.Name, _userScore.ToString()};
             return saveData;
+        }
+
+        public static void SavePlayers(string sucMessage = null)
+        {
+            FileIO.SavePlayers(_filePath, _availableUsers);
+            if (sucMessage != null)
+            {
+                UI.DisplaySuccess(sucMessage);
+            }
         }
 
         public void DisplayUserProfile()
@@ -104,8 +111,8 @@ namespace GameConsole
                 string theme = Validation.GetValidatedConditional(question, conditionals);
                 User newUser = new User(username, password, age, theme, 0);
                 _availableUsers.Add(newUser);
-                FileIO.SaveEmployees(_filePath, _availableUsers);
-                UI.DisplaySuccess($"{username} Created!!!");
+                string successMessage = $"{username} Created!!!";
+                SavePlayers(successMessage);
                 question = "would you like to create another user? [y,n]... ";
                 conditionals = new string[] { "y", "n" };
                 string response = Validation.GetValidatedConditional(question, conditionals);
@@ -121,16 +128,17 @@ namespace GameConsole
             UI.DisplayTitle("Change Username");
             string question = "Please enter your new username... ";
             string username = Validation.GetValidatedString(question);
+            string oldUser = _username;
             _username = username;
             for (int i = 0; i < _availableUsers.Count; i++)
             {
-                if (_availableUsers[i].Username == _username)
+                if (_availableUsers[i].Username == oldUser)
                 {
                     _availableUsers[i]._username = username;
                 }
             }
-            FileIO.SaveEmployees(_filePath, _availableUsers);
-            UI.DisplaySuccess($"Username Changed to {Username}!!");
+            string successMessage = $"Username Changed to {Username}!!";
+            SavePlayers(successMessage);
             UI.Continue();
         }
 
@@ -147,8 +155,8 @@ namespace GameConsole
                     _availableUsers[i]._password = password;
                 }
             }
-            FileIO.SaveEmployees(_filePath, _availableUsers);
-            UI.DisplaySuccess("Password Changed!!");
+            string successMessage = "Password Changed!!";
+            SavePlayers(successMessage);
             UI.Continue();
         }
 
@@ -164,8 +172,8 @@ namespace GameConsole
                         _availableUsers[i]._theme = newTheme;
                     }
                 }
-                FileIO.SaveEmployees(_filePath, _availableUsers);
-                UI.DisplaySuccess($"Theme changed to {newTheme.Name}!");
+                string successMessage = $"Theme changed to {newTheme.Name}!";
+                SavePlayers(successMessage);
                 UI.Continue();
                 UI.SetTheme(newTheme);
             }
@@ -185,12 +193,21 @@ namespace GameConsole
                     _availableUsers.RemoveAt(i);
                 }
             }
-            FileIO.SaveEmployees(_filePath, _availableUsers);
+            SavePlayers();
         }
 
         public void AddPoint()
         {
             _userScore += 1;
+            for (int i = 0; i < _availableUsers.Count; i++)
+            {
+                if (_availableUsers[i].Username == Username)
+                {
+                    _availableUsers[i]._userScore = _userScore;
+                    SavePlayers();
+                }
+            }
+
         }
 
     }//end of class
