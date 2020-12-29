@@ -11,6 +11,7 @@ namespace GameConsole
         private int _age;
         private Theme _theme;
         private int _userScore;
+        private Dictionary<string, int> _userScores;
         
 
         private static string _filePath = "../../../users.txt";
