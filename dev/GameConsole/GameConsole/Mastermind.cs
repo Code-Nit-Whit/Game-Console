@@ -54,7 +54,7 @@ namespace GameConsole
             int numberCorrect = _sequence.Display(_guess);
             if(numberCorrect == _sequence.Size)
             {
-                _player.AddAPoint();
+                _player.AddAPoint("Mastermind");
                 return true;
             }
             else

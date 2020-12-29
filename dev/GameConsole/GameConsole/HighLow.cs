@@ -93,7 +93,7 @@ namespace GameConsole
         {
             if(_score >= 400)
             {
-                _player.AddAPoint();
+                _player.AddAPoint("High-Low");
             }
             return _score >= 400;
         }

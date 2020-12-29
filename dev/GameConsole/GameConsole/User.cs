@@ -10,8 +10,7 @@ namespace GameConsole
         private string _password;
         private int _age;
         private Theme _theme;
-        private int _userScore;
-        private Dictionary<string, int> _userScores;
+        private Dictionary<string, int> _userScores; //Total, HighLow, Mastermind, MathChallenge, CrackTheCode, Hangman, TicTacToe
         
 
         private static string _filePath = "../../../users.txt";
@@ -19,13 +18,28 @@ namespace GameConsole
 
         public Theme TheTheme { get { return _theme; } }
        
-        public User(string username, string password, int age, string theme, int userScore)
+        public User(string username, string password, int age, string theme)
         {
             _username = username;
             _password = password;
             _age = age;
             _theme = UI.FindTheme(theme);
-            _userScore = userScore;
+        }
+
+        public void SetUserScores(Dictionary<string, int> userScores = null)
+        {
+            if(userScores == null)
+            {
+                userScores = new Dictionary<string, int>();
+                userScores.Add("Total", 0);
+                userScores.Add("High-Low", 0);
+                userScores.Add("Mastermind", 0);
+                userScores.Add("Math Challenge", 0);
+                userScores.Add("Crack the Code", 0);
+                userScores.Add("Hangman", 0);
+                userScores.Add("Tic-Tac-Toe", 0);
+            }
+            _userScores = userScores;
         }
 
         public static User LogIn()
@@ -76,7 +90,18 @@ namespace GameConsole
 
         public string[] GetSaveData()
         {
-            string[] saveData = { Username, _password, _age.ToString(), _theme.Name, _userScore.ToString()};
+            string[] saveData = new string[11];
+            //{ Username, _password, _age.ToString(), _theme.Name, _userScore.ToString()};
+            saveData[0] = Username;
+            saveData[1] = _password;
+            saveData[2] = _age.ToString();
+            saveData[3] = _theme.Name;
+            int i = 4;
+            foreach(KeyValuePair<string, int> kvp in _userScores)
+            {
+                saveData[i] = kvp.Value.ToString();
+                i++;
+            }
             return saveData;
         }
 
@@ -110,7 +135,8 @@ namespace GameConsole
                 string[] conditionals = { "light", "dark" };
                 question = $"Would you like the light or dark theme? Please type in your preference [{conditionals[0]}, {conditionals[1]}]... ";
                 string theme = Validation.GetValidatedConditional(question, conditionals);
-                User newUser = new User(username, password, age, theme, 0);
+                User newUser = new User(username, password, age, theme);
+                newUser.SetUserScores();
                 _availableUsers.Add(newUser);
                 string successMessage = $"{username} Created!!!";
                 SavePlayers(successMessage);
@@ -197,19 +223,21 @@ namespace GameConsole
             SavePlayers();
         }
 
-        public void AddAPoint()
+        public void AddAPoint(string game)
         {
-            _userScore += 1;
+            //Update loaded user profile
+            _userScores["Total"] += 1;
+            _userScores[game] += 1;
+            //Update user save info in user list
             for (int i = 0; i < _availableUsers.Count; i++)
             {
                 if (_availableUsers[i].Username == Username)
                 {
-                    _availableUsers[i]._userScore = _userScore;
-                    SavePlayers();
+                    _availableUsers[i]._userScores["Total"] = _userScores["Total"];
+                    _availableUsers[i]._userScores[game] = _userScores[game];
                 }
             }
-
+            SavePlayers();
         }
-
     }//end of class
 }

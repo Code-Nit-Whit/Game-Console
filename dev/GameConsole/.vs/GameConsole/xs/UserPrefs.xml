@@ -2,19 +2,32 @@
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/User.cs">
     <Files>
-      <File FileName="GameConsole/Program.cs" Line="6" Column="13" />
-      <File FileName="GameConsole/Validation.cs" Line="1" Column="1" />
-      <File FileName="GameConsole/FileIO.cs" Line="13" Column="45" />
-      <File FileName="GameConsole/User.cs" Line="14" Column="53" />
-      <File FileName="GameConsole/Users.txt" Line="3" Column="27" />
-      <File FileName="GameConsole/UI.cs" Line="142" Column="14" />
-      <File FileName="GameConsole/Theme.cs" />
-      <File FileName="GameConsole/Themes.txt" />
-      <File FileName="GameConsole/Game.cs" Line="1" Column="1" />
-      <File FileName="GameConsole/OnePlayerGame.cs" Line="1" Column="1" />
-      <File FileName="GameConsole/TwoPlayerGame.cs" Line="17" Column="45" />
-      <File FileName="GameConsole/Menu.cs" Line="13" Column="61" />
+      <File FileName="GameConsole/Program.cs" Line="6" Column="13" NotebookId="1" />
+      <File FileName="GameConsole/Validation.cs" NotebookId="1" />
+      <File FileName="GameConsole/FileIO.cs" Line="26" Column="5" NotebookId="1" />
+      <File FileName="GameConsole/Users.txt" Line="3" Column="39" NotebookId="1" />
+      <File FileName="GameConsole/UI.cs" NotebookId="1" />
+      <File FileName="GameConsole/Theme.cs" NotebookId="1" />
+      <File FileName="GameConsole/Themes.txt" NotebookId="1" />
+      <File FileName="GameConsole/Game.cs" NotebookId="1" />
+      <File FileName="GameConsole/OnePlayerGame.cs" NotebookId="1" />
+      <File FileName="GameConsole/TwoPlayerGame.cs" NotebookId="1" />
+      <File FileName="GameConsole/Menu.cs" NotebookId="1" />
+      <File FileName="GameConsole/User.cs" Line="12" Column="30" NotebookId="1" />
     </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="1792" Y="23" Width="1080" Height="1799">
+        <Files>
+          <File FileName="GameConsole/GameConsole.cs" Line="1" Column="1" />
+          <File FileName="GameConsole/CrackTheCode.cs" Line="83" Column="51" />
+          <File FileName="GameConsole/Hangman.cs" Line="87" Column="44" />
+          <File FileName="GameConsole/HighLow.cs" Line="1" Column="1" />
+          <File FileName="GameConsole/Mastermind.cs" Line="1" Column="1" />
+          <File FileName="GameConsole/MathChallenge.cs" Line="1" Column="1" />
+          <File FileName="GameConsole/TicTacToe.cs" Line="1" Column="1" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">

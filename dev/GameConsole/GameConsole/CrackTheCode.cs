@@ -80,7 +80,7 @@ namespace GameConsole
         {
             if (_guess == _currentCode.CodeName)
             {
-                _player.AddAPoint();
+                _player.AddAPoint("Crack the Code");
                 return true;
             }
             else

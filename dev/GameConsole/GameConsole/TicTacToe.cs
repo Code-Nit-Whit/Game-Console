@@ -96,12 +96,12 @@ namespace GameConsole
                 winningMarker = _marker;
                 if (winningMarker == "X")
                 {
-                    _player.AddAPoint();
+                    _player.AddAPoint("Tic-Tac-Toe");
                     return _player.Username;
                 }
                 else
                 {
-                    _playerTwo.AddAPoint();
+                    _playerTwo.AddAPoint("Tic-Tac-Toe");
                     return _playerTwo.Username;
                 }
             }

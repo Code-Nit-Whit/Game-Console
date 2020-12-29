@@ -84,7 +84,7 @@ namespace GameConsole
         {
             if (_currentGallows.Winner)
             {
-                _player.AddAPoint();
+                _player.AddAPoint("Hangman");
             }
             return _currentGallows.Winner ? true : false;
         }

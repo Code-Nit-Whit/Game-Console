@@ -30,8 +30,24 @@ namespace GameConsole
                         int age = int.Parse(lineSplit[2]);
                         string theme = lineSplit[3];
                         int userScore = int.Parse(lineSplit[4]);
+                        int hlScore = int.Parse(lineSplit[5]);
+                        int mmScore = int.Parse(lineSplit[6]);
+                        int mcScore = int.Parse(lineSplit[7]);
+                        int ctcScore = int.Parse(lineSplit[8]);
+                        int hmScore = int.Parse(lineSplit[9]);
+                        int tttScore = int.Parse(lineSplit[10]);
 
-                        User newUser = new User(name, password, age, theme, userScore);
+                        Dictionary<string, int> userScores = new Dictionary<string, int>();
+                        userScores.Add("Total", userScore);
+                        userScores.Add("High-Low", hlScore);
+                        userScores.Add("Mastermind", mmScore);
+                        userScores.Add("Math Challenge", mcScore);
+                        userScores.Add("Crack the Code", ctcScore);
+                        userScores.Add("Hangman", hmScore);
+                        userScores.Add("Tic-Tac-Toe", tttScore);
+
+                        User newUser = new User(name, password, age, theme);
+                        newUser.SetUserScores(userScores);
                         users.Add(newUser);
                     }
                     return users;
