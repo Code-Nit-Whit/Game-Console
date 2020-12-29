@@ -36,6 +36,7 @@ namespace GameConsole
                         int ctcScore = int.Parse(lineSplit[8]);
                         int hmScore = int.Parse(lineSplit[9]);
                         int tttScore = int.Parse(lineSplit[10]);
+                        int wScore = int.Parse(lineSplit[11]);
 
                         Dictionary<string, int> userScores = new Dictionary<string, int>();
                         userScores.Add("Total", userScore);
@@ -45,6 +46,7 @@ namespace GameConsole
                         userScores.Add("Crack the Code", ctcScore);
                         userScores.Add("Hangman", hmScore);
                         userScores.Add("Tic-Tac-Toe", tttScore);
+                        userScores.Add("War", wScore);
 
                         User newUser = new User(name, password, age, theme);
                         newUser.SetUserScores(userScores);

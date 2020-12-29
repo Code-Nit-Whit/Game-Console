@@ -34,7 +34,7 @@ namespace GameConsole
             string[] onePGamesMenuArr = { "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
             _onePlayerGameMenu = new Menu("Game Console- 1 Player Games", "Back");
             _onePlayerGameMenu.AddMenuItems(onePGamesMenuArr);
-            string[] twoPGamesMenuArr = { "Tic-Tac-Toe" };
+            string[] twoPGamesMenuArr = { "Tic-Tac-Toe", "War" };
             _twoPlayerGameMenu = new Menu("Game Console- 2 Player Games", "Back");
             _twoPlayerGameMenu.AddMenuItems(twoPGamesMenuArr);
             //Create User Menu
@@ -164,6 +164,12 @@ namespace GameConsole
                         TicTacToe ttt = new TicTacToe(_user);
                         ttt.LogInSecondPlayer();
                         ttt.Play();
+                        break;
+
+                    case 2: //War
+                        War w = new War(_user);
+                        w.LogInSecondPlayer();
+                        w.Play();
                         break;
 
                     case 0: //Back

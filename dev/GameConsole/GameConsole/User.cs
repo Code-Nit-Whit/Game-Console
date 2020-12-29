@@ -149,7 +149,8 @@ namespace GameConsole
                 $"Math Challenge: {_userScores["Math Challenge"]}",
                 $"Crack the Code: {_userScores["Crack the Code"]}",
                 $"Hangman: {_userScores["Hangman"]}",
-                $"Tic-Tac-Toe: {_userScores["Tic-Tac-Toe"]}"
+                $"Tic-Tac-Toe: {_userScores["Tic-Tac-Toe"]}",
+                $"War: {_userScores["War"]}"
             };
             List<string> formattedScoreData = UI.DisplayColumns(scoreData, splitters);
             foreach(string dataPoint in formattedScoreData)
