@@ -11,13 +11,13 @@ namespace GameConsole
         private int _age;
         private Theme _theme;
         private Dictionary<string, int> _userScores; //Total, HighLow, Mastermind, MathChallenge, CrackTheCode, Hangman, TicTacToe
-        
+
 
         private static string _filePath = "../../../users.txt";
         private static List<User> _availableUsers;
 
         public Theme TheTheme { get { return _theme; } }
-       
+
         public User(string username, string password, int age, string theme)
         {
             _username = username;
@@ -28,7 +28,7 @@ namespace GameConsole
 
         public void SetUserScores(Dictionary<string, int> userScores = null)
         {
-            if(userScores == null)
+            if (userScores == null)
             {
                 userScores = new Dictionary<string, int>();
                 userScores.Add("Total", 0);
@@ -47,7 +47,7 @@ namespace GameConsole
             _availableUsers = FileIO.LoadPlayers(_filePath);
             User returnUser = null;
             bool loggedIn = false;
-            while(!loggedIn)
+            while (!loggedIn)
             {
                 UI.DisplayTitle("Log In");
                 string question = "[Username]: ";
@@ -55,18 +55,18 @@ namespace GameConsole
                 question = "[Password]: ";
                 string password = Validation.GetValidatedString(question);
                 bool successful = false;
-                for(int i = 0; i < _availableUsers.Count; i++)
+                for (int i = 0; i < _availableUsers.Count; i++)
                 {
                     loggedIn = _availableUsers[i].CheckUserPassword(username, password);
-                    if(loggedIn)
+                    if (loggedIn)
                     {
                         returnUser = _availableUsers[i];
                         successful = true;
                         break;
                     }
                 }
-                if(!successful)
-                
+                if (!successful)
+
                 {
                     UI.DisplayError("Login Failed :( Please try again...");
                     UI.Continue();
@@ -78,7 +78,7 @@ namespace GameConsole
         }
         private bool CheckUserPassword(string username, string password)
         {
-            if(username == Username && password == _password)
+            if (username == Username && password == _password)
             {
                 return true;
             }
@@ -97,7 +97,7 @@ namespace GameConsole
             saveData[2] = _age.ToString();
             saveData[3] = _theme.Name;
             int i = 4;
-            foreach(KeyValuePair<string, int> kvp in _userScores)
+            foreach (KeyValuePair<string, int> kvp in _userScores)
             {
                 saveData[i] = kvp.Value.ToString();
                 i++;
@@ -116,13 +116,43 @@ namespace GameConsole
 
         public void DisplayUserProfile()
         {
-            UI.ComingSoon(true);
+            UI.DisplayTitle($"{Username}'s Profile");
+            //Display demographic info
+            Console.WriteLine("\r\nPersonal Information");
+            string[] personalData = {
+                $"Username: {Username}",
+                $"Age: {_age}",
+                $"Theme: {_theme.Name}"
+            };
+            string[] splitters = { ":" };
+            List<string> formattedPersData = UI.DisplayColumns(personalData, splitters);
+            foreach (string dataPoint in formattedPersData)
+            {
+                UI.DisplayInfo(dataPoint);
+            }
+            //Display scoring info
+            Console.WriteLine("\r\nScoreboard");
+            string[] scoreData = {
+                $"Total: {_userScores["Total"]}",
+                $"High-Low: {_userScores["High-Low"]}",
+                $"Mastermind: {_userScores["Mastermind"]}",
+                $"Math Challenge: {_userScores["Math Challenge"]}",
+                $"Crack the Code: {_userScores["Crack the Code"]}",
+                $"Hangman: {_userScores["Hangman"]}",
+                $"Tic-Tac-Toe: {_userScores["Tic-Tac-Toe"]}"
+            };
+            List<string> formattedScoreData = UI.DisplayColumns(scoreData, splitters);
+            foreach(string dataPoint in formattedScoreData)
+            {
+                UI.DisplayInfo(dataPoint);
+            }
+            UI.Continue();
         }
 
         public static void CreateUser()
         {
             bool keepGoing = true;
-            while(keepGoing)
+            while (keepGoing)
             {
                 UI.DisplayTitle("Create User");
                 string question = "What would you like your username to be?... ";
@@ -143,7 +173,7 @@ namespace GameConsole
                 question = "would you like to create another user? [y,n]... ";
                 conditionals = new string[] { "y", "n" };
                 string response = Validation.GetValidatedConditional(question, conditionals);
-                if(response == "n")
+                if (response == "n")
                 {
                     keepGoing = false;
                 }
