@@ -202,7 +202,7 @@ namespace GameConsole
                     string response = Validation.GetValidatedConditional(question, conditionals);
                     if (response == "y")
                     {
-                        User.DeleteAUser(_user);
+                        User.DeleteThisUser(_user);
                         UI.DisplaySuccess("Your account has been deleted.");
                         UI.Continue();
                         Program.RestartConsole();

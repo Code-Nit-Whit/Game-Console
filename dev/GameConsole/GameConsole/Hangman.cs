@@ -31,10 +31,6 @@ namespace GameConsole
             {
                 Play();
             }
-            else
-            {
-                //Exit method
-            }
         }
     
 
@@ -88,7 +84,7 @@ namespace GameConsole
         {
             if (_currentGallows.Winner)
             {
-                _player.AddPoint();
+                _player.AddAPoint();
             }
             return _currentGallows.Winner ? true : false;
         }

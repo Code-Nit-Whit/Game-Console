@@ -47,11 +47,6 @@ namespace GameConsole
             {
                 Play();
             }
-            else
-            {
-                //Exit option
-            }
-            
         }
 
         protected override bool CheckWinner()
@@ -59,7 +54,7 @@ namespace GameConsole
             int numberCorrect = _sequence.Display(_guess);
             if(numberCorrect == _sequence.Size)
             {
-                _player.AddPoint();
+                _player.AddAPoint();
                 return true;
             }
             else

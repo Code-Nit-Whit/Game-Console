@@ -65,10 +65,6 @@ namespace GameConsole
                 {
                     Play();
                 }
-                else
-                {
-                    //Exit option
-                }
             }
             else
             {
@@ -77,10 +73,6 @@ namespace GameConsole
                 {
                     HighLow newGame = new HighLow(_player);
                     newGame.Play();
-                }
-                else
-                {
-                    //Exit option
                 }
             }
             
@@ -101,7 +93,7 @@ namespace GameConsole
         {
             if(_score >= 400)
             {
-                _player.AddPoint();
+                _player.AddAPoint();
             }
             return _score >= 400;
         }

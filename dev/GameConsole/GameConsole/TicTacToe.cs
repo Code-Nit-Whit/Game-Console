@@ -48,10 +48,6 @@ namespace GameConsole
             {
                 Play();
             }
-            else
-            {
-                //Exit option
-            }
         }
 
         //Game board
@@ -100,12 +96,12 @@ namespace GameConsole
                 winningMarker = _marker;
                 if (winningMarker == "X")
                 {
-                    _player.AddPoint();
+                    _player.AddAPoint();
                     return _player.Username;
                 }
                 else
                 {
-                    _playerTwo.AddPoint();
+                    _playerTwo.AddAPoint();
                     return _playerTwo.Username;
                 }
             }

@@ -184,7 +184,7 @@ namespace GameConsole
             }
         }
 
-        public static void DeleteAUser(User user)
+        public static void DeleteThisUser(User user)
         {
             for (int i = 0; i < _availableUsers.Count; i++)
             {
@@ -196,7 +196,7 @@ namespace GameConsole
             SavePlayers();
         }
 
-        public void AddPoint()
+        public void AddAPoint()
         {
             _userScore += 1;
             for (int i = 0; i < _availableUsers.Count; i++)

@@ -38,16 +38,11 @@ namespace GameConsole
                 else 
                 {
                     DisplayWinner(false);
-                    //Try again
                 }
             }
             if (PlayAgain())
             {
                 Play();
-            }
-            else
-            {
-                //Exit option
             }
         }
 
@@ -85,7 +80,7 @@ namespace GameConsole
         {
             if (_guess == _currentCode.CodeName)
             {
-                _player.AddPoint();
+                _player.AddAPoint();
                 return true;
             }
             else

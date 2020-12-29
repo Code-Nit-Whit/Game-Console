@@ -44,10 +44,6 @@ namespace GameConsole
             {
                 Play();
             }
-            else
-            {
-                //Exit option
-            }
         }
 
         protected override void UpdateGameDisplay()
@@ -70,7 +66,7 @@ namespace GameConsole
                 _score += 150;
                 UI.DisplaySuccess("Correct!");
                 UI.Continue();
-                _player.AddPoint();
+                _player.AddAPoint();
                 return true;
             }
             else
