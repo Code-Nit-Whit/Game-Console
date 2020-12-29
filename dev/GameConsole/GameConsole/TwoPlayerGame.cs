@@ -19,7 +19,6 @@ namespace GameConsole
             UI.DisplayTitle("Player 2 Loaded");
             UI.DisplaySuccess($"Welcome, {_playerTwo.Username}, you are Player Two!");
             DisplayUserStats();
-            UI.Continue();
         }
 
         protected void DisplayUserStats()
@@ -30,9 +29,9 @@ namespace GameConsole
             string[] playersData = {
                 $"Player One|Player Two",
                 $"{playerOneData[0]}|{playerTwoData[0]}",
-                $"{playerOneData[1]}|{playerTwoData[1]}",
-                $"{playerOneData[2]}|{playerTwoData[2]}",
-                $"{playerOneData[3]}|{playerTwoData[3]}"
+                $"Age: {playerOneData[1]}|Age: {playerTwoData[1]}",
+                $"Total Wins: {playerOneData[2]}|Total Wins: {playerTwoData[2]}",
+                $"Total {_title} Wins: {playerOneData[3]}|Total {_title} Wins: {playerTwoData[3]}"
             };
             string[] splitters = { "|" };
             List<string> formattedPlayersData = UI.DisplayColumns(playersData, splitters);
