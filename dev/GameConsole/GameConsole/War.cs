@@ -130,7 +130,7 @@ namespace GameConsole
             }
             else
             {
-                _playerTwo.AddAPoint("War");
+                _playerTwo.AddAPoint("War"                                                                                                                                                                        );
                 return _playerTwo.Username.ToUpper();
             }
         }

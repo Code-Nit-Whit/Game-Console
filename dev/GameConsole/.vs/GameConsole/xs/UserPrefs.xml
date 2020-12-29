@@ -1,28 +1,28 @@
 ﻿<Properties StartupConfiguration="{BA420333-3456-45E1-9A67-39D8E785DB7A}|Default">
   <MonoDevelop.Ide.ItemProperties.GameConsole PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/War.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameConsole/User.cs">
     <Files>
       <File FileName="GameConsole/Program.cs" Line="6" Column="13" NotebookId="1" />
       <File FileName="GameConsole/Validation.cs" NotebookId="1" />
-      <File FileName="GameConsole/FileIO.cs" Line="26" Column="5" NotebookId="1" />
-      <File FileName="GameConsole/Users.txt" Line="4" Column="1" NotebookId="1" />
-      <File FileName="GameConsole/UI.cs" NotebookId="1" />
+      <File FileName="GameConsole/FileIO.cs" Line="74" Column="21" NotebookId="1" />
+      <File FileName="GameConsole/Users.txt" Line="4" Column="40" NotebookId="1" />
+      <File FileName="GameConsole/User.cs" Line="82" Column="29" NotebookId="1" />
+      <File FileName="GameConsole/UI.cs" Line="142" Column="14" NotebookId="1" />
       <File FileName="GameConsole/Theme.cs" NotebookId="1" />
       <File FileName="GameConsole/Themes.txt" NotebookId="1" />
       <File FileName="GameConsole/Game.cs" NotebookId="1" />
       <File FileName="GameConsole/OnePlayerGame.cs" NotebookId="1" />
       <File FileName="GameConsole/TwoPlayerGame.cs" Line="21" Column="32" NotebookId="1" />
       <File FileName="GameConsole/Menu.cs" NotebookId="1" />
-      <File FileName="GameConsole/User.cs" Line="108" Column="38" NotebookId="1" />
     </Files>
     <FloatingWindows>
       <FloatingWindow WindowId="1" X="1792" Y="23" Width="1080" Height="1799">
         <Files>
-          <File FileName="GameConsole/GameConsole.cs" Line="1" Column="1" />
-          <File FileName="GameConsole/TicTacToe.cs" Line="109" Column="14" />
-          <File FileName="GameConsole/War.cs" Line="1" Column="1" />
-          <File FileName="GameConsole/DeckOfCards.cs" Line="1" Column="1" />
-          <File FileName="GameConsole/Card.cs" Line="1" Column="1" />
+          <File FileName="GameConsole/GameConsole.cs" Line="173" Column="31" />
+          <File FileName="GameConsole/TicTacToe.cs" Line="54" Column="9" />
+          <File FileName="GameConsole/War.cs" Line="115" Column="35" />
+          <File FileName="GameConsole/DeckOfCards.cs" Line="11" Column="1" />
+          <File FileName="GameConsole/Card.cs" Line="3" Column="22" />
         </Files>
       </FloatingWindow>
     </FloatingWindows>
@@ -31,7 +31,7 @@
         <State name="__root__">
           <Node name="GameConsole" expanded="True">
             <Node name="GameConsole" expanded="True">
-              <Node name="War.cs" selected="True" />
+              <Node name="User.cs" selected="True" />
             </Node>
           </Node>
         </State>
