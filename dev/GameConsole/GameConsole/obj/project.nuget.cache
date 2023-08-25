@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TrUlaKKf52siNQS//NwfGpeiLA/W1KzjW7kbu6HctLBkiqeHi4/mVE6dAaUGbi4aiuGxM2ZYCf7inYvI2ldqTA==",
+  "dgSpecHash": "qw3VGpe2JbP0b0Dw1VZj7ciMaywefR/q0uv56kS8pMuoes73UHfF6tGhnOWXCg/NeOD2Cb3X74bvF+vHDx1NBw==",
   "success": true,
-  "projectFilePath": "/Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/GameConsole.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\codie\\OneDrive\\Desktop\\New folder\\Game-Console\\dev\\GameConsole\\GameConsole\\GameConsole.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\codie\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }

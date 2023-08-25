@@ -31,7 +31,7 @@ namespace GameConsole
             /*string[] gamesMenuArr = { "Tic-Tac-Toe", "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
             _gameMenu = new Menu("Game Console- Game Menu", "Back");
             _gameMenu.AddMenuItems(gamesMenuArr);*/
-            string[] onePGamesMenuArr = { "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code" };
+            string[] onePGamesMenuArr = { "High-Low", "Mastermind", "Math Challenge", "Hangman", "Crack the Code", "Sudoku" };
             _onePlayerGameMenu = new Menu("Game Console- 1 Player Games", "Back");
             _onePlayerGameMenu.AddMenuItems(onePGamesMenuArr);
             string[] twoPGamesMenuArr = { "Tic-Tac-Toe", "War" };
@@ -150,6 +150,11 @@ namespace GameConsole
                     case 5: //Crack the Code
                         CrackTheCode ctc = new CrackTheCode(_user);
                         ctc.Play();
+                        break;
+
+                    case 6: //Sudoku
+                        Sudoku sd = new Sudoku(_user);
+                        sd.Play();
                         break;
 
                     case 0: //Back

@@ -46,3 +46,17 @@
 /Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/bin/Debug/netcoreapp3.1/GameConsole.dll
 /Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/bin/Debug/netcoreapp3.1/GameConsole.pdb
 /Users/codiewhitaker/Desktop/OneDrive - Full Sail University/GitStuff/Game-Console/dev/GameConsole/GameConsole/obj/Debug/netcoreapp3.1/GameConsole.genruntimeconfig.cache
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\bin\Debug\netcoreapp3.1\GameConsole.exe
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\bin\Debug\netcoreapp3.1\GameConsole.deps.json
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\bin\Debug\netcoreapp3.1\GameConsole.runtimeconfig.json
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\bin\Debug\netcoreapp3.1\GameConsole.runtimeconfig.dev.json
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\bin\Debug\netcoreapp3.1\GameConsole.dll
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\bin\Debug\netcoreapp3.1\GameConsole.pdb
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.csproj.AssemblyReference.cache
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.AssemblyInfoInputs.cache
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.AssemblyInfo.cs
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.csproj.CoreCompileInputs.cache
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.dll
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.pdb
+C:\Users\codie\OneDrive\Desktop\New folder\Game-Console\dev\GameConsole\GameConsole\obj\Debug\netcoreapp3.1\GameConsole.genruntimeconfig.cache
