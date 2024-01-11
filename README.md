@@ -1,6 +1,8 @@
 # Game-Console
 A collection of games and brain teasers, written using C#
 
+Played in the terminal
+
 This is a console application built with the .NET framework.
 
 Codie Whitaker -
