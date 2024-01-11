@@ -1,8 +1,6 @@
 # Game-Console
 A collection of games and brain teasers, written using C#
 
-Played in the terminal
-
 This is a console application built with the .NET framework.
 
 Codie Whitaker -
@@ -10,7 +8,7 @@ _CWhitaker2@student.fullsail.edu_
 
 ##Origins
 
-This game was created as a class assignment for my Application Development at Full Sail University. It is a console application that uses the .NET framework.
+This game was created as a class assignment for my Application Development at University quite a few years ago. It is a console application.  Nothing too special just a learning project.
 
 ##Features
 
@@ -29,11 +27,3 @@ This game was created as a class assignment for my Application Development at Fu
 * **Dynamic Menu Creation and Selection**
 * **File IO**
 * **Built using Object Oriented Principles**
-
-##Goals
- 
-[ ] Fix any errors or bugs withing the console application
-
-[ ] Design web pages for each game using HTML and CSS
-
-[ ] Turn this console app into a web application using the ASP.NET framework
